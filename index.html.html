@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja de Infoprodutos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    let countdown = 20 * 60;
+    function startCountdown() {
+      const timers = document.querySelectorAll('.timer');
+      const interval = setInterval(() => {
+        const minutes = Math.floor(countdown / 60);
+        const seconds = countdown % 60;
+        timers.forEach(timer => {
+          timer.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        });
+        countdown--;
+        if (countdown < 0) clearInterval(interval);
+      }, 1000);
+    }
+    function showViewersPopup() {
+      const popup = document.getElementById("viewersPopup");
+      popup.classList.remove("hidden");
+      setTimeout(() => popup.classList.add("hidden"), 8000);
+    }
+    window.onload = () => {
+      startCountdown();
+      setInterval(showViewersPopup, 30000);
+    };
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-900 relative">
+
+  <div id="viewersPopup" class="fixed bottom-5 left-5 bg-green-600 text-white px-4 py-2 rounded shadow-lg hidden z-50">
+    👀 7 pessoas estão vendo esta oferta agora
+  </div>
+
+  <a href="https://wa.me/5599999999999" target="_blank"
+     class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:bg-green-600 z-50">
+    💬 Fale no WhatsApp
+  </a>
+
+  <header class="bg-indigo-700 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">🔥 Loja de Infoprodutos Digitais</h1>
+    <p class="text-lg mt-2">Transforme conhecimento em resultados com conteúdos práticos e rápidos.</p>
+  </header>
+
+  <section class="bg-yellow-100 p-6 text-center">
+    <h2 class="text-xl font-bold mb-2">🎁 Ganhe um bônus exclusivo!</h2>
+    <p class="mb-4">Cadastre seu e-mail para receber um presente surpresa no seu WhatsApp.</p>
+    <form class="flex flex-col sm:flex-row justify-center gap-2 max-w-lg mx-auto">
+      <input type="email" placeholder="Digite seu e-mail"
+             class="p-2 rounded border border-gray-300 flex-1" required />
+      <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+        Quero meu bônus
+      </button>
+    </form>
+  </section>
+
+  <main class="p-6 max-w-6xl mx-auto">
+    <section class="grid md:grid-cols-3 gap-6">
+
+      <!-- Produto 1 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1608219743935-b9eb7f0b81d1?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded mb-4" />
+        <h2 class="text-xl font-bold mb-2">Edit 120FPS para TikTok</h2>
+        <p>Aprenda a fazer edições ultra suaves com transições cinematográficas para viralizar.</p>
+        <div class="bg-red-100 text-red-600 font-bold text-center mt-2 p-1 rounded">
+          ⏰ Oferta termina em: <span class="timer">20:00</span>
+        </div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-3">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="batmanmode3@gmail.com" />
+          <input type="hidden" name="item_name" value="Edit 120FPS para TikTok" />
+          <input type="hidden" name="amount" value="27.90" />
+          <input type="hidden" name="currency_code" value="BRL" />
+          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded w-full hover:bg-indigo-700">
+            Comprar por R$27,90
+          </button>
+        </form>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1615800005490-61c41a7e0e8b?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded mb-4" />
+        <h2 class="text-xl font-bold mb-2">Como Criar Jogos (do Zero)</h2>
+        <p>Curso completo para iniciantes: crie seus próprios jogos com ferramentas gratuitas.</p>
+        <div class="bg-red-100 text-red-600 font-bold text-center mt-2 p-1 rounded">
+          ⏰ Oferta termina em: <span class="timer">20:00</span>
+        </div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-3">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="batmanmode3@gmail.com" />
+          <input type="hidden" name="item_name" value="Como Criar Jogos" />
+          <input type="hidden" name="amount" value="39.90" />
+          <input type="hidden" name="currency_code" value="BRL" />
+          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded w-full hover:bg-indigo-700">
+            Comprar por R$39,90
+          </button>
+        </form>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1589391886645-d519d7464b1a?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded mb-4" />
+        <h2 class="text-xl font-bold mb-2">Desbloqueie Qualquer Celular</h2>
+        <p>Aprenda métodos profissionais (e legais) para desbloquear celulares de todos os modelos.</p>
+        <div class="bg-red-100 text-red-600 font-bold text-center mt-2 p-1 rounded">
+          ⏰ Oferta termina em: <span class="timer">20:00</span>
+        </div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-3">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="batmanmode3@gmail.com" />
+          <input type="hidden" name="item_name" value="Desbloquear Celular" />
+          <input type="hidden" name="amount" value="59.90" />
+          <input type="hidden" name="currency_code" value="BRL" />
+          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded w-full hover:bg-indigo-700">
+            Comprar por R$59,90
+          </button>
+        </form>
+      </div>
+
+      <!-- Produto 4 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1522199780097-ffc9f43f46bc?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded mb-4" />
+        <h2 class="text-xl font-bold mb-2">Marketing Digital para Iniciantes</h2>
+        <p>Aprenda a atrair, engajar e converter clientes usando estratégias testadas nas redes sociais.</p>
+        <div class="bg-red-100 text-red-600 font-bold text-center mt-2 p-1 rounded">
+          ⏰ Oferta termina em: <span class="timer">20:00</span>
+        </div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-3">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="batmanmode3@gmail.com" />
+          <input type="hidden" name="item_name" value="Marketing Digital para Iniciantes" />
+          <input type="hidden" name="amount" value="47.90" />
+          <input type="hidden" name="currency_code" value="BRL" />
+          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded w-full hover:bg-indigo-700">
+            Comprar por R$47,90
+          </button>
+        </form>
+      </div>
+
+      <!-- Produto 5 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1573497019585-74ad1c1b9d7d?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded mb-4" />
+        <h2 class="text-xl font-bold mb-2">Infoprodutos em Alta (Trend Pack)</h2>
+        <p>Receba uma curadoria dos produtos digitais mais vendidos do momento e como reproduzi-los.</p>
+        <div class="bg-red-100 text-red-600 font-bold text-center mt-2 p-1 rounded">
+          ⏰ Oferta termina em: <span class="timer">20:00</span>
+        </div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="mt-3">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="batmanmode3@gmail.com" />
+          <input type="hidden" name="item_name" value="Infoprodutos em Alta" />
+          <input type="hidden" name="amount" value="67.90" />
+          <input type="hidden" name="currency_code" value="BRL" />
+          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded w-full hover:bg-indigo-700">
+            Comprar por R$67,90
+          </button>
+        </form>
+      </div>
+
+    </section>
+
+    <section class="mt-10">
+      <h3 class="text-2xl font-bold mb-4">💬 Comentários de Clientes</h3>
+      <div class="space-y-4">
+        <div class="bg-white p-4 rounded shadow flex items-center space-x-4">
+          <img src="https://randomuser.me/api/portraits/men/18.jpg" class="w-12 h-12 rounded-full">
+          <p>⭐️⭐️⭐️⭐️⭐️ “O curso de edição 120fps me ajudou a viralizar 3 vídeos!”<br><span class="font-semibold">– Gabriel L.</span></p>
+        </div>
+        <div class="bg-white p-4 rounded shadow flex items-center space-x-4">
+          <img src="https://randomuser.me/api/portraits/women/28.jpg" class="w-12 h-12 rounded-full">
+          <p>⭐️⭐️⭐️⭐️⭐️ “Criei meu primeiro jogo em uma semana. Curso muito direto.”<br><span class="font-semibold">– Amanda S.</span></p>
+        </div>
+        <div class="bg-white p-4 rounded shadow flex items-center space-x-4">
+          <img src="https://randomuser.me/api/portraits/men/52.jpg" class="w-12 h-12 rounded-full">
+          <p>⭐️⭐️⭐️⭐️⭐️ “Desbloqueei o celular antigo da minha mãe com o guia. Muito útil!”<br><span class="font-semibold">– Carlos J.</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white text-center p-4 mt-10">
+    © 2025 Loja de Infoprodutos – Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
