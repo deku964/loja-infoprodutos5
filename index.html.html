@@ -360,4 +360,179 @@
             { id: 41, name: "Escrivaninha Home Office", price: 299.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
             { id: 42, name: "Cadeira Giratória Executiva", price: 499.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
             { id: 43, name: "Luminária de Mesa LED com USB", price: 59.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 44, name: "Cafeteira Elétrica 127V", price: 129.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note
+            { id: 44, name: "Cafeteira Elétrica 127V", price: 129.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
+            { id: 45, name: "Jogo de Panelas Antiaderente 5 Peças", price: 199.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
+            { id: 46, name: "Jogo de Facas 6 Peças com Suporte", price: 149.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
+            { id: 47, name: "Grill Elétrico Mondial 1800W", price: 229.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
+            { id: 48, name: "Sanduicheira Grill Dupla 110V", price: 119.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
+            { id: 49, name: "Fogão Portátil a Gás", price: 149.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
+            { id: 50, name: "Jogo de Lençol Queen Size 300 Fios", price: 179.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" }
+        ];
+        
+        // Carrinho de compras
+        let cart = [];
+        
+        // Elementos do DOM
+        const productsGrid = document.getElementById('products-grid');
+        const cartButton = document.getElementById('cart-button');
+        const cartCount = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModal = document.getElementById('close-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const checkoutButton = document.getElementById('checkout-button');
+        
+        // Exibir produtos
+        function displayProducts() {
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                        <button class="add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+            
+            // Adicionar eventos aos botões
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', addToCart);
+            });
+        }
+        
+        // Adicionar ao carrinho
+        function addToCart(e) {
+            const productId = parseInt(e.target.getAttribute('data-id'));
+            const product = products.find(p => p.id === productId);
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            
+            // Feedback visual
+            e.target.textContent = 'Adicionado!';
+            setTimeout(() => {
+                e.target.textContent = 'Adicionar ao Carrinho';
+            }, 1000);
+        }
+        
+        // Atualizar carrinho
+        function updateCart() {
+            // Atualizar contador
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Salvar no localStorage
+            localStorage.setItem('blackDealsCart', JSON.stringify(cart));
+        }
+        
+        // Exibir carrinho
+        function displayCart() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Seu carrinho está vazio</div>';
+                cartTotal.textContent = 'Total: R$ 0,00';
+                checkoutButton.style.display = 'none';
+                return;
+            }
+            
+            checkoutButton.style.display = 'block';
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4 class="cart-item-title">${item.name}</h4>
+                        <p class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')} x ${item.quantity}</p>
+                    </div>
+                    <div>
+                        R$ ${itemTotal.toFixed(2).replace('.', ',')}
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+        
+        // Finalizar compra
+        function checkout() {
+            if (cart.length === 0) return;
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Criar descrição dos itens
+            const itemsDescription = cart.map(item => 
+                `${item.name} (${item.quantity}x)`
+            ).join(', ');
+            
+            // URL do PayPal
+            const paypalEmail = 'batmanmode3@gmail.com';
+            const currency = 'BRL';
+            const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=${currency}&amount=${total.toFixed(2)}&item_name=${encodeURIComponent(itemsDescription)}`;
+            
+            // Redirecionar para o PayPal
+            window.location.href = paypalUrl;
+        }
+        
+        // Carregar carrinho do localStorage
+        function loadCart() {
+            const savedCart = localStorage.getItem('blackDealsCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        }
+        
+        // Event Listeners
+        cartButton.addEventListener('click', () => {
+            displayCart();
+            cartModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+        
+        checkoutButton.addEventListener('click', checkout);
+        
+        // Fechar modal ao clicar fora
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+        
+        // Inicializar
+        loadCart();
+        displayProducts();
+    </script>
+</body>
+</html>
