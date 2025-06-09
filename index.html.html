@@ -313,19 +313,19 @@
             <button class="checkout-button" id="checkout-button">Finalizar Compra</button>
         </div>
     </div>
-    
+
     <script>
         // Produtos em alta em Portugal e Brasil
         const products = [
             { id: 1, name: "Smartphone Xiaomi Redmi Note 12", price: 1299.90, image: "https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg" },
-            { id: 2, name: "Fone Bluetooth JBL Tune 510BT", price: 249.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
+            { id: 2, name: "Fone Bluetooth JBL Tune 510BT", price: 249.90, image: "https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg" },
             { id: 3, name: "Smart TV LED 50\" 4K UHD Samsung", price: 2199.00, image: "https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg" },
-            { id: 4, name: "Console PlayStation 5 Digital Edition", price: 3499.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 5, name: "Notebook Acer Aspire 5 i5 8GB 512GB SSD", price: 3299.00, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
-            { id: 6, name: "Smartwatch Amazfit Bip U Pro", price: 399.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
-            { id: 7, name: "Câmera Instax Mini 11 Lilás", price: 499.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 8, name: "Echo Dot (4ª Geração)", price: 379.00, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
-            { id: 9, name: "Air Fryer Mondial 4,5L AF-30", price: 399.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
+            { id: 4, name: "Console PlayStation 5 Digital Edition", price: 3499.90, image: "https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg" },
+            { id: 5, name: "Notebook Acer Aspire 5 i5 8GB 512GB SSD", price: 3299.00, image: "https://i.postimg.cc/y8kZPVJM/c606082d661ada5db9ef8dcc89e1a7ee.jpg" },
+            { id: 6, name: "Smartwatch Amazfit Bip U Pro", price: 399.90, image: "https://i.postimg.cc/prCF0rJH/60e3c661b64c67c56dc8177b6b2b29a4.jpg" },
+            { id: 7, name: "Câmera Instax Mini 11 Lilás", price: 499.90, image: "https://i.postimg.cc/3NYGCmp1/3e77b7839d42ce423c5df2e051baeb99.jpg" },
+            { id: 8, name: "Echo Dot (4ª Geração)", price: 379.00, image: "https://i.postimg.cc/xCKHztkq/779d6d2152e5a229a54e2b05ee9a633f.jpg" },
+            { id: 9, name: "Air Fryer Mondial 4,5L AF-30", price: 399.90, image: "https://i.postimg.cc/LXdL5r8r/992886fbf46ca575d0a33bf2ae802156.jpg" },
             { id: 10, name: "Processador Ryzen 5 5600G 3.9GHz", price: 899.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
             { id: 11, name: "Mouse Gamer Redragon Cobra M711", price: 149.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
             { id: 12, name: "Teclado Mecânico Redragon Kumara", price: 249.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
