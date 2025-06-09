@@ -317,20 +317,20 @@
     <script>
         // Produtos em alta em Portugal e Brasil
         const products = [
-            { id: 1, name: "Smartphone Xiaomi Redmi Note 12", price: 1299.90, image: "https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg" },
-            { id: 2, name: "Fone Bluetooth JBL Tune 510BT", price: 249.90, image: "https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg" },
-            { id: 3, name: "Smart TV LED 50\" 4K UHD Samsung", price: 2199.00, image: "https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg" },
-            { id: 4, name: "Console PlayStation 5 Digital Edition", price: 3499.90, image: "https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg" },
-            { id: 5, name: "Notebook Acer Aspire 5 i5 8GB 512GB SSD", price: 3299.00, image: "https://i.postimg.cc/y8kZPVJM/c606082d661ada5db9ef8dcc89e1a7ee.jpg" },
-            { id: 6, name: "Smartwatch Amazfit Bip U Pro", price: 399.90, image: "https://i.postimg.cc/prCF0rJH/60e3c661b64c67c56dc8177b6b2b29a4.jpg" },
-            { id: 7, name: "Câmera Instax Mini 11 Lilás", price: 499.90, image: "https://i.postimg.cc/3NYGCmp1/3e77b7839d42ce423c5df2e051baeb99.jpg" },
-            { id: 8, name: "Echo Dot (4ª Geração)", price: 379.00, image: "https://i.postimg.cc/xCKHztkq/779d6d2152e5a229a54e2b05ee9a633f.jpg" },
+            { id: 1, name: "Smartphone Xiaomi Redmi Note 12", price: 1100.90, image: "https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg" },
+            { id: 2, name: "Fone Bluetooth JBL Tune 510BT", price: 229.90, image: "https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg" },
+            { id: 3, name: "Smart TV LED 50\" 4K UHD Samsung", price: 2100.00, image: "https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg" },
+            { id: 4, name: "Console PlayStation 5 Digital Edition", price: 3250.90, image: "https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg" },
+            { id: 5, name: "Notebook Acer Aspire 5 i5 8GB 512GB SSD", price: 3100.00, image: "https://i.postimg.cc/y8kZPVJM/c606082d661ada5db9ef8dcc89e1a7ee.jpg" },
+            { id: 6, name: "Smartwatch Amazfit Bip U Pro", price: 300.90, image: "https://i.postimg.cc/prCF0rJH/60e3c661b64c67c56dc8177b6b2b29a4.jpg" },
+            { id: 7, name: "Câmera Instax Mini 11 Lilás", price: 400.90, image: "https://i.postimg.cc/3NYGCmp1/3e77b7839d42ce423c5df2e051baeb99.jpg" },
+            { id: 8, name: "Echo Dot (4ª Geração)", price: 329.00, image: "https://i.postimg.cc/xCKHztkq/779d6d2152e5a229a54e2b05ee9a633f.jpg" },
             { id: 9, name: "Air Fryer Mondial 4,5L AF-30", price: 399.90, image: "https://i.postimg.cc/LXdL5r8r/992886fbf46ca575d0a33bf2ae802156.jpg" },
             { id: 10, name: "Processador Ryzen 5 5600G 3.9GHz", price: 899.90, image: "https://i.postimg.cc/rpR588M1/959964c8607f63ca037ec53b5278f391.jpg" },
             { id: 11, name: "Mouse Gamer Redragon Cobra M711", price: 149.90, image: "https://i.postimg.cc/3J3jg5Fh/65296e500c65a6815233fd39948b46d7.jpg" },
             { id: 12, name: "Teclado Mecânico Redragon Kumara", price: 249.90, image: "https://i.postimg.cc/vHXrhq0V/8be47c24a5cd75ff6fb72efa36da0c63.jpg" },
             { id: 13, name: "Headset Gamer HyperX Cloud Stinger", price: 299.90, image: "https://i.postimg.cc/K8HnSKSc/11487080664679a8c21b6bb6a17e738f.jpg" },
-            { id: 14, name: "Monitor Gamer 24\" 144Hz AOC Hero", price: 1199.90, image: "https://i.postimg.cc/HkxQhwNP/c48587363cf3f4a9b64db1985dcc9e55.jpg" },
+            { id: 14, name: "Monitor Gamer 24\" 144Hz AOC Hero", price: 1050.90, image: "https://i.postimg.cc/HkxQhwNP/c48587363cf3f4a9b64db1985dcc9e55.jpg" },
             { id: 15, name: "Cadeira Gamer DT3sports Racer", price: 999.90, image: "https://i.postimg.cc/gJ6NjCbh/T-Lo-Vendo-Silla-Tipo-Gaming-Racer-X-Ergon-mica-Racing-Sill-n-Gamer-Profesional-para-Videojuegos-PC.jpg" },
             { id: 16, name: "Mesa Digitalizadora Wacom One", price: 599.90, image: "https://i.postimg.cc/GpDyyd9b/Mesa-Digitalizadora-One-By-Wacom-CTL472-Pequena-Cor-Preto-e-Vermelho.jpg" },
             { id: 17, name: "Kindle 10ª Geração 8GB", price: 399.90, image: "https://i.postimg.cc/dVpC3LsW/Kindle-10-Gera-o-Tela-6-8-GB-Wi-Fi-Luz-Embutida-Link-de-venda-abaixo.jpg" },
@@ -353,20 +353,20 @@
             { id: 34, name: "Ring Light 18\" com Tripé e Smartphone", price: 179.90, image: "https://i.postimg.cc/fTkkdDg1/Iluminador-Ring-Light-Led-Rl18-Polegadas-Sup-Cel-Tripe-Bolsa.jpg" },
             { id: 35, name: "Mochila Antirroubo para Notebook", price: 129.90, image: "https://i.postimg.cc/15TXc2kX/Mochila-Imperme-vel-Anti-Roubo-para-Notebook-Design-Moderno.jpg" },
             { id: 36, name: "Relógio Inteligente Xiaomi Mi Band 7", price: 299.90, image: "https://i.postimg.cc/HL1LF5sC/CN-Version-Xiaomi-Mi-Band-7-Pro-Smart-Bracelet-AMOLED-Screen-GPS-Blood-Oxygen-Fitness-Traker.jpg" },
-            { id: 37, name: "Esteira Elétrica Dobrável 110V", price: 1499.90, image: "https://i.postimg.cc/vm7myBcx/Esteira-Eletrica-Semi-Profissional-Rtx815-Evox-Fitnes-110v-Cor-Preto-127v.jpg" },
+            { id: 37, name: "Esteira Elétrica Dobrável 110V", price: 1000.90, image: "https://i.postimg.cc/vm7myBcx/Esteira-Eletrica-Semi-Profissional-Rtx815-Evox-Fitnes-110v-Cor-Preto-127v.jpg" },
             { id: 38, name: "Bicicleta Ergométrica Spin Bike", price: 999.90, image: "https://i.postimg.cc/DZ2wwTXj/Bicicleta-Ergom-trica-Bike-Academia-Spinning-Silenciosa.jpg" },
             { id: 39, name: "Halteres Ajustáveis 20kg", price: 299.90, image: "https://i.postimg.cc/B6MQ8V5q/Kit-Halteres-Muscula-o-Ajust-vel-com-Barra-at-40kg-Bonafit.jpg" },
-            { id: 40, name: "Tapete de Yoga Antiderrapante", price: 79.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 41, name: "Escrivaninha Home Office", price: 299.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
-            { id: 42, name: "Cadeira Giratória Executiva", price: 499.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
-            { id: 43, name: "Luminária de Mesa LED com USB", price: 59.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 44, name: "Cafeteira Elétrica 127V", price: 129.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
-            { id: 45, name: "Jogo de Panelas Antiaderente 5 Peças", price: 199.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
-            { id: 46, name: "Jogo de Facas 6 Peças com Suporte", price: 149.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 47, name: "Grill Elétrico Mondial 1800W", price: 229.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" },
-            { id: 48, name: "Sanduicheira Grill Dupla 110V", price: 119.90, image: "https://images.kabum.com.br/produtos/fotos/128038/fone-de-ouvido-bluetooth-jbl-tune-510bt-com-microfone-preto-jblt510btblk_1603737614_gg.jpg" },
-            { id: 49, name: "Fogão Portátil a Gás", price: 149.90, image: "https://images.kabum.com.br/produtos/fotos/238671/smart-tv-led-50-4k-uhd-samsung-50cu7700-crystal-uhd-com-4k-ai-processador-crystal-4k-wi-fi-bluetooth-alexa-google-assistant_1684865895_gg.jpg" },
-            { id: 50, name: "Jogo de Lençol Queen Size 300 Fios", price: 179.90, image: "https://images.kabum.com.br/produtos/fotos/416277/smartphone-xiaomi-redmi-note-12-6-67-128gb-4g-4gb-ram-octa-core-camera-tripla-50mp-8mp-2mp-selfie-13mp-preto_1674135725_gg.jpg" }
+            { id: 40, name: "Tapete de Yoga Antiderrapante", price: 79.90, image: "https://i.postimg.cc/xjb5nV9y/Tapete-Yoga-Com-170x60cm-5mm-Evamax-Yoga.jpg" },
+            { id: 41, name: "Escrivaninha Home Office", price: 299.90, image: "https://i.postimg.cc/ZK8LvPBW/Mesa-em-L-Escrivaninha-1-20m-x-1-50m-Escrit-rio-F5-Office.jpg" },
+            { id: 42, name: "Cadeira Giratória Executiva", price: 499.90, image: "https://i.postimg.cc/YqK3SD9c/Cadeira-Girat-ria-Ergon-mica-De-Escrit-rio-Preta-Mesh-R-920.jpg" },
+            { id: 43, name: "Luminária de Mesa LED com USB", price: 59.90, image: "https://i.postimg.cc/Dw7PrWLB/Linda-lumin-ria-para-seu-cantinho.jpg" },
+            { id: 44, name: "Cafeteira Elétrica 127V", price: 129.90, image: "https://i.postimg.cc/8C5dYqyv/Lan-amento-Exclusivo-na-Zenith.jpg" },
+            { id: 45, name: "Jogo de Panelas Antiaderente 5 Peças", price: 199.90, image: "https://i.postimg.cc/YSsNBbVs/Ofertas-Imperd-veis-R-184-90-Jogo-De.jpg" },
+            { id: 46, name: "Jogo de Facas 6 Peças com Suporte", price: 149.90, image: "https://i.postimg.cc/d1Z2sGct/Jogo-De-Facas-Tramontina-Ultracorte-6-Pe-as-Suporte-R-189-9.jpg" },
+            { id: 47, name: "Grill Elétrico Mondial 1800W", price: 229.90, image: "https://i.postimg.cc/nrvq7ZLy/Sanduicheira-Grill-Mondial-Premium-S-19.jpg" },
+            { id: 48, name: "Sanduicheira Grill Dupla 110V", price: 119.90, image: "https://i.postimg.cc/d3M8LDJR/Churrasqueira-El-trica-Mondial-Grand-Steak-Grill-CH-05.jpg" },
+            { id: 49, name: "Fogão Portátil a Gás", price: 149.90, image: "https://i.postimg.cc/RCf721Tg/Fog-o-Port-til-a-G-s-Butano-com-Maleta-Ideal-para-Camping-e-Uso-de-Emerg-ncia-TDT.jpg" },
+            { id: 50, name: "Jogo de Lençol Queen Size 300 Fios", price: 179.90, image: "https://i.postimg.cc/28DQYqcr/Jogo-de-len-ol.jpg" }
         ];
         
         // Carrinho de compras
@@ -494,7 +494,7 @@
             ).join(', ');
             
             // URL do PayPal
-            const paypalEmail = 'batmanmode3@gmail.com';
+            const paypalEmail = 'dekulanga887@gmail.com';
             const currency = 'BRL';
             const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=${currency}&amount=${total.toFixed(2)}&item_name=${encodeURIComponent(itemsDescription)}`;
             
