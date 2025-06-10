@@ -9,6 +9,7 @@
             --primary: #000000;
             --primary-dark: #111111;
             --secondary: #ff3d00;
+            --secondary-light: #ff6e40;
             --background: #121212;
             --surface: #1e1e1e;
             --error: #cf6679;
@@ -17,6 +18,7 @@
             --on-background: #ffffff;
             --on-surface: #ffffff;
             --on-error: #000000;
+            --success: #4CAF50;
         }
         
         body {
@@ -34,6 +36,7 @@
             text-align: center;
             box-shadow: 0 2px 15px rgba(255, 61, 0, 0.3);
             border-bottom: 2px solid var(--secondary);
+            position: relative;
         }
         
         h1 {
@@ -47,6 +50,27 @@
             font-style: italic;
             opacity: 0.8;
             margin-top: 0.5rem;
+        }
+        
+        .free-shipping-banner {
+            background: linear-gradient(90deg, #ff3d00, #ff8c00);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .free-shipping-count {
+            background-color: var(--on-primary);
+            color: var(--secondary);
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 0 0.5rem;
         }
         
         .container {
@@ -69,6 +93,21 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #333;
+            position: relative;
+        }
+        
+        .free-shipping-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--success);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         .product-card:hover {
@@ -117,7 +156,7 @@
         }
         
         .add-to-cart:hover {
-            background-color: #ff6e40;
+            background-color: var(--secondary-light);
         }
         
         .cart-container {
@@ -232,12 +271,35 @@
             color: var(--secondary);
         }
         
+        .cart-summary {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+        
+        .cart-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
         .cart-total {
             font-size: 1.2rem;
             font-weight: bold;
             text-align: right;
             margin-top: 1rem;
             color: var(--secondary);
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+        
+        .free-shipping {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .shipping-fee {
+            color: #bbb;
         }
         
         .checkout-button {
@@ -257,13 +319,65 @@
         }
         
         .checkout-button:hover {
-            background-color: #ff6e40;
+            background-color: var(--secondary-light);
         }
         
         .empty-cart {
             text-align: center;
             padding: 2rem;
             color: #777;
+        }
+        
+        .address-form {
+            margin-top: 1.5rem;
+            background-color: rgba(50,50,50,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .address-form h3 {
+            margin-top: 0;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .delivery-time {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-align: center;
+            border-left: 3px solid var(--success);
+        }
+        
+        .address-required {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
         }
         
         @media (max-width: 768px) {
@@ -274,13 +388,24 @@
             h1 {
                 font-size: 1.8rem;
             }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="free-shipping-banner">
+        <span>🚚 FRETE GRÁTIS para as primeiras</span>
+        <span class="free-shipping-count" id="free-shipping-count">10</span>
+        <span>compras!</span>
+    </div>
+    
     <header>
         <h1>BLACK DEALS</h1>
-        <div class="subtitle">Produtos</div>
+        <div class="subtitle">Produtos com Frete Grátis para as 10 Primeiras Compras!</div>
     </header>
     
     <div class="container">
@@ -308,7 +433,74 @@
                 <div class="empty-cart">Seu carrinho está vazio</div>
             </div>
             
-            <div class="cart-total" id="cart-total">Total: R$ 0,00</div>
+            <div class="cart-summary" id="cart-summary">
+                <!-- Resumo de valores será inserido aqui -->
+            </div>
+            
+            <div class="address-form">
+                <h3>Dados de Entrega</h3>
+                <div class="form-group">
+                    <label for="full-name">Nome Completo</label>
+                    <input type="text" id="full-name" placeholder="Digite seu nome completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Endereço Completo</label>
+                    <input type="text" id="address" placeholder="Rua, número, complemento" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">Cidade</label>
+                    <input type="text" id="city" placeholder="Digite sua cidade" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="state">Estado</label>
+                    <select id="state" required>
+                        <option value="">Selecione seu estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="zipcode">CEP</label>
+                    <input type="text" id="zipcode" placeholder="00000-000" required>
+                </div>
+                
+                <div id="address-required" class="address-required">
+                    Por favor, preencha todos os campos de endereço para continuar.
+                </div>
+            </div>
+            
+            <div class="delivery-time">
+                ⏱️ Tempo de entrega: 24h a 3 dias úteis, dependendo da localização e do produto
+            </div>
             
             <button class="checkout-button" id="checkout-button">Finalizar Compra</button>
         </div>
@@ -379,8 +571,18 @@
         const cartModal = document.getElementById('cart-modal');
         const closeModal = document.getElementById('close-modal');
         const cartItems = document.getElementById('cart-items');
-        const cartTotal = document.getElementById('cart-total');
+        const cartSummary = document.getElementById('cart-summary');
         const checkoutButton = document.getElementById('checkout-button');
+        const freeShippingCountElement = document.getElementById('free-shipping-count');
+        const addressRequired = document.getElementById('address-required');
+        
+        // Contador de frete grátis
+        let freeShippingCount = localStorage.getItem('freeShippingCount') ? parseInt(localStorage.getItem('freeShippingCount')) : 10;
+        
+        // Atualizar contador de frete grátis
+        function updateFreeShippingCount() {
+            freeShippingCountElement.textContent = freeShippingCount;
+        }
         
         // Exibir produtos
         function displayProducts() {
@@ -390,7 +592,12 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
+                // Adicionar badge de frete grátis se ainda houver disponível
+                const freeShippingBadge = freeShippingCount > 0 ? 
+                    `<div class="free-shipping-badge">FRETE GRÁTIS</div>` : '';
+                
                 productCard.innerHTML = `
+                    ${freeShippingBadge}
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
@@ -406,6 +613,9 @@
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', addToCart);
             });
+            
+            // Atualizar contador de frete
+            updateFreeShippingCount();
         }
         
         // Adicionar ao carrinho
@@ -428,7 +638,7 @@
             
             updateCart();
             
-            // Feedback visual
+            // Feedbback visual
             e.target.textContent = 'Adicionado!';
             setTimeout(() => {
                 e.target.textContent = 'Adicionar ao Carrinho';
@@ -445,11 +655,17 @@
             localStorage.setItem('blackDealsCart', JSON.stringify(cart));
         }
         
+        // Calcular frete
+        function calculateShipping() {
+            // Se ainda houver frete grátis disponível
+            return freeShippingCount > 0 ? 0 : 20.00;
+        }
+        
         // Exibir carrinho
         function displayCart() {
             if (cart.length === 0) {
                 cartItems.innerHTML = '<div class="empty-cart">Seu carrinho está vazio</div>';
-                cartTotal.textContent = 'Total: R$ 0,00';
+                cartSummary.innerHTML = '';
                 checkoutButton.style.display = 'none';
                 return;
             }
@@ -457,11 +673,11 @@
             checkoutButton.style.display = 'block';
             
             cartItems.innerHTML = '';
-            let total = 0;
+            let subtotal = 0;
             
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
-                total += itemTotal;
+                subtotal += itemTotal;
                 
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
@@ -479,14 +695,73 @@
                 cartItems.appendChild(cartItem);
             });
             
-            cartTotal.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+            // Calcular frete e total
+            const shipping = calculateShipping();
+            const total = subtotal + shipping;
+            
+            // Exibir resumo
+            cartSummary.innerHTML = `
+                <div class="cart-summary-item">
+                    <div>Subtotal:</div>
+                    <div>R$ ${subtotal.toFixed(2).replace('.', ',')}</div>
+                </div>
+                <div class="cart-summary-item">
+                    <div>Frete:</div>
+                    <div class="${shipping === 0 ? 'free-shipping' : 'shipping-fee'}">
+                        ${shipping === 0 ? 'GRÁTIS' : `R$ ${shipping.toFixed(2).replace('.', ',')}`}
+                    </div>
+                </div>
+                <div class="cart-total">
+                    Total: R$ ${total.toFixed(2).replace('.', ',')}
+                </div>
+            `;
+            
+            // Mensagem sobre frete grátis
+            if (freeShippingCount > 0) {
+                cartSummary.innerHTML += `
+                    <div class="free-shipping" style="margin-top: 10px; text-align: right;">
+                        (Frete grátis para as primeiras ${freeShippingCount} compras)
+                    </div>
+                `;
+            }
+        }
+        
+        // Validar formulário de endereço
+        function validateAddressForm() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const state = document.getElementById('state').value.trim();
+            const zipcode = document.getElementById('zipcode').value.trim();
+            
+            if (!fullName || !address || !city || !state || !zipcode) {
+                addressRequired.style.display = 'block';
+                return false;
+            }
+            
+            addressRequired.style.display = 'none';
+            return true;
         }
         
         // Finalizar compra
         function checkout() {
             if (cart.length === 0) return;
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            // Validar endereço
+            if (!validateAddressForm()) {
+                return;
+            }
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = calculateShipping();
+            const total = subtotal + shipping;
+            
+            // Coletar dados do formulário
+            const fullName = document.getElementById('full-name').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const state = document.getElementById('state').value.trim();
+            const zipcode = document.getElementById('zipcode').value.trim();
             
             // Criar descrição dos itens
             const itemsDescription = cart.map(item => 
@@ -497,6 +772,20 @@
             const paypalEmail = 'dekulanga887@gmail.com';
             const currency = 'BRL';
             const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=${currency}&amount=${total.toFixed(2)}&item_name=${encodeURIComponent(itemsDescription)}`;
+            
+            // Reduzir contador de frete grátis se aplicável
+            if (shipping === 0 && freeShippingCount > 0) {
+                freeShippingCount--;
+                localStorage.setItem('freeShippingCount', freeShippingCount);
+                updateFreeShippingCount();
+            }
+            
+            // Limpar carrinho
+            cart = [];
+            updateCart();
+            
+            // Fechar modal
+            cartModal.style.display = 'none';
             
             // Redirecionar para o PayPal
             window.location.href = paypalUrl;
@@ -528,6 +817,15 @@
             if (e.target === cartModal) {
                 cartModal.style.display = 'none';
             }
+        });
+        
+        // Formatar CEP
+        document.getElementById('zipcode').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) {
+                value = value.substring(0,5) + '-' + value.substring(5,8);
+            }
+            e.target.value = value;
         });
         
         // Inicializar
