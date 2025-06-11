@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY SHOPEE | Produtos Alta PT-BR</title>
+    <title>BLACK DEALS | Produtos Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #000000;
@@ -19,47 +20,115 @@
             --on-surface: #ffffff;
             --on-error: #000000;
             --success: #4CAF50;
+            --highlight: #ffcc00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--background);
             color: var(--on-background);
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
         }
         
+        /* Header */
         header {
             background-color: var(--primary);
             color: var(--on-primary);
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
             text-align: center;
             box-shadow: 0 2px 15px rgba(255, 61, 0, 0.3);
             border-bottom: 2px solid var(--secondary);
-            position: relative;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+        
+        .header-text {
+            text-align: left;
         }
         
         h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
         
         .subtitle {
             font-style: italic;
             opacity: 0.8;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
         }
         
+        .auth-section {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .auth-btn {
+            background-color: var(--surface);
+            color: var(--on-surface);
+            border: 1px solid #444;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .auth-btn:hover {
+            background-color: #333;
+            border-color: var(--secondary);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--on-primary);
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Banner de frete grátis */
         .free-shipping-banner {
             background: linear-gradient(90deg, #ff3d00, #ff8c00);
             color: white;
-            padding: 0.5rem;
+            padding: 0.7rem;
             text-align: center;
             font-weight: bold;
             position: sticky;
-            top: 0;
+            top: 80px;
             z-index: 10;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
@@ -73,27 +142,146 @@
             margin: 0 0.5rem;
         }
         
+        /* Produto em destaque */
+        .featured-product {
+            background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem auto;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 25px rgba(255, 61, 0, 0.2);
+        }
+        
+        .featured-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .featured-info {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            background-color: var(--highlight);
+            color: #000;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .featured-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--on-background);
+        }
+        
+        .featured-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+        
+        .featured-old-price {
+            text-decoration: line-through;
+            color: #aaa;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .featured-description {
+            margin: 1rem 0;
+            color: #ccc;
+        }
+        
+        .featured-button {
+            background-color: var(--secondary);
+            color: var(--on-secondary);
+            border: none;
+            padding: 0.9rem;
+            width: 80%;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .featured-button:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        /* Container principal */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
         
+        .section-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--on-background);
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+        
+        /* Grid de produtos */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.8rem;
             padding: 1rem;
         }
         
         .product-card {
             background-color: var(--surface);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
             border: 1px solid #333;
             position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(255, 61, 0, 0.25);
+            border-color: var(--secondary);
         }
         
         .free-shipping-badge {
@@ -102,67 +290,101 @@
             right: 10px;
             background-color: var(--success);
             color: white;
-            padding: 0.3rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: bold;
             z-index: 2;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(255, 61, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         
         .product-image {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
             border-bottom: 1px solid #333;
         }
         
         .product-info {
-            padding: 1rem;
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-title {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin: 0 0 0.5rem 0;
-            height: 40px;
+            height: 50px;
             overflow: hidden;
         }
         
+        .product-description {
+            font-size: 0.85rem;
+            color: #bbb;
+            margin: 0.5rem 0;
+            flex: 1;
+        }
+        
         .product-price {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--secondary);
             margin: 0.5rem 0;
+        }
+        
+        .testimonial {
+            background-color: rgba(50, 50, 50, 0.5);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background-color: #555;
         }
         
         .add-to-cart {
             background-color: var(--secondary);
             color: var(--on-secondary);
             border: none;
-            padding: 0.7rem;
+            padding: 0.8rem;
             width: 100%;
             border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
         }
         
         .add-to-cart:hover {
             background-color: var(--secondary-light);
         }
         
+        /* Botão do carrinho */
         .cart-container {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             z-index: 100;
         }
         
@@ -171,15 +393,21 @@
             color: var(--on-secondary);
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            transition: all 0.3s;
+        }
+        
+        .cart-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 61, 0, 0.5);
         }
         
         .cart-count {
@@ -189,15 +417,16 @@
             background-color: var(--on-primary);
             color: var(--primary);
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 0.8rem;
+            width: 24px;
+            height: 24px;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
         }
         
+        /* Modal do carrinho */
         .modal {
             display: none;
             position: fixed;
@@ -205,7 +434,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -214,12 +443,12 @@
         .modal-content {
             background-color: var(--surface);
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: 10px;
             max-width: 500px;
             width: 90%;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 0 20px rgba(255, 61, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 61, 0, 0.4);
         }
         
         .modal-header {
@@ -234,25 +463,33 @@
         .modal-title {
             margin: 0;
             color: var(--secondary);
+            font-size: 1.5rem;
         }
         
         .close-modal {
             background: none;
             border: none;
             color: var(--on-surface);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
         }
         
         .cart-items {
             margin-bottom: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
         }
         
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             border-bottom: 1px solid #333;
         }
         
@@ -262,7 +499,7 @@
         
         .cart-item-title {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         
         .cart-item-price {
@@ -280,11 +517,12 @@
         .cart-summary-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
+            font-size: 1rem;
         }
         
         .cart-total {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-align: right;
             margin-top: 1rem;
@@ -302,36 +540,10 @@
             color: #bbb;
         }
         
-        .checkout-button {
-            background-color: var(--secondary);
-            color: var(--on-secondary);
-            border: none;
-            padding: 1rem;
-            width: 100%;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            margin-top: 1rem;
-        }
-        
-        .checkout-button:hover {
-            background-color: var(--secondary-light);
-        }
-        
-        .empty-cart {
-            text-align: center;
-            padding: 2rem;
-            color: #777;
-        }
-        
         .address-form {
             margin-top: 1.5rem;
             background-color: rgba(50,50,50,0.3);
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 8px;
         }
         
@@ -339,6 +551,7 @@
             margin-top: 0;
             color: var(--secondary);
             font-size: 1.1rem;
+            margin-bottom: 1rem;
         }
         
         .form-group {
@@ -347,15 +560,15 @@
         
         .form-group label {
             display: block;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             font-size: 0.9rem;
             color: #ccc;
         }
         
         .form-group input, .form-group select {
             width: 100%;
-            padding: 0.7rem;
-            border-radius: 4px;
+            padding: 0.8rem;
+            border-radius: 6px;
             border: 1px solid #444;
             background-color: #2a2a2a;
             color: white;
@@ -366,7 +579,7 @@
             background-color: rgba(76, 175, 80, 0.1);
             color: var(--success);
             padding: 0.8rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.9rem;
             margin-top: 1rem;
             text-align: center;
@@ -380,35 +593,328 @@
             display: none;
         }
         
+        .checkout-button {
+            background-color: var(--secondary);
+            color: var(--on-secondary);
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checkout-button:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+        }
+        
+        /* Modal de feedback */
+        .feedback-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .feedback-content {
+            background-color: var(--surface);
+            padding: 2.5rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.4);
+        }
+        
+        .feedback-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feedback-title {
+            font-size: 1.8rem;
+            color: var(--on-surface);
+            margin-bottom: 1rem;
+        }
+        
+        .feedback-text {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-facebook {
+            background-color: #1877F2;
+        }
+        
+        .feedback-button {
+            background-color: var(--secondary);
+            color: var(--on-secondary);
+            border: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .feedback-button:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-3px);
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--on-primary);
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .featured-product {
+                flex-direction: column;
+            }
+            
+            .featured-image {
+                width: 100%;
+                height: 250px;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .modal-content {
-                width: 95%;
+            header {
+                flex-direction: column;
+                gap: 15px;
                 padding: 1rem;
+            }
+            
+            .header-text {
+                text-align: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.2rem;
+            }
+            
+            .free-shipping-banner {
+                top: 140px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-title {
+                font-size: 1.5rem;
+            }
+            
+            .featured-price {
+                font-size: 1.5rem;
+            }
+            
+            .featured-button {
+                width: 100%;
+            }
+            
+            .auth-btn span {
+                display: none;
             }
         }
     </style>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
 </head>
 <body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">🛒</div>
+            <div class="header-text">
+                <h1>BLACK DEALS</h1>
+                <div class="subtitle">Produtos Premium com Frete Grátis</div>
+            </div>
+        </div>
+        
+        <div class="auth-section" id="auth-section">
+            <button class="auth-btn" id="login-btn">
+                <i class="fab fa-google"></i>
+                <span>Entrar com Google</span>
+            </button>
+        </div>
+    </header>
+    
     <div class="free-shipping-banner">
         <span>🚚 FRETE GRÁTIS para as primeiras</span>
         <span class="free-shipping-count" id="free-shipping-count">10</span>
         <span>compras!</span>
     </div>
     
-    <header>
-        <h1>MY SHOPEE</h1>
-        <div class="subtitle">Produtos com Frete Grátis para as 10 Primeiras Compras!</div>
-    </header>
+    <!-- Produto em destaque -->
+    <div class="featured-product">
+        <img src="https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg" alt="Console PlayStation 5" class="featured-image">
+        <div class="featured-info">
+            <div class="featured-badge">🔥 DESTAQUE DA SEMANA 🔥</div>
+            <h2 class="featured-title">Console PlayStation 5 Digital Edition</h2>
+            <p class="featured-description">O console mais poderoso da nova geração com SSD ultrarrápido, ray tracing, saída em 4K e compatibilidade com retroativos. Experimente jogos incríveis com carregamento praticamente instantâneo.</p>
+            <div>
+                <span class="featured-old-price">R$ 3.499,90</span>
+                <span class="featured-price">R$ 3.250,90</span>
+            </div>
+            <button class="featured-button" id="featured-add-to-cart">
+                <i class="fas fa-cart-plus"></i>
+                Adicionar ao Carrinho
+            </button>
+        </div>
+    </div>
     
     <div class="container">
+        <h2 class="section-title">Produtos em Alta</h2>
         <div class="products-grid" id="products-grid">
             <!-- Produtos serão inseridos aqui via JavaScript -->
         </div>
@@ -416,11 +922,12 @@
     
     <div class="cart-container">
         <button class="cart-button" id="cart-button">
-            🛒
+            <i class="fas fa-shopping-cart"></i>
             <span class="cart-count" id="cart-count">0</span>
         </button>
     </div>
     
+    <!-- Modal do carrinho -->
     <div class="modal" id="cart-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -429,7 +936,6 @@
             </div>
             
             <div class="cart-items" id="cart-items">
-                <!-- Itens do carrinho serão inseridos aqui -->
                 <div class="empty-cart">Seu carrinho está vazio</div>
             </div>
             
@@ -479,12 +985,12 @@
                         <option value="RJ">Rio de Janeiro</option>
                         <option value="RN">Rio Grande do Norte</option>
                         <option value="RS">Rio Grande do Sul</option>
-                        <option value="USA">EUA</option>
+                        <option value="RO">Rondônia</option>
                         <option value="RR">Roraima</option>
                         <option value="SC">Santa Catarina</option>
                         <option value="SP">São Paulo</option>
                         <option value="SE">Sergipe</option>
-                        <option value="lx">lisboa</option>
+                        <option value="TO">Tocantins</option>
                     </select>
                 </div>
                 
@@ -499,66 +1005,180 @@
             </div>
             
             <div class="delivery-time">
-                ⏱️ Tempo de entrega: 24h a 3 dias úteis
+                ⏱️ Tempo de entrega: 24h a 3 dias úteis, dependendo da localização e do produto
             </div>
             
-            <button class="checkout-button" id="checkout-button">Finalizar Compra</button>
+            <button class="checkout-button" id="checkout-button">
+                <i class="fas fa-lock"></i>
+                Finalizar Compra
+            </button>
         </div>
     </div>
+    
+    <!-- Modal de feedback -->
+    <div class="feedback-modal" id="feedback-modal">
+        <div class="feedback-content">
+            <div class="feedback-icon">🎉</div>
+            <h2 class="feedback-title">Compra Finalizada com Sucesso!</h2>
+            <p class="feedback-text">Obrigado por comprar na BLACK DEALS! Seu pedido já está sendo preparado e chegará em breve.</p>
+            
+            <div class="social-share">
+                <a href="https://www.instagram.com/deku_thyso/" class="social-btn btn-instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-btn btn-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            
+            <p class="feedback-text">Siga nossas redes sociais para promoções exclusivas!</p>
+            
+            <button class="feedback-button" id="close-feedback">Continuar Comprando</button>
+        </div>
+    </div>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BLACK DEALS</h3>
+                <p>Sua loja de produtos premium com os melhores preços do mercado. Frete grátis para todo Brasil.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/deku_thyso/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Produtos em Destaque</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Novidades</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Ofertas Relâmpago</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Categorias</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Suporte</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Central de Ajuda</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Política de Entrega</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Trocas e Devoluções</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:blackdealsshopee@gmail.com"><i class="fas fa-envelope"></i> blackdealsshopee@gmail.com</a></li>
+                    <li><a href="https://www.instagram.com/deku_thyso/" target="_blank"><i class="fab fa-instagram"></i> @deku_thyso</a></li>
+                    <li><a href="#"><i class="fas fa-phone-alt"></i> (11) 99999-9999</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 BLACK DEALS - Todos os direitos reservados
+        </div>
+    </footer>
 
     <script>
-        // Produtos em alta em Portugal e Brasil
+        // Configuração do Firebase (substitua com suas credenciais)
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY",
+            authDomain: "SEU_PROJETO.firebaseapp.com",
+            projectId: "SEU_PROJETO",
+            storageBucket: "SEU_PROJETO.appspot.com",
+            messagingSenderId: "SEU_MESSAGING_SENDER_ID",
+            appId: "SEU_APP_ID"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        
+        // Produtos com descrições e depoimentos
         const products = [
-            { id: 1, name: "Smartphone Xiaomi Redmi Note 12", price: 1100.90, image: "https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg" },
-            { id: 2, name: "Fone Bluetooth JBL Tune 510BT", price: 229.90, image: "https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg" },
-            { id: 3, name: "Smart TV LED 50\" 4K UHD Samsung", price: 2100.00, image: "https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg" },
-            { id: 4, name: "Console PlayStation 5 Digital Edition", price: 3250.90, image: "https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg" },
-            { id: 5, name: "Notebook Acer Aspire 5 i5 8GB 512GB SSD", price: 3100.00, image: "https://i.postimg.cc/y8kZPVJM/c606082d661ada5db9ef8dcc89e1a7ee.jpg" },
-            { id: 6, name: "Smartwatch Amazfit Bip U Pro", price: 300.90, image: "https://i.postimg.cc/prCF0rJH/60e3c661b64c67c56dc8177b6b2b29a4.jpg" },
-            { id: 7, name: "Câmera Instax Mini 11 Lilás", price: 400.90, image: "https://i.postimg.cc/3NYGCmp1/3e77b7839d42ce423c5df2e051baeb99.jpg" },
-            { id: 8, name: "Echo Dot (4ª Geração)", price: 329.00, image: "https://i.postimg.cc/xCKHztkq/779d6d2152e5a229a54e2b05ee9a633f.jpg" },
-            { id: 9, name: "Air Fryer Mondial 4,5L AF-30", price: 399.90, image: "https://i.postimg.cc/LXdL5r8r/992886fbf46ca575d0a33bf2ae802156.jpg" },
-            { id: 10, name: "Processador Ryzen 5 5600G 3.9GHz", price: 899.90, image: "https://i.postimg.cc/rpR588M1/959964c8607f63ca037ec53b5278f391.jpg" },
-            { id: 11, name: "Mouse Gamer Redragon Cobra M711", price: 149.90, image: "https://i.postimg.cc/3J3jg5Fh/65296e500c65a6815233fd39948b46d7.jpg" },
-            { id: 12, name: "Teclado Mecânico Redragon Kumara", price: 249.90, image: "https://i.postimg.cc/vHXrhq0V/8be47c24a5cd75ff6fb72efa36da0c63.jpg" },
-            { id: 13, name: "Headset Gamer HyperX Cloud Stinger", price: 299.90, image: "https://i.postimg.cc/K8HnSKSc/11487080664679a8c21b6bb6a17e738f.jpg" },
-            { id: 14, name: "Monitor Gamer 24\" 144Hz AOC Hero", price: 1050.90, image: "https://i.postimg.cc/HkxQhwNP/c48587363cf3f4a9b64db1985dcc9e55.jpg" },
-            { id: 15, name: "Cadeira Gamer DT3sports Racer", price: 999.90, image: "https://i.postimg.cc/gJ6NjCbh/T-Lo-Vendo-Silla-Tipo-Gaming-Racer-X-Ergon-mica-Racing-Sill-n-Gamer-Profesional-para-Videojuegos-PC.jpg" },
-            { id: 16, name: "Mesa Digitalizadora Wacom One", price: 599.90, image: "https://i.postimg.cc/GpDyyd9b/Mesa-Digitalizadora-One-By-Wacom-CTL472-Pequena-Cor-Preto-e-Vermelho.jpg" },
-            { id: 17, name: "Kindle 10ª Geração 8GB", price: 399.90, image: "https://i.postimg.cc/dVpC3LsW/Kindle-10-Gera-o-Tela-6-8-GB-Wi-Fi-Luz-Embutida-Link-de-venda-abaixo.jpg" },
-            { id: 18, name: "Caixa de Som JBL Charge 5", price: 1099.90, image: "https://i.postimg.cc/C1VfCXfk/Caixa-de-Som-JBL-Charge-5-Bluetooth-Port-til-40-W-com-Tweeter-Caixa-de-Som-Bluetooth-Port-til-J.jpg" },
-            { id: 19, name: "Drone DJI Mini 2 Fly More Combo", price: 3499.90, image: "https://i.postimg.cc/7hKGkLtn/DJI-Mini-2-Drone-Fly-More-Combo-with-Filters-Extras.jpg" },
-            { id: 20, name: "GoPro HERO11 Black", price: 2799.90, image: "https://i.postimg.cc/Fzrd8SpK/C-MERA-GOPRO-HERO-11-BLACK-SPECIALTY-BUNDLE-CHDSB-111.jpg" },
-            { id: 21, name: "Furadeira Parafusadeira Bivolt", price: 199.90, image: "https://i.postimg.cc/dQ6TdWQZ/Parafusadeira-Furadeira-Bateria-21v-Carbon-35-Acess-Titanium.jpg" },
-            { id: 22, name: "Liquidificador Mondial Turbo Power", price: 149.90, image: "https://i.postimg.cc/63L4McdS/Liquidificador-Mondial-Turbo-Power-L-99-FB-Preto-3-Velocidades-550-W.jpg" },
-            { id: 23, name: "Ventilador de Torre 30W", price: 229.90, image: "https://i.postimg.cc/rw0dBM15/Ventilador-de-torre-de-oscilaci-n-programable-de-36-de-3-velocidades-con.jpg" },
-            { id: 24, name: "Purificador de Água Electrolux", price: 599.90, image: "https://i.postimg.cc/fTbSvxk2/Purificador-De-gua-Electrolux-Pure-4-X-Touch-Pe12-Bivolt.jpg" },
-            { id: 25, name: "Aspirador de Pó Robô Multilaser", price: 899.90, image: "https://i.postimg.cc/GmWBrVKV/Aspirador-de-P-Rob-Autom-tico-3-em-1-Varre-Aspira-e-Passa-Pano-MOP-WAP-ROBOT-W90-P-ROLA-Bivolt.jpg" },
-            { id: 26, name: "Jogo The Last of Us Part II - PS4", price: 129.90, image: "https://i.postimg.cc/R0wW0dbF/The-Last-of-Us-Part-II-Edi-o-Especial-Play-Station-4.jpg" },
-            { id: 27, name: "Controle DualSense PS5 Branco", price: 399.90, image: "https://i.postimg.cc/vHSg2cVQ/CONTROLE-PS5-BRANCO-DUALSENSE-NOVO-LACRADO.jpg" },
-            { id: 28, name: "Cabo HDMI 2.1 Ultra High Speed", price: 89.90, image: "https://i.postimg.cc/3NfRqcWL/FDBRO-8-K-HDMI-2-1-Cable-8-K-60-Hz-4-K-120-Hz-48-Gbps-EARC-ARC-HDCP-Ultra-High-Speed-HDR-For-RTX-Video.jpg" },
-            { id: 29, name: "Hub USB-C 7 em 1 com HDMI", price: 129.90, image: "https://i.postimg.cc/5016QzZm/Hub-Usb-C-Adaptador-Multiporta-Usb-C-7-Em-1-Para-Hdmi-4k.jpg" },
-            { id: 30, name: "Carregador Portátil 20000mAh", price: 149.90, image: "https://i.postimg.cc/Y93j697B/Power-Bank-Turbo-20-000mah-Carregador-Port-til-R-pido-Universal-Com-Display-Original-com-Garantia.jpg" },
-            { id: 31, name: "Suporte para Notebook com Cooler", price: 79.90, image: "https://i.postimg.cc/fyRyBNWt/Mesa-Suporte-De-Notebook-Portatil-DOBR-VEL-Com-Cooler-MULTIFUNCIONAL.jpg" },
-            { id: 32, name: "Webcam Full HD 1080p com Microfone", price: 199.90, image: "https://i.postimg.cc/05VbrbZp/Kit-30-Full-HD-1080-P-Web-Cam-C-mera-Computador-Com-Microfone.jpg" },
-            { id: 33, name: "Microfone Condensador USB", price: 299.90, image: "https://i.postimg.cc/3xvRL9hB/Microfone-Condensador-Epsilon-De-Mesa-Usb-C-Adaptadores-Type-c-E-Lightning.jpg" },
-            { id: 34, name: "Ring Light 18\" com Tripé e Smartphone", price: 179.90, image: "https://i.postimg.cc/fTkkdDg1/Iluminador-Ring-Light-Led-Rl18-Polegadas-Sup-Cel-Tripe-Bolsa.jpg" },
-            { id: 35, name: "Mochila Antirroubo para Notebook", price: 129.90, image: "https://i.postimg.cc/15TXc2kX/Mochila-Imperme-vel-Anti-Roubo-para-Notebook-Design-Moderno.jpg" },
-            { id: 36, name: "Relógio Inteligente Xiaomi Mi Band 7", price: 299.90, image: "https://i.postimg.cc/HL1LF5sC/CN-Version-Xiaomi-Mi-Band-7-Pro-Smart-Bracelet-AMOLED-Screen-GPS-Blood-Oxygen-Fitness-Traker.jpg" },
-            { id: 37, name: "Esteira Elétrica Dobrável 110V", price: 1000.90, image: "https://i.postimg.cc/vm7myBcx/Esteira-Eletrica-Semi-Profissional-Rtx815-Evox-Fitnes-110v-Cor-Preto-127v.jpg" },
-            { id: 38, name: "Bicicleta Ergométrica Spin Bike", price: 999.90, image: "https://i.postimg.cc/DZ2wwTXj/Bicicleta-Ergom-trica-Bike-Academia-Spinning-Silenciosa.jpg" },
-            { id: 39, name: "Halteres Ajustáveis 20kg", price: 299.90, image: "https://i.postimg.cc/B6MQ8V5q/Kit-Halteres-Muscula-o-Ajust-vel-com-Barra-at-40kg-Bonafit.jpg" },
-            { id: 40, name: "Tapete de Yoga Antiderrapante", price: 79.90, image: "https://i.postimg.cc/xjb5nV9y/Tapete-Yoga-Com-170x60cm-5mm-Evamax-Yoga.jpg" },
-            { id: 41, name: "Escrivaninha Home Office", price: 299.90, image: "https://i.postimg.cc/ZK8LvPBW/Mesa-em-L-Escrivaninha-1-20m-x-1-50m-Escrit-rio-F5-Office.jpg" },
-            { id: 42, name: "Cadeira Giratória Executiva", price: 499.90, image: "https://i.postimg.cc/YqK3SD9c/Cadeira-Girat-ria-Ergon-mica-De-Escrit-rio-Preta-Mesh-R-920.jpg" },
-            { id: 43, name: "Luminária de Mesa LED com USB", price: 59.90, image: "https://i.postimg.cc/Dw7PrWLB/Linda-lumin-ria-para-seu-cantinho.jpg" },
-            { id: 44, name: "Cafeteira Elétrica 127V", price: 129.90, image: "https://i.postimg.cc/8C5dYqyv/Lan-amento-Exclusivo-na-Zenith.jpg" },
-            { id: 45, name: "Jogo de Panelas Antiaderente 5 Peças", price: 199.90, image: "https://i.postimg.cc/YSsNBbVs/Ofertas-Imperd-veis-R-184-90-Jogo-De.jpg" },
-            { id: 46, name: "Jogo de Facas 6 Peças com Suporte", price: 149.90, image: "https://i.postimg.cc/d1Z2sGct/Jogo-De-Facas-Tramontina-Ultracorte-6-Pe-as-Suporte-R-189-9.jpg" },
-            { id: 47, name: "Grill Elétrico Mondial 1800W", price: 229.90, image: "https://i.postimg.cc/nrvq7ZLy/Sanduicheira-Grill-Mondial-Premium-S-19.jpg" },
-            { id: 48, name: "Sanduicheira Grill Dupla 110V", price: 119.90, image: "https://i.postimg.cc/d3M8LDJR/Churrasqueira-El-trica-Mondial-Grand-Steak-Grill-CH-05.jpg" },
-            { id: 49, name: "Fogão Portátil a Gás", price: 149.90, image: "https://i.postimg.cc/RCf721Tg/Fog-o-Port-til-a-G-s-Butano-com-Maleta-Ideal-para-Camping-e-Uso-de-Emerg-ncia-TDT.jpg" },
-            { id: 50, name: "Jogo de Lençol Queen Size 300 Fios", price: 179.90, image: "https://i.postimg.cc/28DQYqcr/Jogo-de-len-ol.jpg" }
+            { 
+                id: 1, 
+                name: "Smartphone Xiaomi Redmi Note 12", 
+                price: 1100.90, 
+                image: "https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg",
+                description: "Smartphone com tela AMOLED de 6.67'', 128GB de armazenamento, câmera de 50MP e bateria de 5000mAh.",
+                testimonial: "Comprei e chegou em 24h! 📱 Produto perfeito, superou minhas expectativas. Entrega rápida e atendimento excelente! ⭐⭐⭐⭐⭐ - Maria S."
+            },
+            { 
+                id: 2, 
+                name: "Fone Bluetooth JBL Tune 510BT", 
+                price: 229.90, 
+                image: "https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg",
+                description: "Fone de ouvido sem fio com 40mm de driver, 32 Ohms, Bluetooth 5.0 e até 40 horas de bateria.",
+                testimonial: "Som incrível! 🎧 Chegou antes do prazo e a qualidade é impressionante pelo preço. Recomendo demais! 😍 - João P."
+            },
+            { 
+                id: 3, 
+                name: "Smart TV LED 50\" 4K UHD Samsung", 
+                price: 2100.00, 
+                image: "https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg",
+                description: "Smart TV 50 polegadas com resolução 4K, HDR, processador Crystal 4K e sistema Tizen.",
+                testimonial: "Imagem maravilhosa! 📺 Instalei fácil e a qualidade é cinema em casa. Chegou em 2 dias! 🚚 - Carlos R."
+            },
+            { 
+                id: 4, 
+                name: "Console PlayStation 5 Digital Edition", 
+                price: 3250.90, 
+                image: "https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg",
+                description: "Console de última geração com SSD ultrarrápido, ray tracing e compatibilidade com retroativos.",
+                testimonial: "Melhor compra do ano! 🎮 Performance incrível e entrega super rápida. Recomendo a todos os gamers! 💯 - Pedro L."
+            },
+            { 
+                id: 5, 
+                name: "Notebook Acer Aspire 5 i5 8GB 512GB SSD", 
+                price: 3100.00, 
+                image: "https://i.postimg.cc/y8kZPVJM/c606082d661ada5db9ef8dcc89e1a7ee.jpg",
+                description: "Notebook com processador Intel Core i5, 8GB RAM, SSD 512GB, tela Full HD de 15.6 polegadas.",
+                testimonial: "Produto top! 💻 Rápido, leve e bateria dura o dia todo. Chegou em 48h, super bem embalado. 👍 - Ana K."
+            },
+            { 
+                id: 6, 
+                name: "Smartwatch Amazfit Bip U Pro", 
+                price: 300.90, 
+                image: "https://i.postimg.cc/prCF0rJH/60e3c661b64c67c56dc8177b6b2b29a4.jpg",
+                description: "Smartwatch com GPS integrado, monitor de oxigênio no sangue, 60+ modos esportivos e 9 dias de bateria.",
+                testimonial: "Surpreendente! ⌚ Funcionalidades de smart caro por preço acessível. Chegou antes do previsto! ⏱️ - Lucas M."
+            },
+            { 
+                id: 7, 
+                name: "Câmera Instax Mini 11 Lilás", 
+                price: 400.90, 
+                image: "https://i.postimg.cc/3NYGCmp1/3e77b7839d42ce423c5df2e051baeb99.jpg",
+                description: "Câmera instantânea com modo automático de exposição, selfie com espelho e lente de close-up.",
+                testimonial: "Amei minha câmera roxa! 📸 Fotos lindas e entrega super rápida. Presente perfeito! 💜 - Juliana F."
+            },
+            { 
+                id: 8, 
+                name: "Echo Dot (4ª Geração)", 
+                price: 329.00, 
+                image: "https://i.postimg.cc/xCKHztkq/779d6d2152e5a229a54e2b05ee9a633f.jpg",
+                description: "Smart speaker com Alexa, som de qualidade premium, controle por voz e design elegante.",
+                testimonial: "Alexa mudou minha casa! 🔈 Fácil de configurar e som surpreendente. Entrega em 24h! ⚡ - Roberto G."
+            }
         ];
         
         // Carrinho de compras
@@ -575,6 +1195,11 @@
         const checkoutButton = document.getElementById('checkout-button');
         const freeShippingCountElement = document.getElementById('free-shipping-count');
         const addressRequired = document.getElementById('address-required');
+        const loginBtn = document.getElementById('login-btn');
+        const authSection = document.getElementById('auth-section');
+        const feedbackModal = document.getElementById('feedback-modal');
+        const closeFeedback = document.getElementById('close-feedback');
+        const featuredAddBtn = document.getElementById('featured-add-to-cart');
         
         // Contador de frete grátis
         let freeShippingCount = localStorage.getItem('freeShippingCount') ? parseInt(localStorage.getItem('freeShippingCount')) : 10;
@@ -601,8 +1226,17 @@
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
                         <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
-                        <button class="add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
+                        
+                        <div class="testimonial">
+                            <div>${product.testimonial}</div>
+                        </div>
+                        
+                        <button class="add-to-cart" data-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
                     </div>
                 `;
                 
@@ -639,10 +1273,11 @@
             updateCart();
             
             // Feedbback visual
-            e.target.textContent = 'Adicionado!';
+            const originalText = e.target.innerHTML;
+            e.target.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
             setTimeout(() => {
-                e.target.textContent = 'Adicionar ao Carrinho';
-            }, 1000);
+                e.target.innerHTML = originalText;
+            }, 1500);
         }
         
         // Atualizar carrinho
@@ -756,23 +1391,6 @@
             const shipping = calculateShipping();
             const total = subtotal + shipping;
             
-            // Coletar dados do formulário
-            const fullName = document.getElementById('full-name').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const state = document.getElementById('state').value.trim();
-            const zipcode = document.getElementById('zipcode').value.trim();
-            
-            // Criar descrição dos itens
-            const itemsDescription = cart.map(item => 
-                `${item.name} (${item.quantity}x)`
-            ).join(', ');
-            
-            // URL do PayPal
-            const paypalEmail = 'dekulanga887@gmail.com';
-            const currency = 'BRL';
-            const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=${currency}&amount=${total.toFixed(2)}&item_name=${encodeURIComponent(itemsDescription)}`;
-            
             // Reduzir contador de frete grátis se aplicável
             if (shipping === 0 && freeShippingCount > 0) {
                 freeShippingCount--;
@@ -784,11 +1402,11 @@
             cart = [];
             updateCart();
             
-            // Fechar modal
+            // Fechar modal do carrinho
             cartModal.style.display = 'none';
             
-            // Redirecionar para o PayPal
-            window.location.href = paypalUrl;
+            // Mostrar modal de feedback
+            feedbackModal.style.display = 'flex';
         }
         
         // Carregar carrinho do localStorage
@@ -799,6 +1417,95 @@
                 updateCart();
             }
         }
+        
+        // Login com Google
+        function signInWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    // Usuário autenticado com sucesso
+                    const user = result.user;
+                    showUserInfo(user);
+                })
+                .catch((error) => {
+                    console.error("Erro de autenticação:", error);
+                    alert("Falha no login. Por favor, tente novamente.");
+                });
+        }
+        
+        // Exibir informações do usuário
+        function showUserInfo(user) {
+            authSection.innerHTML = `
+                <div class="user-info">
+                    <img src="${user.photoURL}" alt="Avatar" class="user-avatar">
+                    <span>${user.displayName}</span>
+                </div>
+                <button class="auth-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sair</span>
+                </button>
+            `;
+            
+            document.getElementById('logout-btn').addEventListener('click', signOut);
+        }
+        
+        // Logout
+        function signOut() {
+            auth.signOut().then(() => {
+                authSection.innerHTML = `
+                    <button class="auth-btn" id="login-btn">
+                        <i class="fab fa-google"></i>
+                        <span>Entrar com Google</span>
+                    </button>
+                `;
+                document.getElementById('login-btn').addEventListener('click', signInWithGoogle);
+            });
+        }
+        
+        // Observar estado de autenticação
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                showUserInfo(user);
+            } else {
+                authSection.innerHTML = `
+                    <button class="auth-btn" id="login-btn">
+                        <i class="fab fa-google"></i>
+                        <span>Entrar com Google</span>
+                    </button>
+                `;
+                document.getElementById('login-btn').addEventListener('click', signInWithGoogle);
+            }
+        });
+        
+        // Adicionar produto em destaque ao carrinho
+        featuredAddBtn.addEventListener('click', () => {
+            const featuredProduct = {
+                id: 4,
+                name: "Console PlayStation 5 Digital Edition",
+                price: 3250.90
+            };
+            
+            const existingItem = cart.find(item => item.id === featuredProduct.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: featuredProduct.id,
+                    name: featuredProduct.name,
+                    price: featuredProduct.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            
+            // Feedback visual
+            featuredAddBtn.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+            setTimeout(() => {
+                featuredAddBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Adicionar ao Carrinho';
+            }, 1500);
+        });
         
         // Event Listeners
         cartButton.addEventListener('click', () => {
@@ -812,10 +1519,20 @@
         
         checkoutButton.addEventListener('click', checkout);
         
+        closeFeedback.addEventListener('click', () => {
+            feedbackModal.style.display = 'none';
+        });
+        
         // Fechar modal ao clicar fora
         cartModal.addEventListener('click', (e) => {
             if (e.target === cartModal) {
                 cartModal.style.display = 'none';
+            }
+        });
+        
+        feedbackModal.addEventListener('click', (e) => {
+            if (e.target === feedbackModal) {
+                feedbackModal.style.display = 'none';
             }
         });
         
