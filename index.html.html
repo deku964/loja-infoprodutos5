@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLACK DEALS | Produtos Alta PT-BR</title>
+    <title>BLACK DEALS | Produtos Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #000000;
@@ -19,18 +20,27 @@
             --on-surface: #ffffff;
             --on-error: #000000;
             --success: #4CAF50;
+            --featured: #ff6e00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--background);
             color: var(--on-background);
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 100px;
         }
         
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--on-primary);
             padding: 1.5rem;
             text-align: center;
@@ -39,59 +49,184 @@
             position: relative;
         }
         
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
         h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-transform: uppercase;
             letter-spacing: 3px;
+            background: linear-gradient(90deg, #ff3d00, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .subtitle {
             font-style: italic;
-            opacity: 0.8;
+            opacity: 0.9;
             margin-top: 0.5rem;
+            font-size: 1.1rem;
         }
         
         .free-shipping-banner {
             background: linear-gradient(90deg, #ff3d00, #ff8c00);
             color: white;
-            padding: 0.5rem;
+            padding: 0.7rem;
             text-align: center;
             font-weight: bold;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 1.1rem;
         }
         
         .free-shipping-count {
             background-color: var(--on-primary);
             color: var(--secondary);
-            padding: 0.1rem 0.5rem;
-            border-radius: 12px;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
             display: inline-block;
             margin: 0 0.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
         
         .container {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
+        }
+        
+        .featured-product {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .featured-image-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+        
+        .featured-image {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        
+        .featured-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            background: var(--featured);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .featured-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .featured-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+        
+        .featured-description {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        
+        .featured-add-to-cart {
+            background: linear-gradient(90deg, var(--secondary), var(--featured));
+            color: var(--on-secondary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            width: 80%;
+            max-width: 300px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px rgba(255, 61, 0, 0.3);
+        }
+        
+        .featured-add-to-cart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 61, 0, 0.4);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--secondary);
         }
         
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem;
+            gap: 1.8rem;
+            padding: 1rem 0;
         }
         
         .product-card {
-            background-color: var(--surface);
-            border-radius: 8px;
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
             border: 1px solid #333;
             position: relative;
         }
@@ -102,7 +237,7 @@
             right: 10px;
             background-color: var(--success);
             color: white;
-            padding: 0.3rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: bold;
@@ -111,8 +246,8 @@
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(255, 61, 0, 0.2);
+            transform: translateY(-7px);
+            box-shadow: 0 10px 20px rgba(255, 61, 0, 0.25);
         }
         
         .product-image {
@@ -123,63 +258,70 @@
         }
         
         .product-info {
-            padding: 1rem;
+            padding: 1.2rem;
         }
         
         .product-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             margin: 0 0 0.5rem 0;
             height: 40px;
             overflow: hidden;
+            color: #eee;
         }
         
         .product-price {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--secondary);
             margin: 0.5rem 0;
         }
         
         .add-to-cart {
-            background-color: var(--secondary);
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
             color: var(--on-secondary);
             border: none;
             padding: 0.7rem;
             width: 100%;
-            border-radius: 4px;
+            border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
         }
         
         .add-to-cart:hover {
-            background-color: var(--secondary-light);
+            background: linear-gradient(90deg, var(--secondary-light), var(--secondary));
         }
         
         .cart-container {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 100;
+            z-index: 1000;
         }
         
         .cart-button {
-            background-color: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary), var(--featured));
             color: var(--on-secondary);
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 61, 0, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            transition: all 0.3s;
+        }
+        
+        .cart-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 7px 20px rgba(255, 61, 0, 0.6);
         }
         
         .cart-count {
@@ -189,253 +331,143 @@
             background-color: var(--on-primary);
             color: var(--primary);
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 0.8rem;
+            width: 25px;
+            height: 25px;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            border: 2px solid var(--secondary);
         }
         
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        footer {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            border-top: 2px solid var(--secondary);
+            position: absolute;
+            bottom: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
         }
         
-        .modal-content {
-            background-color: var(--surface);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 0 20px rgba(255, 61, 0, 0.3);
-        }
-        
-        .modal-header {
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 1rem;
+            gap: 2rem;
         }
         
-        .modal-title {
-            margin: 0;
-            color: var(--secondary);
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            color: var(--on-surface);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .cart-items {
-            margin-bottom: 1.5rem;
-        }
-        
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #333;
-        }
-        
-        .cart-item-info {
+        .footer-section {
             flex: 1;
+            min-width: 250px;
         }
         
-        .cart-item-title {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        
-        .cart-item-price {
-            margin: 0;
-            font-size: 0.9rem;
+        .footer-title {
+            font-size: 1.4rem;
             color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
         }
         
-        .cart-summary {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #333;
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
         }
         
-        .cart-summary-item {
+        .social-links {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
         
-        .cart-total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: right;
-            margin-top: 1rem;
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tiktok:hover {
+            background: #000;
+            box-shadow: 0 0 15px #69c9d0;
+        }
+        
+        .instagram:hover {
+            background: #e1306c;
+            box-shadow: 0 0 15px #e1306c;
+        }
+        
+        .whatsapp:hover {
+            background: #25D366;
+            box-shadow: 0 0 15px #25D366;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info i {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
             color: var(--secondary);
-            border-top: 1px solid #444;
-            padding-top: 1rem;
         }
         
-        .free-shipping {
-            color: var(--success);
-            font-weight: bold;
-        }
-        
-        .shipping-fee {
-            color: #bbb;
-        }
-        
-        .checkout-button {
-            background-color: var(--secondary);
-            color: var(--on-secondary);
-            border: none;
-            padding: 1rem;
-            width: 100%;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            margin-top: 1rem;
-        }
-        
-        .checkout-button:hover {
-            background-color: var(--secondary-light);
-        }
-        
-        .empty-cart {
+        .copyright {
             text-align: center;
-            padding: 2rem;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
             color: #777;
         }
         
-        .address-form {
-            margin-top: 1.5rem;
-            background-color: rgba(50,50,50,0.3);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .address-form h3 {
-            margin-top: 0;
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-        
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 0.7rem;
-            border-radius: 4px;
-            border: 1px solid #444;
-            background-color: #2a2a2a;
+        .whatsapp-button {
+            display: inline-block;
+            background: #25D366;
             color: white;
-            font-size: 1rem;
-        }
-        
-        .delivery-time {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: var(--success);
-            padding: 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            text-align: center;
-            border-left: 3px solid var(--success);
-        }
-        
-        .address-required {
-            color: var(--error);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: none;
-        }
-        
-        /* Estilos para avaliações */
-        .reviews-container {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: rgba(50,50,50,0.3);
-            border-radius: 8px;
-        }
-        
-        .review {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-        }
-        
-        .review:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .review-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .review-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-        
-        .review-author {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
-            margin-right: 10px;
+            margin-top: 1rem;
+            transition: all 0.3s;
         }
         
-        .review-rating {
-            color: var(--secondary);
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
         }
         
-        .review-date {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-left: auto;
-        }
-        
-        .review-content {
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        
-        /* Estilos para a página de compartilhamento */
-        .share-modal {
+        /* Modal do carrinho */
+        .cart-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -448,152 +480,203 @@
             align-items: center;
         }
         
-        .share-content {
-            background-color: var(--surface);
+        .cart-content {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
             padding: 2rem;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255, 61, 0, 0.3);
-        }
-        
-        .share-title {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .share-message {
-            margin-bottom: 1.5rem;
-        }
-        
-        .share-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .share-button {
-            background-color: var(--secondary);
-            color: var(--on-secondary);
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .share-button:hover {
-            background-color: var(--secondary-light);
-        }
-        
-        .close-share {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .close-share:hover {
-            background-color: #444;
-        }
-        
-        /* Modal de detalhes do produto */
-        .product-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .product-modal-content {
-            background-color: var(--surface);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 800px;
+            border-radius: 12px;
+            max-width: 600px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 0 20px rgba(255, 61, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 61, 0, 0.5);
+            border: 1px solid var(--secondary);
         }
         
-        .product-modal-header {
+        .cart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #444;
         }
         
-        .product-modal-title {
-            margin: 0;
+        .cart-title {
             color: var(--secondary);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
-        .product-modal-body {
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--on-surface);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-cart:hover {
+            color: var(--secondary);
+        }
+        
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
             display: flex;
-            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
         }
         
-        .product-modal-image {
-            width: 300px;
-            height: 300px;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-        
-        .product-modal-details {
+        .item-info {
             flex: 1;
         }
         
-        .product-modal-price {
-            font-size: 1.5rem;
+        .item-name {
             font-weight: bold;
-            color: var(--secondary);
-            margin: 1rem 0;
+            margin-bottom: 5px;
         }
         
-        .product-modal-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
+        .item-price {
+            color: var(--secondary);
+        }
+        
+        .cart-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: right;
+            color: var(--secondary);
+            padding-top: 15px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Formulário de entrega */
+        .delivery-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(40, 40, 40, 0.5);
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ddd;
+        }
+        
+        .form-group input, 
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #2a2a2a;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .checkout-btn {
+            background: linear-gradient(90deg, var(--secondary), var(--featured));
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 61, 0, 0.4);
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
         }
         
         @media (max-width: 768px) {
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .modal-content {
-                width: 95%;
-                padding: 1rem;
-            }
-            
-            .product-modal-body {
+            .featured-product {
                 flex-direction: column;
             }
             
-            .product-modal-image {
+            .featured-image-container {
+                padding: 1.5rem;
+            }
+            
+            .featured-details {
+                padding: 1.5rem;
+            }
+            
+            .featured-title {
+                font-size: 1.8rem;
+            }
+            
+            .featured-price {
+                font-size: 1.6rem;
+            }
+            
+            .featured-add-to-cart {
                 width: 100%;
-                height: auto;
+            }
+            
+            .cart-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .cart-count {
+                width: 20px;
+                height: 20px;
+                font-size: 0.8rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
         }
     </style>
@@ -601,66 +684,593 @@
 <body>
     <div class="free-shipping-banner">
         <span>🚚 FRETE GRÁTIS para as primeiras</span>
-        <span class="free-shipping-count" id="free-shipping-count">10</span>
+        <span class="free-shipping-count">10</span>
         <span>compras!</span>
     </div>
     
     <header>
-        <h1>BLACK DEALS</h1>
-        <div class="subtitle">Produtos com Frete Grátis para as 10 Primeiras Compras!</div>
+        <div class="header-content">
+            <h1>BLACK DEALS</h1>
+            <div class="subtitle">Produtos Premium com Frete Grátis para as 10 Primeiras Compras!</div>
+        </div>
     </header>
     
     <div class="container">
-        <div class="products-grid" id="products-grid">
-            <!-- Produtos serão inseridos aqui via JavaScript -->
+        <!-- Produto em Destaque -->
+        <div class="featured-product">
+            <div class="featured-image-container">
+                <img src="https://i.postimg.cc/MKsBVcG0/e89598d0b67937d3a60c279eef5565d2.jpg" alt="Console PlayStation 5 Digital Edition" class="featured-image">
+            </div>
+            <div class="featured-details">
+                <div class="featured-badge">DESTAQUE DO MÊS</div>
+                <h2 class="featured-title">Console PlayStation 5 Digital Edition</h2>
+                <p class="featured-description">Experimente a próxima geração de jogos com o PlayStation 5 Digital Edition. SSD ultrarrápido, gráficos impressionantes em 4K, áudio 3D imersivo e controle DualSense com feedback háptico.</p>
+                <div class="featured-price">R$ 3.250,90</div>
+                <button class="featured-add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Todos os Produtos</h2>
+        
+        <div class="products-grid">
+            <!-- Produtos (50 no total) -->
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg" alt="Smartphone Xiaomi Redmi Note 12" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Smartphone Xiaomi Redmi Note 12</h3>
+                    <div class="product-price">R$ 1.100,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg" alt="Fone Bluetooth JBL Tune 510BT" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Fone Bluetooth JBL Tune 510BT</h3>
+                    <div class="product-price">R$ 229,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg" alt="Smart TV LED 50&quot; 4K UHD Samsung" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Smart TV LED 50" 4K UHD Samsung</h3>
+                    <div class="product-price">R$ 2.100,00</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/y8kZPVJM/c606082d661ada5db9ef8dcc89e1a7ee.jpg" alt="Notebook Acer Aspire 5 i5 8GB 512GB SSD" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Notebook Acer Aspire 5 i5 8GB 512GB SSD</h3>
+                    <div class="product-price">R$ 3.100,00</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/prCF0rJH/60e3c661b64c67c56dc8177b6b2b29a4.jpg" alt="Smartwatch Amazfit Bip U Pro" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Smartwatch Amazfit Bip U Pro</h3>
+                    <div class="product-price">R$ 300,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/3NYGCmp1/3e77b7839d42ce423c5df2e051baeb99.jpg" alt="Câmera Instax Mini 11 Lilás" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Câmera Instax Mini 11 Lilás</h3>
+                    <div class="product-price">R$ 400,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/xCKHztkq/779d6d2152e5a229a54e2b05ee9a633f.jpg" alt="Echo Dot (4ª Geração)" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Echo Dot (4ª Geração)</h3>
+                    <div class="product-price">R$ 329,00</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/LXdL5r8r/992886fbf46ca575d0a33bf2ae802156.jpg" alt="Air Fryer Mondial 4,5L AF-30" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Air Fryer Mondial 4,5L AF-30</h3>
+                    <div class="product-price">R$ 399,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/rpR588M1/959964c8607f63ca037ec53b5278f391.jpg" alt="Processador Ryzen 5 5600G 3.9GHz" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Processador Ryzen 5 5600G 3.9GHz</h3>
+                    <div class="product-price">R$ 899,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/3J3jg5Fh/65296e500c65a6815233fd39948b46d7.jpg" alt="Mouse Gamer Redragon Cobra M711" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mouse Gamer Redragon Cobra M711</h3>
+                    <div class="product-price">R$ 149,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/vHXrhq0V/8be47c24a5cd75ff6fb72efa36da0c63.jpg" alt="Teclado Mecânico Redragon Kumara" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Teclado Mecânico Redragon Kumara</h3>
+                    <div class="product-price">R$ 249,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/K8HnSKSc/11487080664679a8c21b6bb6a17e738f.jpg" alt="Headset Gamer HyperX Cloud Stinger" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Headset Gamer HyperX Cloud Stinger</h3>
+                    <div class="product-price">R$ 299,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/HkxQhwNP/c48587363cf3f4a9b64db1985dcc9e55.jpg" alt="Monitor Gamer 24&quot; 144Hz AOC Hero" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Monitor Gamer 24" 144Hz AOC Hero</h3>
+                    <div class="product-price">R$ 1.050,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/gJ6NjCbh/T-Lo-Vendo-Silla-Tipo-Gaming-Racer-X-Ergon-mica-Racing-Sill-n-Gamer-Profesional-para-Videojuegos-PC.jpg" alt="Cadeira Gamer DT3sports Racer" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Cadeira Gamer DT3sports Racer</h3>
+                    <div class="product-price">R$ 999,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/GpDyyd9b/Mesa-Digitalizadora-One-By-Wacom-CTL472-Pequena-Cor-Preto-e-Vermelho.jpg" alt="Mesa Digitalizadora Wacom One" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mesa Digitalizadora Wacom One</h3>
+                    <div class="product-price">R$ 599,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/dVpC3LsW/Kindle-10-Gera-o-Tela-6-8-GB-Wi-Fi-Luz-Embutida-Link-de-venda-abaixo.jpg" alt="Kindle 10ª Geração 8GB" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Kindle 10ª Geração 8GB</h3>
+                    <div class="product-price">R$ 399,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/C1VfCXfk/Caixa-de-Som-JBL-Charge-5-Bluetooth-Port-til-40-W-com-Tweeter-Caixa-de-Som-Bluetooth-Port-til-J.jpg" alt="Caixa de Som JBL Charge 5" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Caixa de Som JBL Charge 5</h3>
+                    <div class="product-price">R$ 1.099,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/7hKGkLtn/DJI-Mini-2-Drone-Fly-More-Combo-with-Filters-Extras.jpg" alt="Drone DJI Mini 2 Fly More Combo" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Drone DJI Mini 2 Fly More Combo</h3>
+                    <div class="product-price">R$ 3.499,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/Fzrd8SpK/C-MERA-GOPRO-HERO-11-BLACK-SPECIALTY-BUNDLE-CHDSB-111.jpg" alt="GoPro HERO11 Black" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">GoPro HERO11 Black</h3>
+                    <div class="product-price">R$ 2.799,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/dQ6TdWQZ/Parafusadeira-Furadeira-Bateria-21v-Carbon-35-Acess-Titanium.jpg" alt="Furadeira Parafusadeira Bivolt" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Furadeira Parafusadeira Bivolt</h3>
+                    <div class="product-price">R$ 199,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/63L4McdS/Liquidificador-Mondial-Turbo-Power-L-99-FB-Preto-3-Velocidades-550-W.jpg" alt="Liquidificador Mondial Turbo Power" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Liquidificador Mondial Turbo Power</h3>
+                    <div class="product-price">R$ 149,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/rw0dBM15/Ventilador-de-torre-de-oscilaci-n-programable-de-36-de-3-velocidades-con.jpg" alt="Ventilador de Torre 30W" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Ventilador de Torre 30W</h3>
+                    <div class="product-price">R$ 229,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/fTbSvxk2/Purificador-De-gua-Electrolux-Pure-4-X-Touch-Pe12-Bivolt.jpg" alt="Purificador de Água Electrolux" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Purificador de Água Electrolux</h3>
+                    <div class="product-price">R$ 599,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/GmWBrVKV/Aspirador-de-P-Rob-Autom-tico-3-em-1-Varre-Aspira-e-Passa-Pano-MOP-WAP-ROBOT-W90-P-ROLA-Bivolt.jpg" alt="Aspirador de Pó Robô Multilaser" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Aspirador de Pó Robô Multilaser</h3>
+                    <div class="product-price">R$ 899,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/R0wW0dbF/The-Last-of-Us-Part-II-Edi-o-Especial-Play-Station-4.jpg" alt="Jogo The Last of Us Part II - PS4" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Jogo The Last of Us Part II - PS4</h3>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/vHSg2cVQ/CONTROLE-PS5-BRANCO-DUALSENSE-NOVO-LACRADO.jpg" alt="Controle DualSense PS5 Branco" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Controle DualSense PS5 Branco</h3>
+                    <div class="product-price">R$ 399,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/3NfRqcWL/FDBRO-8-K-HDMI-2-1-Cable-8-K-60-Hz-4-K-120-Hz-48-Gbps-EARC-ARC-HDCP-Ultra-High-Speed-HDR-For-RTX-Video.jpg" alt="Cabo HDMI 2.1 Ultra High Speed" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Cabo HDMI 2.1 Ultra High Speed</h3>
+                    <div class="product-price">R$ 89,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/5016QzZm/Hub-Usb-C-Adaptador-Multiporta-Usb-C-7-Em-1-Para-Hdmi-4k.jpg" alt="Hub USB-C 7 em 1 com HDMI" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Hub USB-C 7 em 1 com HDMI</h3>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/Y93j697B/Power-Bank-Turbo-20-000mah-Carregador-Port-til-R-pido-Universal-Com-Display-Original-com-Garantia.jpg" alt="Carregador Portátil 20000mAh" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Carregador Portátil 20000mAh</h3>
+                    <div class="product-price">R$ 149,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/fyRyBNWt/Mesa-Suporte-De-Notebook-Portatil-DOBR-VEL-Com-Cooler-MULTIFUNCIONAL.jpg" alt="Suporte para Notebook com Cooler" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Suporte para Notebook com Cooler</h3>
+                    <div class="product-price">R$ 79,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/05VbrbZp/Kit-30-Full-HD-1080-P-Web-Cam-C-mera-Computador-Com-Microfone.jpg" alt="Webcam Full HD 1080p com Microfone" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Webcam Full HD 1080p com Microfone</h3>
+                    <div class="product-price">R$ 199,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/3xvRL9hB/Microfone-Condensador-Epsilon-De-Mesa-Usb-C-Adaptadores-Type-c-E-Lightning.jpg" alt="Microfone Condensador USB" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Microfone Condensador USB</h3>
+                    <div class="product-price">R$ 299,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/fTkkdDg1/Iluminador-Ring-Light-Led-Rl18-Polegadas-Sup-Cel-Tripe-Bolsa.jpg" alt="Ring Light 18&quot; com Tripé e Smartphone" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Ring Light 18" com Tripé e Smartphone</h3>
+                    <div class="product-price">R$ 179,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/15TXc2kX/Mochila-Imperme-vel-Anti-Roubo-para-Notebook-Design-Moderno.jpg" alt="Mochila Antirroubo para Notebook" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mochila Antirroubo para Notebook</h3>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/HL1LF5sC/CN-Version-Xiaomi-Mi-Band-7-Pro-Smart-Bracelet-AMOLED-Screen-GPS-Blood-Oxygen-Fitness-Traker.jpg" alt="Relógio Inteligente Xiaomi Mi Band 7" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Relógio Inteligente Xiaomi Mi Band 7</h3>
+                    <div class="product-price">R$ 299,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/vm7myBcx/Esteira-Eletrica-Semi-Profissional-Rtx815-Evox-Fitnes-110v-Cor-Preto-127v.jpg" alt="Esteira Elétrica Dobrável 110V" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Esteira Elétrica Dobrável 110V</h3>
+                    <div class="product-price">R$ 1.000,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/DZ2wwTXj/Bicicleta-Ergom-trica-Bike-Academia-Spinning-Silenciosa.jpg" alt="Bicicleta Ergométrica Spin Bike" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Bicicleta Ergométrica Spin Bike</h3>
+                    <div class="product-price">R$ 999,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/B6MQ8V5q/Kit-Halteres-Muscula-o-Ajust-vel-com-Barra-at-40kg-Bonafit.jpg" alt="Halteres Ajustáveis 20kg" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Halteres Ajustáveis 20kg</h3>
+                    <div class="product-price">R$ 299,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/xjb5nV9y/Tapete-Yoga-Com-170x60cm-5mm-Evamax-Yoga.jpg" alt="Tapete de Yoga Antiderrapante" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Tapete de Yoga Antiderrapante</h3>
+                    <div class="product-price">R$ 79,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/ZK8LvPBW/Mesa-em-L-Escrivaninha-1-20m-x-1-50m-Escrit-rio-F5-Office.jpg" alt="Escrivaninha Home Office" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Escrivaninha Home Office</h3>
+                    <div class="product-price">R$ 299,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/YqK3SD9c/Cadeira-Girat-ria-Ergon-mica-De-Escrit-rio-Preta-Mesh-R-920.jpg" alt="Cadeira Giratória Executiva" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Cadeira Giratória Executiva</h3>
+                    <div class="product-price">R$ 499,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/Dw7PrWLB/Linda-lumin-ria-para-seu-cantinho.jpg" alt="Luminária de Mesa LED com USB" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Luminária de Mesa LED com USB</h3>
+                    <div class="product-price">R$ 59,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/8C5dYqyv/Lan-amento-Exclusivo-na-Zenith.jpg" alt="Cafeteira Elétrica 127V" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Cafeteira Elétrica 127V</h3>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/YSsNBbVs/Ofertas-Imperd-veis-R-184-90-Jogo-De.jpg" alt="Jogo de Panelas Antiaderente 5 Peças" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Jogo de Panelas Antiaderente 5 Peças</h3>
+                    <div class="product-price">R$ 199,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/d1Z2sGct/Jogo-De-Facas-Tramontina-Ultracorte-6-Pe-as-Suporte-R-189-9.jpg" alt="Jogo de Facas 6 Peças com Suporte" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Jogo de Facas 6 Peças com Suporte</h3>
+                    <div class="product-price">R$ 149,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/nrvq7ZLy/Sanduicheira-Grill-Mondial-Premium-S-19.jpg" alt="Grill Elétrico Mondial 1800W" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Grill Elétrico Mondial 1800W</h3>
+                    <div class="product-price">R$ 229,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/d3M8LDJR/Churrasqueira-El-trica-Mondial-Grand-Steak-Grill-CH-05.jpg" alt="Sanduicheira Grill Dupla 110V" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Sanduicheira Grill Dupla 110V</h3>
+                    <div class="product-price">R$ 119,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/RCf721Tg/Fog-o-Port-til-a-G-s-Butano-com-Maleta-Ideal-para-Camping-e-Uso-de-Emerg-ncia-TDT.jpg" alt="Fogão Portátil a Gás" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Fogão Portátil a Gás</h3>
+                    <div class="product-price">R$ 149,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="free-shipping-badge">FRETE GRÁTIS</div>
+                <img src="https://i.postimg.cc/28DQYqcr/Jogo-de-len-ol.jpg" alt="Jogo de Lençol Queen Size 300 Fios" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Jogo de Lençol Queen Size 300 Fios</h3>
+                    <div class="product-price">R$ 179,90</div>
+                    <button class="add-to-cart">Adicionar</button>
+                </div>
+            </div>
         </div>
     </div>
     
+    <!-- Botão do Carrinho -->
     <div class="cart-container">
-        <button class="cart-button" id="cart-button">
-            🛒
-            <span class="cart-count" id="cart-count">0</span>
+        <button class="cart-button" id="cartButton">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
         </button>
     </div>
     
     <!-- Modal do Carrinho -->
-    <div class="modal" id="cart-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Seu Carrinho</h2>
-                <button class="close-modal" id="close-modal">&times;</button>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 class="cart-title">Seu Carrinho</h2>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Itens serão adicionados dinamicamente -->
+                <div style="text-align: center; padding: 30px; color: #777;">
+                    <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                    <p>Seu carrinho está vazio</p>
+                </div>
+            </div>
+            <div class="cart-total" id="cartTotal">
+                Total: R$ 0,00
             </div>
             
-            <div class="cart-items" id="cart-items">
-                <div class="empty-cart">Seu carrinho está vazio</div>
-            </div>
-            
-            <div class="cart-summary" id="cart-summary">
-                <!-- Resumo de valores será inserido aqui -->
-            </div>
-            
-            <div class="address-form">
-                <h3>Dados de Entrega</h3>
+            <!-- Formulário de entrega -->
+            <div class="delivery-form">
+                <h3 style="color: var(--secondary); margin-bottom: 15px;">Dados de Entrega</h3>
+                
                 <div class="form-group">
-                    <label for="full-name">Nome Completo</label>
-                    <input type="text" id="full-name" placeholder="Digite seu nome completo" required>
+                    <label for="fullName">Nome Completo</label>
+                    <input type="text" id="fullName" placeholder="Digite seu nome completo" required>
+                    <div class="error-message" id="nameError">Por favor, insira seu nome completo</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                    <div class="error-message" id="emailError">Por favor, insira um email válido</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" placeholder="(00) 00000-0000" required>
+                    <div class="error-message" id="phoneError">Por favor, insira um telefone válido</div>
                 </div>
                 
                 <div class="form-group">
                     <label for="address">Endereço Completo</label>
-                    <input type="text" id="address" placeholder="Rua, número, complemento" required>
+                    <textarea id="address" rows="3" placeholder="Rua, número, complemento, bairro" required></textarea>
+                    <div class="error-message" id="addressError">Por favor, insira seu endereço completo</div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="city">Cidade</label>
-                    <input type="text" id="city" placeholder="Digite sua cidade" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="state">Estado/Região</label>
-                    <select id="state" required>
-                        <option value="">Selecione seu estado/região</option>
-                        <optgroup label="Brasil">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">Cidade</label>
+                        <input type="text" id="city" placeholder="Cidade" required>
+                        <div class="error-message" id="cityError">Por favor, insira sua cidade</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="state">Estado</label>
+                        <select id="state" required>
+                            <option value="">Selecione seu estado</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
@@ -688,8 +1298,7 @@
                             <option value="SP">São Paulo</option>
                             <option value="SE">Sergipe</option>
                             <option value="TO">Tocantins</option>
-                        </optgroup>
-                        <optgroup label="Portugal">
+                            <!-- Estados de Portugal -->
                             <option value="PT-01">Aveiro</option>
                             <option value="PT-02">Beja</option>
                             <option value="PT-03">Braga</option>
@@ -710,486 +1319,297 @@
                             <option value="PT-18">Viseu</option>
                             <option value="PT-20">Região Autónoma dos Açores</option>
                             <option value="PT-30">Região Autónoma da Madeira</option>
-                        </optgroup>
-                    </select>
+                        </select>
+                        <div class="error-message" id="stateError">Por favor, selecione seu estado</div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="zipcode">CEP/Código Postal</label>
-                    <input type="text" id="zipcode" placeholder="00000-000 ou 0000-000" required>
-                </div>
-                
-                <div id="address-required" class="address-required">
-                    Por favor, preencha todos os campos de endereço para continuar.
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" placeholder="00000-000" required>
+                        <div class="error-message" id="cepError">Por favor, insira um CEP válido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">País</label>
+                        <select id="country" required>
+                            <option value="BR">Brasil</option>
+                            <option value="PT">Portugal</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             
-            <div class="delivery-time">
-                ⏱️ Tempo de entrega: 24h a 3 dias úteis, dependendo da localização e do produto
+            <button class="checkout-btn" id="checkoutBtn">Finalizar Compra com PayPal</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">BLACK DEALS</h3>
+                <p>Sua loja de produtos premium com as melhores ofertas do mercado. Produtos de alta qualidade com garantia e suporte 24/7.</p>
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@deku_thyso" target="_blank" class="social-link tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/deku_thyso" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/55847570884" target="_blank" class="social-link whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
             
-            <button class="checkout-button" id="checkout-button">Finalizar Compra</button>
-        </div>
-    </div>
-    
-    <!-- Modal de Detalhes do Produto -->
-    <div class="product-modal" id="product-modal">
-        <div class="product-modal-content">
-            <div class="product-modal-header">
-                <h2 class="product-modal-title" id="product-modal-title">Detalhes do Produto</h2>
-                <button class="close-modal" id="close-product-modal">&times;</button>
+            <div class="footer-section">
+                <h3 class="footer-title">Suporte ao Cliente</h3>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <p>Atendimento via WhatsApp</p>
+                        <p>+258847570884</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p>Email de suporte</p>
+                        <p>suporte@blackdeals.com</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/258847570884" class="whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> Falar com Suporte
+                </a>
             </div>
-            <div class="product-modal-body" id="product-modal-body">
-                <!-- Conteúdo será preenchido dinamicamente -->
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Formas de Pagamento</h3>
+                <p>Aceitamos todas as principais formas de pagamento:</p>
+                <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                    <div style="background: #fff; color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold;">PIX</div>
+                    <div style="background: #fff; color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold;">Cartão</div>
+                    <div style="background: #fff; color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold;">Boleto</div>
+                    <div style="background: #fff; color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold;">PayPal</div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Modal de Compartilhamento -->
-    <div class="share-modal" id="share-modal">
-        <div class="share-content">
-            <h2 class="share-title">Obrigado pela sua compra!</h2>
-            <p class="share-message">Compartilhe sua experiência com os amigos e ganhe 10% de desconto na próxima compra!</p>
-            <div class="share-buttons">
-                <button class="share-button" id="share-facebook">
-                    <span>Facebook</span>
-                </button>
-                <button class="share-button" id="share-whatsapp">
-                    <span>WhatsApp</span>
-                </button>
-                <button class="share-button" id="share-twitter">
-                    <span>Twitter</span>
-                </button>
-            </div>
-            <button class="close-share" id="close-share">Continuar Navegando</button>
+        
+        <div class="copyright">
+            &copy; 2023 BLACK DEALS - Todos os direitos reservados | TikTok: @deku_thyso | Instagram: @deku_thyso
         </div>
-    </div>
+    </footer>
 
     <script>
-        // Produtos em alta em Portugal e Brasil
-        const products = [
-            { 
-                id: 1, 
-                name: "Smartphone Xiaomi Redmi Note 12", 
-                price: 1100.90, 
-                image: "https://i.postimg.cc/qqMTyYD3/a43a57acfb3af09a751dd0cececd3b7b.jpg",
-                description: "Smartphone Xiaomi Redmi Note 12 com tela AMOLED de 6.67\", processador Snapdragon 685, 6GB RAM, 128GB armazenamento, câmera tripla de 50MP e bateria de 5000mAh.",
-                reviews: [
-                    {
-                        author: "Carlos Silva",
-                        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-                        rating: 5,
-                        date: "10/06/2023",
-                        content: "Excelente smartphone! A tela é incrível e a bateria dura o dia todo. Recomendo!"
-                    },
-                    {
-                        author: "Ana Oliveira",
-                        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-                        rating: 4,
-                        date: "05/06/2023",
-                        content: "Muito bom custo-benefício. A única coisa que poderia melhorar é a câmera frontal."
-                    }
-                ]
-            },
-            { 
-                id: 2, 
-                name: "Fone Bluetooth JBL Tune 510BT", 
-                price: 229.90, 
-                image: "https://i.postimg.cc/rFyWDGqF/ff1d9956b7a236076196e5b0b457e619.jpg",
-                description: "Fones de ouvido sem fio JBL Tune 510BT com som JBL Pure Bass, bateria para até 40 horas e design dobrável.",
-                reviews: [
-                    {
-                        author: "João Santos",
-                        avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-                        rating: 5,
-                        date: "08/06/2023",
-                        content: "O som é espetacular! Muito confortáveis e a bateria dura mesmo. Vale cada centavo!"
-                    }
-                ]
-            },
-            { 
-                id: 3, 
-                name: "Smart TV LED 50\" 4K UHD Samsung", 
-                price: 2100.00, 
-                image: "https://i.postimg.cc/43Vsgphm/f22f0d39ed254914d3634fec5fb96b49.jpg",
-                description: "Smart TV Samsung 50\" 4K UHD com Crystal Processor 4K, HDR, Tizen OS e design sem bordas.",
-                reviews: []
-            },
-            // ... (outros produtos com a mesma estrutura)
-            // Para simplificar, mantive apenas 3 produtos com reviews completos
-            // Na implementação real, todos os produtos devem ter a mesma estrutura
-        ];
+        // Sistema de carrinho
+        const cartButton = document.getElementById('cartButton');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
         
-        // Carrinho de compras
         let cart = [];
+        let itemCount = 0;
+        let totalAmount = 0;
         
-        // Elementos do DOM
-        const productsGrid = document.getElementById('products-grid');
-        const cartButton = document.getElementById('cart-button');
-        const cartCount = document.getElementById('cart-count');
-        const cartModal = document.getElementById('cart-modal');
-        const closeModal = document.getElementById('close-modal');
-        const cartItems = document.getElementById('cart-items');
-        const cartSummary = document.getElementById('cart-summary');
-        const checkoutButton = document.getElementById('checkout-button');
-        const freeShippingCountElement = document.getElementById('free-shipping-count');
-        const addressRequired = document.getElementById('address-required');
-        const productModal = document.getElementById('product-modal');
-        const productModalTitle = document.getElementById('product-modal-title');
-        const productModalBody = document.getElementById('product-modal-body');
-        const closeProductModal = document.getElementById('close-product-modal');
-        const shareModal = document.getElementById('share-modal');
-        const closeShare = document.getElementById('close-share');
+        // Abrir/fechar carrinho
+        cartButton.addEventListener('click', () => {
+            cartModal.style.display = 'flex';
+            updateCartDisplay();
+        });
         
-        // Contador de frete grátis
-        let freeShippingCount = localStorage.getItem('freeShippingCount') ? parseInt(localStorage.getItem('freeShippingCount')) : 10;
+        closeCart.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
         
-        // Atualizar contador de frete grátis
-        function updateFreeShippingCount() {
-            freeShippingCountElement.textContent = freeShippingCount;
-        }
-        
-        // Exibir produtos
-        function displayProducts() {
-            productsGrid.innerHTML = '';
-            
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                
-                // Adicionar badge de frete grátis se ainda houver disponível
-                const freeShippingBadge = freeShippingCount > 0 ? 
-                    `<div class="free-shipping-badge">FRETE GRÁTIS</div>` : '';
-                
-                productCard.innerHTML = `
-                    ${freeShippingBadge}
-                    <img src="${product.image}" alt="${product.name}" class="product-image" data-id="${product.id}">
-                    <div class="product-info">
-                        <h3 class="product-title" data-id="${product.id}">${product.name}</h3>
-                        <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
-                        <button class="add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
-                    </div>
-                `;
-                
-                productsGrid.appendChild(productCard);
-            });
-            
-            // Adicionar eventos aos botões
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', addToCart);
-            });
-            
-            // Adicionar eventos para abrir modal de detalhes
-            document.querySelectorAll('.product-image, .product-title').forEach(element => {
-                element.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.getAttribute('data-id'));
-                    showProductDetails(productId);
-                });
-            });
-            
-            // Atualizar contador de frete
-            updateFreeShippingCount();
-        }
-        
-        // Mostrar detalhes do produto
-        function showProductDetails(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            productModalTitle.textContent = product.name;
-            
-            // Calcular média das avaliações
-            const avgRating = product.reviews.length > 0 ? 
-                (product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length : 
-                0;
-            
-            // Gerar HTML das avaliações
-            let reviewsHTML = '';
-            if (product.reviews.length > 0) {
-                reviewsHTML = `
-                    <div class="reviews-container">
-                        <h3>Avaliações (${product.reviews.length})</h3>
-                        ${product.reviews.map(review => `
-                            <div class="review">
-                                <div class="review-header">
-                                    <img src="${review.avatar}" alt="${review.author}" class="review-avatar">
-                                    <span class="review-author">${review.author}</span>
-                                    <span class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</span>
-                                    <span class="review-date">${review.date}</span>
-                                </div>
-                                <div class="review-content">${review.content}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            } else {
-                reviewsHTML = '<p>Este produto ainda não possui avaliações.</p>';
+        // Fechar ao clicar fora do modal
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
             }
-            
-            productModalBody.innerHTML = `
-                <div class="product-modal-image-container">
-                    <img src="${product.image}" alt="${product.name}" class="product-modal-image">
-                </div>
-                <div class="product-modal-details">
-                    <div class="product-modal-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
-                    <p class="product-modal-description">${product.description}</p>
-                    <button class="add-to-cart" data-id="${product.id}" style="width: auto; padding: 0.7rem 1.5rem;">Adicionar ao Carrinho</button>
-                    ${reviewsHTML}
-                </div>
-            `;
-            
-            // Adicionar evento ao botão no modal
-            productModalBody.querySelector('.add-to-cart').addEventListener('click', addToCart);
-            
-            // Mostrar modal
-            productModal.style.display = 'flex';
-        }
+        });
         
-        // Adicionar ao carrinho
-        function addToCart(e) {
-            const productId = parseInt(e.target.getAttribute('data-id'));
-            const product = products.find(p => p.id === productId);
-            
-            const existingItem = cart.find(item => item.id === productId);
+        // Adicionar produtos ao carrinho
+        document.querySelectorAll('.add-to-cart, .featured-add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.product-card, .featured-product');
+                const title = card.querySelector('.product-title, .featured-title').textContent;
+                const priceText = card.querySelector('.product-price, .featured-price').textContent;
+                const price = parseFloat(priceText.replace('R$', '').replace(/\./g, '').replace(',', '.'));
+                
+                // Animação de feedback
+                const originalText = this.textContent;
+                this.textContent = 'Adicionado!';
+                this.style.background = 'linear-gradient(90deg, #4CAF50, #2E7D32)';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '';
+                }, 1500);
+                
+                // Adicionar ao carrinho
+                addToCart(title, price);
+            });
+        });
+        
+        function addToCart(title, price) {
+            // Verificar se o produto já está no carrinho
+            const existingItem = cart.find(item => item.title === title);
             
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
                 cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
+                    title: title,
+                    price: price,
                     quantity: 1
                 });
             }
             
-            updateCart();
-            
-            // Feedbback visual
-            e.target.textContent = 'Adicionado!';
-            setTimeout(() => {
-                e.target.textContent = 'Adicionar ao Carrinho';
-            }, 1000);
-        }
-        
-        // Atualizar carrinho
-        function updateCart() {
             // Atualizar contador
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
+            itemCount++;
+            cartCount.textContent = itemCount;
             
-            // Salvar no localStorage
-            localStorage.setItem('blackDealsCart', JSON.stringify(cart));
+            // Atualizar total
+            totalAmount += price;
+            updateCartDisplay();
         }
         
-        // Calcular frete
-        function calculateShipping() {
-            // Se ainda houver frete grátis disponível
-            return freeShippingCount > 0 ? 0 : 20.00;
-        }
-        
-        // Exibir carrinho
-        function displayCart() {
+        function updateCartDisplay() {
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart">Seu carrinho está vazio</div>';
-                cartSummary.innerHTML = '';
-                checkoutButton.style.display = 'none';
-                return;
-            }
-            
-            checkoutButton.style.display = 'block';
-            
-            cartItems.innerHTML = '';
-            let subtotal = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                
-                cartItem.innerHTML = `
-                    <div class="cart-item-info">
-                        <h4 class="cart-item-title">${item.name}</h4>
-                        <p class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')} x ${item.quantity}</p>
-                    </div>
-                    <div>
-                        R$ ${itemTotal.toFixed(2).replace('.', ',')}
+                cartItems.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: #777;">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>Seu carrinho está vazio</p>
                     </div>
                 `;
-                
-                cartItems.appendChild(cartItem);
-            });
-            
-            // Calcular frete e total
-            const shipping = calculateShipping();
-            const total = subtotal + shipping;
-            
-            // Exibir resumo
-            cartSummary.innerHTML = `
-                <div class="cart-summary-item">
-                    <div>Subtotal:</div>
-                    <div>R$ ${subtotal.toFixed(2).replace('.', ',')}</div>
-                </div>
-                <div class="cart-summary-item">
-                    <div>Frete:</div>
-                    <div class="${shipping === 0 ? 'free-shipping' : 'shipping-fee'}">
-                        ${shipping === 0 ? 'GRÁTIS' : `R$ ${shipping.toFixed(2).replace('.', ',')}`}
-                    </div>
-                </div>
-                <div class="cart-total">
-                    Total: R$ ${total.toFixed(2).replace('.', ',')}
-                </div>
-            `;
-            
-            // Mensagem sobre frete grátis
-            if (freeShippingCount > 0) {
-                cartSummary.innerHTML += `
-                    <div class="free-shipping" style="margin-top: 10px; text-align: right;">
-                        (Frete grátis para as primeiras ${freeShippingCount} compras)
-                    </div>
-                `;
-            }
-        }
-        
-        // Validar formulário de endereço
-        function validateAddressForm() {
-            const fullName = document.getElementById('full-name').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const state = document.getElementById('state').value.trim();
-            const zipcode = document.getElementById('zipcode').value.trim();
-            
-            if (!fullName || !address || !city || !state || !zipcode) {
-                addressRequired.style.display = 'block';
-                return false;
-            }
-            
-            addressRequired.style.display = 'none';
-            return true;
-        }
-        
-        // Finalizar compra
-        function checkout() {
-            if (cart.length === 0) return;
-            
-            // Validar endereço
-            if (!validateAddressForm()) {
+                cartTotal.textContent = `Total: R$ 0,00`;
                 return;
-            }
-            
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shipping = calculateShipping();
-            const total = subtotal + shipping;
-            
-            // Coletar dados do formulário
-            const fullName = document.getElementById('full-name').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const state = document.getElementById('state').value.trim();
-            const zipcode = document.getElementById('zipcode').value.trim();
-            
-            // Criar descrição dos itens
-            const itemsDescription = cart.map(item => 
-                `${item.name} (${item.quantity}x)`
-            ).join(', ');
-            
-            // URL do PayPal
-            const paypalEmail = 'dekulanga887@gmail.com';
-            const currency = 'BRL';
-            const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=${currency}&amount=${total.toFixed(2)}&item_name=${encodeURIComponent(itemsDescription)}`;
-            
-            // Reduzir contador de frete grátis se aplicável
-            if (shipping === 0 && freeShippingCount > 0) {
-                freeShippingCount--;
-                localStorage.setItem('freeShippingCount', freeShippingCount);
-                updateFreeShippingCount();
             }
             
             // Limpar carrinho
-            cart = [];
-            updateCart();
+            cartItems.innerHTML = '';
             
-            // Fechar modal
-            cartModal.style.display = 'none';
-            
-            // Simular redirecionamento para o PayPal
-            setTimeout(() => {
-                // Em um ambiente real, seria window.location.href = paypalUrl;
-                // Aqui simulamos o retorno após o pagamento
-                showShareModal();
-            }, 1500);
-        }
-        
-        // Mostrar modal de compartilhamento
-        function showShareModal() {
-            shareModal.style.display = 'flex';
-        }
-        
-        // Carregar carrinho do localStorage
-        function loadCart() {
-            const savedCart = localStorage.getItem('blackDealsCart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCart();
-            }
-        }
-        
-        // Event Listeners
-        cartButton.addEventListener('click', () => {
-            displayCart();
-            cartModal.style.display = 'flex';
-        });
-        
-        closeModal.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-        
-        closeProductModal.addEventListener('click', () => {
-            productModal.style.display = 'none';
-        });
-        
-        closeShare.addEventListener('click', () => {
-            shareModal.style.display = 'none';
-        });
-        
-        checkoutButton.addEventListener('click', checkout);
-        
-        // Fechar modais ao clicar fora
-        [cartModal, productModal, shareModal].forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Adicionar itens
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <div class="item-name">${item.title}</div>
+                        <div class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')} x ${item.quantity}</div>
+                    </div>
+                    <div>
+                        R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}
+                    </div>
+                `;
+                cartItems.appendChild(itemElement);
             });
-        });
+            
+            // Atualizar total
+            cartTotal.textContent = `Total: R$ ${totalAmount.toFixed(2).replace('.', ',')}`;
+        }
         
-        // Formatar CEP/Código Postal
-        document.getElementById('zipcode').addEventListener('input', function(e) {
+        // Formatar CEP
+        document.getElementById('cep').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 4) {
-                value = value.substring(0,4) + '-' + value.substring(4,7);
+            if (value.length > 5) {
+                value = value.substring(0,5) + '-' + value.substring(5,8);
             }
             e.target.value = value;
         });
         
-        // Botões de compartilhamento (simulados)
-        document.getElementById('share-facebook').addEventListener('click', () => {
-            alert('Compartilhado no Facebook! Obrigado por compartilhar.');
+        // Formatar telefone
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = '(' + value.substring(0,2) + ') ' + value.substring(2);
+            }
+            if (value.length > 10) {
+                value = value.substring(0,10) + '-' + value.substring(10,14);
+            }
+            e.target.value = value;
         });
         
-        document.getElementById('share-whatsapp').addEventListener('click', () => {
-            alert('Compartilhado no WhatsApp! Obrigado por compartilhar.');
-        });
+        // Validar formulário
+        function validateForm() {
+            let isValid = true;
+            
+            // Validar campos
+            const fields = [
+                { id: 'fullName', errorId: 'nameError' },
+                { id: 'email', errorId: 'emailError' },
+                { id: 'phone', errorId: 'phoneError' },
+                { id: 'address', errorId: 'addressError' },
+                { id: 'city', errorId: 'cityError' },
+                { id: 'state', errorId: 'stateError' },
+                { id: 'cep', errorId: 'cepError' }
+            ];
+            
+            fields.forEach(field => {
+                const element = document.getElementById(field.id);
+                const errorElement = document.getElementById(field.errorId);
+                
+                if (!element.value.trim()) {
+                    errorElement.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            });
+            
+            // Validação adicional para email
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
         
-        document.getElementById('share-twitter').addEventListener('click', () => {
-            alert('Compartilhado no Twitter! Obrigado por compartilhar.');
+        // Finalizar compra com PayPal
+        checkoutBtn.addEventListener('click', function() {
+            // Validar formulário
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Verificar se há itens no carrinho
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+            
+            // Desativar botão para evitar múltiplos cliques
+            this.disabled = true;
+            this.textContent = 'Processando...';
+            
+            // Simular processamento
+            setTimeout(() => {
+                // Construir URL do PayPal
+                const paypalEmail = 'dekulanga887@gmail.com';
+                const currency = 'BRL';
+                const amount = totalAmount.toFixed(2);
+                
+                // Construir descrição dos itens
+                let itemDescription = 'Produtos: ';
+                cart.forEach((item, index) => {
+                    if (index > 0) itemDescription += ', ';
+                    itemDescription += `${item.title} (${item.quantity}x)`;
+                });
+                
+                // Construir URL
+                const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=${currency}&amount=${amount}&item_name=${encodeURIComponent(itemDescription)}`;
+                
+                // Redirecionar para o PayPal
+                window.location.href = paypalUrl;
+            }, 1500);
         });
-        
-        // Inicializar
-        loadCart();
-        displayProducts();
     </script>
 </body>
 </html>
