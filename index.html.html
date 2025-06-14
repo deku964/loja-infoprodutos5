@@ -190,13 +190,29 @@
         .product-image {
             height: 200px;
             width: 100%;
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-image .placeholder {
+            position: absolute;
             font-size: 3rem;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 1;
         }
         
         .product-info {
@@ -215,6 +231,8 @@
             font-weight: 600;
             margin-bottom: 10px;
             color: #333;
+            height: 50px;
+            overflow: hidden;
         }
         
         .product-price {
@@ -762,76 +780,76 @@
             { id: 10, name: "Blusa de Frio Cinza", price: 179.90, category: "ukdrill", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
             
             // Streetwear (10 produtos)
-            { id: 11, name: "Hoodie Oversized", price: 219.90, category: "streetwear", image: "street1.jpg" },
-            { id: 12, name: "Camiseta Estampada", price: 119.90, category: "streetwear", image: "street2.jpg" },
-            { id: 13, name: "Calça Jogger", price: 189.90, category: "streetwear", image: "street3.jpg" },
-            { id: 14, name: "Tênis High Top", price: 399.90, category: "streetwear", image: "street4.jpg" },
-            { id: 15, name: "Bucket Hat", price: 79.90, category: "streetwear", image: "street5.jpg" },
-            { id: 16, name: "Jaqueta Denim", price: 279.90, category: "streetwear", image: "street6.jpg" },
-            { id: 17, name: "Moletom Zip-Up", price: 229.90, category: "streetwear", image: "street7.jpg" },
-            { id: 18, name: "Shorts de Nylon", price: 149.90, category: "streetwear", image: "street8.jpg" },
-            { id: 19, name: "Camisa Polo Street", price: 169.90, category: "streetwear", image: "street9.jpg" },
-            { id: 20, name: "Bolsa Crossbody", price: 199.90, category: "streetwear", image: "street10.jpg" },
+            { id: 11, name: "Hoodie Oversized", price: 219.90, category: "streetwear", image: "https://i.postimg.cc/1tyqfnHb/Oversized-Hoodie.jpg" },
+            { id: 12, name: "Camiseta Estampada", price: 119.90, category: "streetwear", image: "https://i.postimg.cc/43ktRFhf/Men-1pc-Buffalo-Plaid-Shirt.jpg" },
+            { id: 13, name: "Calça Jogger", price: 189.90, category: "streetwear", image: "https://i.postimg.cc/qRQCnJDq/Cal-as-Jogger-Cargo.jpg" },
+            { id: 14, name: "Tênis High Top", price: 399.90, category: "streetwear", image: "https://i.postimg.cc/VLvXqt88/T-nis-Preto-Skate-All-Skool-Urbtribe-Unissex-OLDTRIBE-T-nis-Esportivo-Magazine-Luiza.jpg" },
+            { id: 15, name: "Bucket Hat", price: 79.90, category: "streetwear", image: "https://i.postimg.cc/3NJmb402/Bon-Liso-B-sico-Original-6-Gomos-Aba-Curva-Fit-o.jpg" },
+            { id: 16, name: "Jaqueta Denim", price: 279.90, category: "streetwear", image: "https://i.postimg.cc/Y2b1L3TR/Corta-Vento-Quiksilver-Anorak.jpg" },
+            { id: 17, name: "Moletom Zip-Up", price: 229.90, category: "streetwear", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
+            { id: 18, name: "Shorts de Nylon", price: 149.90, category: "streetwear", image: "https://i.postimg.cc/Hk75KCnv/Hearujoy-Khaki-Cargo-Shorts-Men-Techwear-Korean-Casual-Pants-Male-Jorts-for-Men-Summer-Loose-Japanes.jpg" },
+            { id: 19, name: "Camisa Polo Street", price: 169.90, category: "streetwear", image: "https://i.postimg.cc/QtDp1nX4/Camisa-Masculina-Oversized-Premium-20-1.jpg" },
+            { id: 20, name: "Bolsa Crossbody", price: 199.90, category: "streetwear", image: "https://i.postimg.cc/ZKQpVqby/Colete-Utilit-rio-Masculino-Para-Uso-Externo-Com-Muitos-Bols.jpg" },
             
             // Old Money (10 produtos)
-            { id: 21, name: "Blazer de Lã", price: 599.90, category: "oldmoney", image: "old1.jpg" },
-            { id: 22, name: "Camisa Social Slim", price: 229.90, category: "oldmoney", image: "old2.jpg" },
-            { id: 23, name: "Calça de Alfaiataria", price: 299.90, category: "oldmoney", image: "old3.jpg" },
-            { id: 24, name: "Sapato Oxford", price: 499.90, category: "oldmoney", image: "old4.jpg" },
-            { id: 25, name: "Cinto de Couro Legítimo", price: 189.90, category: "oldmoney", image: "old5.jpg" },
-            { id: 26, name: "Polo Clássica", price: 179.90, category: "oldmoney", image: "old6.jpg" },
-            { id: 27, name: "Relógio de Pulso", price: 899.90, category: "oldmoney", image: "old7.jpg" },
-            { id: 28, name: "Cardigã de Cashmere", price: 459.90, category: "oldmoney", image: "old8.jpg" },
-            { id: 29, name: "Mocassim Italiano", price: 429.90, category: "oldmoney", image: "old9.jpg" },
-            { id: 30, name: "Lenço de Seda", price: 129.90, category: "oldmoney", image: "old10.jpg" },
+            { id: 21, name: "Blazer de Lã", price: 599.90, category: "oldmoney", image: "https://i.postimg.cc/Y2b1L3TR/Corta-Vento-Quiksilver-Anorak.jpg" },
+            { id: 22, name: "Camisa Social Slim", price: 229.90, category: "oldmoney", image: "https://i.postimg.cc/QtDp1nX4/Camisa-Masculina-Oversized-Premium-20-1.jpg" },
+            { id: 23, name: "Calça de Alfaiataria", price: 299.90, category: "oldmoney", image: "https://i.postimg.cc/qRQCnJDq/Cal-as-Jogger-Cargo.jpg" },
+            { id: 24, name: "Sapato Oxford", price: 499.90, category: "oldmoney", image: "https://i.postimg.cc/VLvXqt88/T-nis-Preto-Skate-All-Skool-Urbtribe-Unissex-OLDTRIBE-T-nis-Esportivo-Magazine-Luiza.jpg" },
+            { id: 25, name: "Cinto de Couro Legítimo", price: 189.90, category: "oldmoney", image: "https://i.postimg.cc/ZKQpVqby/Colete-Utilit-rio-Masculino-Para-Uso-Externo-Com-Muitos-Bols.jpg" },
+            { id: 26, name: "Polo Clássica", price: 179.90, category: "oldmoney", image: "https://i.postimg.cc/1tyqfnHb/Oversized-Hoodie.jpg" },
+            { id: 27, name: "Relógio de Pulso", price: 899.90, category: "oldmoney", image: "https://i.postimg.cc/3NJmb402/Bon-Liso-B-sico-Original-6-Gomos-Aba-Curva-Fit-o.jpg" },
+            { id: 28, name: "Cardigã de Cashmere", price: 459.90, category: "oldmoney", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
+            { id: 29, name: "Mocassim Italiano", price: 429.90, category: "oldmoney", image: "https://i.postimg.cc/43ktRFhf/Men-1pc-Buffalo-Plaid-Shirt.jpg" },
+            { id: 30, name: "Lenço de Seda", price: 129.90, category: "oldmoney", image: "https://i.postimg.cc/Hk75KCnv/Hearujoy-Khaki-Cargo-Shorts-Men-Techwear-Korean-Casual-Pants-Male-Jorts-for-Men-Summer-Loose-Japanes.jpg" },
             
             // Cosméticos (10 produtos)
-            { id: 31, name: "Batom Matte Vermelho", price: 39.90, category: "cosmeticos", image: "cosm1.jpg" },
-            { id: 32, name: "Paleta de Sombras", price: 89.90, category: "cosmeticos", image: "cosm2.jpg" },
-            { id: 33, name: "Base Líquida", price: 59.90, category: "cosmeticos", image: "cosm3.jpg" },
-            { id: 34, name: "Máscara de Cílios", price: 34.90, category: "cosmeticos", image: "cosm4.jpg" },
-            { id: 35, name: "Hidratante Facial", price: 79.90, category: "cosmeticos", image: "cosm5.jpg" },
-            { id: 36, name: "Perfume Floral", price: 129.90, category: "cosmeticos", image: "cosm6.jpg" },
-            { id: 37, name: "Kit Pincéis", price: 149.90, category: "cosmeticos", image: "cosm7.jpg" },
-            { id: 38, name: "Delineador Líquido", price: 29.90, category: "cosmeticos", image: "cosm8.jpg" },
-            { id: 39, name: "Creme para as Mãos", price: 24.90, category: "cosmeticos", image: "cosm9.jpg" },
-            { id: 40, name: "Protetor Solar FPS 50", price: 69.90, category: "cosmeticos", image: "cosm10.jpg" },
+            { id: 31, name: "Batom Matte Vermelho", price: 39.90, category: "cosmeticos", image: "https://i.postimg.cc/3NJmb402/Bon-Liso-B-sico-Original-6-Gomos-Aba-Curva-Fit-o.jpg" },
+            { id: 32, name: "Paleta de Sombras", price: 89.90, category: "cosmeticos", image: "https://i.postimg.cc/Hk75KCnv/Hearujoy-Khaki-Cargo-Shorts-Men-Techwear-Korean-Casual-Pants-Male-Jorts-for-Men-Summer-Loose-Japanes.jpg" },
+            { id: 33, name: "Base Líquida", price: 59.90, category: "cosmeticos", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
+            { id: 34, name: "Máscara de Cílios", price: 34.90, category: "cosmeticos", image: "https://i.postimg.cc/43ktRFhf/Men-1pc-Buffalo-Plaid-Shirt.jpg" },
+            { id: 35, name: "Hidratante Facial", price: 79.90, category: "cosmeticos", image: "https://i.postimg.cc/ZKQpVqby/Colete-Utilit-rio-Masculino-Para-Uso-Externo-Com-Muitos-Bols.jpg" },
+            { id: 36, name: "Perfume Floral", price: 129.90, category: "cosmeticos", image: "https://i.postimg.cc/VLvXqt88/T-nis-Preto-Skate-All-Skool-Urbtribe-Unissex-OLDTRIBE-T-nis-Esportivo-Magazine-Luiza.jpg" },
+            { id: 37, name: "Kit Pincéis", price: 149.90, category: "cosmeticos", image: "https://i.postimg.cc/qRQCnJDq/Cal-as-Jogger-Cargo.jpg" },
+            { id: 38, name: "Delineador Líquido", price: 29.90, category: "cosmeticos", image: "https://i.postimg.cc/Y2b1L3TR/Corta-Vento-Quiksilver-Anorak.jpg" },
+            { id: 39, name: "Creme para as Mãos", price: 24.90, category: "cosmeticos", image: "https://i.postimg.cc/1tyqfnHb/Oversized-Hoodie.jpg" },
+            { id: 40, name: "Protetor Solar FPS 50", price: 69.90, category: "cosmeticos", image: "https://i.postimg.cc/QtDp1nX4/Camisa-Masculina-Oversized-Premium-20-1.jpg" },
             
             // Roupas (10 produtos)
-            { id: 41, name: "Vestido Floral", price: 129.90, category: "roupas", image: "clothes1.jpg" },
-            { id: 42, name: "Calça Jeans Skinny", price: 149.90, category: "roupas", image: "clothes2.jpg" },
-            { id: 43, name: "Blusa de Algodão", price: 79.90, category: "roupas", image: "clothes3.jpg" },
-            { id: 44, name: "Jaqueta de Couro", price: 299.90, category: "roupas", image: "clothes4.jpg" },
-            { id: 45, name: "Camiseta Básica", price: 39.90, category: "roupas", image: "clothes5.jpg" },
-            { id: 46, name: "Saia Midi", price: 89.90, category: "roupas", image: "clothes6.jpg" },
-            { id: 47, name: "Blazer Slim", price: 189.90, category: "roupas", image: "clothes7.jpg" },
-            { id: 48, name: "Shorts Jeans", price: 79.90, category: "roupas", image: "clothes8.jpg" },
-            { id: 49, name: "Moletom Comfort", price: 119.90, category: "roupas", image: "clothes9.jpg" },
-            { id: 50, name: "Camisa Social", price: 149.90, category: "roupas", image: "clothes10.jpg" },
+            { id: 41, name: "Vestido Floral", price: 129.90, category: "roupas", image: "https://i.postimg.cc/QtDp1nX4/Camisa-Masculina-Oversized-Premium-20-1.jpg" },
+            { id: 42, name: "Calça Jeans Skinny", price: 149.90, category: "roupas", image: "https://i.postimg.cc/qRQCnJDq/Cal-as-Jogger-Cargo.jpg" },
+            { id: 43, name: "Blusa de Algodão", price: 79.90, category: "roupas", image: "https://i.postimg.cc/1tyqfnHb/Oversized-Hoodie.jpg" },
+            { id: 44, name: "Jaqueta de Couro", price: 299.90, category: "roupas", image: "https://i.postimg.cc/Y2b1L3TR/Corta-Vento-Quiksilver-Anorak.jpg" },
+            { id: 45, name: "Camiseta Básica", price: 39.90, category: "roupas", image: "https://i.postimg.cc/43ktRFhf/Men-1pc-Buffalo-Plaid-Shirt.jpg" },
+            { id: 46, name: "Saia Midi", price: 89.90, category: "roupas", image: "https://i.postimg.cc/Hk75KCnv/Hearujoy-Khaki-Cargo-Shorts-Men-Techwear-Korean-Casual-Pants-Male-Jorts-for-Men-Summer-Loose-Japanes.jpg" },
+            { id: 47, name: "Blazer Slim", price: 189.90, category: "roupas", image: "https://i.postimg.cc/ZKQpVqby/Colete-Utilit-rio-Masculino-Para-Uso-Externo-Com-Muitos-Bols.jpg" },
+            { id: 48, name: "Shorts Jeans", price: 79.90, category: "roupas", image: "https://i.postimg.cc/VLvXqt88/T-nis-Preto-Skate-All-Skool-Urbtribe-Unissex-OLDTRIBE-T-nis-Esportivo-Magazine-Luiza.jpg" },
+            { id: 49, name: "Moletom Comfort", price: 119.90, category: "roupas", image: "https://i.postimg.cc/3NJmb402/Bon-Liso-B-sico-Original-6-Gomos-Aba-Curva-Fit-o.jpg" },
+            { id: 50, name: "Camisa Social", price: 149.90, category: "roupas", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
             
             // Gamer (10 produtos)
-            { id: 51, name: "Headset Gamer RGB", price: 299.90, category: "gamer", image: "game1.jpg" },
-            { id: 52, name: "Teclado Mecânico", price: 249.90, category: "gamer", image: "game2.jpg" },
-            { id: 53, name: "Mouse Gamer 16000DPI", price: 189.90, category: "gamer", image: "game3.jpg" },
-            { id: 54, name: "Cadeira Gamer", price: 999.90, category: "gamer", image: "game4.jpg" },
-            { id: 55, name: "Monitor 144Hz", price: 1299.90, category: "gamer", image: "game5.jpg" },
-            { id: 56, name: "Controle Sem Fio", price: 199.90, category: "gamer", image: "game6.jpg" },
-            { id: 57, name: "Mousepad RGB", price: 89.90, category: "gamer", image: "game7.jpg" },
-            { id: 58, name: "Webcam Full HD", price: 159.90, category: "gamer", image: "game8.jpg" },
-            { id: 59, name: "Microfone Streaming", price: 299.90, category: "gamer", image: "game9.jpg" },
-            { id: 60, name: "Console Portátil", price: 799.90, category: "gamer", image: "game10.jpg" },
+            { id: 51, name: "Headset Gamer RGB", price: 299.90, category: "gamer", image: "https://i.postimg.cc/3NJmb402/Bon-Liso-B-sico-Original-6-Gomos-Aba-Curva-Fit-o.jpg" },
+            { id: 52, name: "Teclado Mecânico", price: 249.90, category: "gamer", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
+            { id: 53, name: "Mouse Gamer 16000DPI", price: 189.90, category: "gamer", image: "https://i.postimg.cc/43ktRFhf/Men-1pc-Buffalo-Plaid-Shirt.jpg" },
+            { id: 54, name: "Cadeira Gamer", price: 999.90, category: "gamer", image: "https://i.postimg.cc/ZKQpVqby/Colete-Utilit-rio-Masculino-Para-Uso-Externo-Com-Muitos-Bols.jpg" },
+            { id: 55, name: "Monitor 144Hz", price: 1299.90, category: "gamer", image: "https://i.postimg.cc/VLvXqt88/T-nis-Preto-Skate-All-Skool-Urbtribe-Unissex-OLDTRIBE-T-nis-Esportivo-Magazine-Luiza.jpg" },
+            { id: 56, name: "Controle Sem Fio", price: 199.90, category: "gamer", image: "https://i.postimg.cc/qRQCnJDq/Cal-as-Jogger-Cargo.jpg" },
+            { id: 57, name: "Mousepad RGB", price: 89.90, category: "gamer", image: "https://i.postimg.cc/Y2b1L3TR/Corta-Vento-Quiksilver-Anorak.jpg" },
+            { id: 58, name: "Webcam Full HD", price: 159.90, category: "gamer", image: "https://i.postimg.cc/1tyqfnHb/Oversized-Hoodie.jpg" },
+            { id: 59, name: "Microfone Streaming", price: 299.90, category: "gamer", image: "https://i.postimg.cc/Hk75KCnv/Hearujoy-Khaki-Cargo-Shorts-Men-Techwear-Korean-Casual-Pants-Male-Jorts-for-Men-Summer-Loose-Japanes.jpg" },
+            { id: 60, name: "Console Portátil", price: 799.90, category: "gamer", image: "https://i.postimg.cc/QtDp1nX4/Camisa-Masculina-Oversized-Premium-20-1.jpg" },
             
             // Acessórios (10 produtos)
-            { id: 61, name: "Bolsa de Couro", price: 199.90, category: "acessorios", image: "acess1.jpg" },
-            { id: 62, name: "Colar de Prata", price: 89.90, category: "acessorios", image: "acess2.jpg" },
-            { id: 63, name: "Óculos de Sol", price: 159.90, category: "acessorios", image: "acess3.jpg" },
-            { id: 64, name: "Pulseira Dourada", price: 69.90, category: "acessorios", image: "acess4.jpg" },
-            { id: 65, name: "Cinto de Couro", price: 79.90, category: "acessorios", image: "acess5.jpg" },
-            { id: 66, name: "Chapéu Panamá", price: 119.90, category: "acessorios", image: "acess6.jpg" },
-            { id: 67, name: "Relógio de Pulso", price: 299.90, category: "acessorios", image: "acess7.jpg" },
-            { id: 68, name: "Brincos de Pérola", price: 59.90, category: "acessorios", image: "acess8.jpg" },
-            { id: 69, name: "Mochila Casual", price: 149.90, category: "acessorios", image: "acess9.jpg" },
-            { id: 70, name: "Lenço de Seda", price: 49.90, category: "acessorios", image: "acess10.jpg" }
+            { id: 61, name: "Bolsa de Couro", price: 199.90, category: "acessorios", image: "https://i.postimg.cc/ZKQpVqby/Colete-Utilit-rio-Masculino-Para-Uso-Externo-Com-Muitos-Bols.jpg" },
+            { id: 62, name: "Colar de Prata", price: 89.90, category: "acessorios", image: "https://i.postimg.cc/3NJmb402/Bon-Liso-B-sico-Original-6-Gomos-Aba-Curva-Fit-o.jpg" },
+            { id: 63, name: "Óculos de Sol", price: 159.90, category: "acessorios", image: "https://i.postimg.cc/Hk75KCnv/Hearujoy-Khaki-Cargo-Shorts-Men-Techwear-Korean-Casual-Pants-Male-Jorts-for-Men-Summer-Loose-Japanes.jpg" },
+            { id: 64, name: "Pulseira Dourada", price: 69.90, category: "acessorios", image: "https://i.postimg.cc/xdvmfyKK/Moletom-Masculino-e-Feminino-Gola-Redonda-Flanelado-Casaco-Unissex-Blusa-de-Frio-Inverno-Moleton-de.jpg" },
+            { id: 65, name: "Cinto de Couro", price: 79.90, category: "acessorios", image: "https://i.postimg.cc/43ktRFhf/Men-1pc-Buffalo-Plaid-Shirt.jpg" },
+            { id: 66, name: "Chapéu Panamá", price: 119.90, category: "acessorios", image: "https://i.postimg.cc/VLvXqt88/T-nis-Preto-Skate-All-Skool-Urbtribe-Unissex-OLDTRIBE-T-nis-Esportivo-Magazine-Luiza.jpg" },
+            { id: 67, name: "Relógio de Pulso", price: 299.90, category: "acessorios", image: "https://i.postimg.cc/qRQCnJDq/Cal-as-Jogger-Cargo.jpg" },
+            { id: 68, name: "Brincos de Pérola", price: 59.90, category: "acessorios", image: "https://i.postimg.cc/Y2b1L3TR/Corta-Vento-Quiksilver-Anorak.jpg" },
+            { id: 69, name: "Mochila Casual", price: 149.90, category: "acessorios", image: "https://i.postimg.cc/1tyqfnHb/Oversized-Hoodie.jpg" },
+            { id: 70, name: "Lenço de Seda", price: 49.90, category: "acessorios", image: "https://i.postimg.cc/QtDp1nX4/Camisa-Masculina-Oversized-Premium-20-1.jpg" }
         ];
 
         // Elementos do DOM
@@ -850,6 +868,18 @@
         
         // Carrinho de compras
         let cart = [];
+        
+        // Ícones por categoria
+        const categoryIcons = {
+            'ukdrill': 'fas fa-music',
+            'streetwear': 'fas fa-street-view',
+            'oldmoney': 'fas fa-gem',
+            'cosmeticos': 'fas fa-paint-brush',
+            'roupas': 'fas fa-tshirt',
+            'gamer': 'fas fa-gamepad',
+            'acessorios': 'fas fa-glasses',
+            'calcados': 'fas fa-shoe-prints'
+        };
         
         // Função para renderizar produtos
         function renderProducts(productsToRender) {
@@ -871,9 +901,15 @@
                 else if (product.category === 'acessorios') bgColor = '#ff9800';
                 else if (product.category === 'calcados') bgColor = '#795548';
                 
+                // Ícone para placeholder
+                const icon = categoryIcons[product.category] || 'fas fa-shopping-bag';
+                
                 productCard.innerHTML = `
                     <div class="product-image" style="background-color: ${bgColor};">
-                        <i class="fas fa-tshirt"></i>
+                        <img src="${product.image}" alt="${product.name}" 
+                             onerror="this.onerror=null; this.style.display='none'; 
+                                      this.parentElement.innerHTML += '<i class=\'${icon} placeholder\'></i>'">
+                        <i class="${icon} placeholder" style="display: none;"></i>
                     </div>
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
@@ -972,7 +1008,7 @@
                 
                 cartItem.innerHTML = `
                     <div style="font-size: 1.5rem; color: ${color};">
-                        <i class="fas fa-tshirt"></i>
+                        <i class="${categoryIcons[item.category] || 'fas fa-shopping-bag'}"></i>
                     </div>
                     <div class="cart-item-info">
                         <div class="cart-item-name">${item.name}</div>
