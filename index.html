@@ -3,1766 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Content</title>
+    <title>DEKU HOT Club | Exclusive Adult Content</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
         
-        /* Age Verification Overlay */
-        .age-verification {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 15, 15, 0.98);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-        
-        .verification-box {
-            background: #1a1a1a;
-            border: 2px solid #333;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-        
-        .verification-box h2 {
-            color: #fff;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        .verification-box p {
-            color: #aaa;
-            margin-bottom: 30px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
             line-height: 1.6;
         }
         
-        .age-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a0000, #000000);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff0000;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
         }
         
-        .age-btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff0000;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            letter-spacing: 2px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #111111;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            transition: all 0.3s;
             font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            color: #ff0000;
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+        
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ff0000;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .banner p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .age-confirm {
-            background: #dc2626;
-            color: white;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+            background-color: #cc0000;
         }
         
-        .age-confirm:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
-        }
-        
-        .age-deny {
-            background: #333;
-            color: #aaa;
-        }
-        
-        .age-deny:hover {
-            background: #444;
-        }
-        
-        .warning-note {
-            color: #dc2626;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #dc2626;
-            border-radius: 6px;
-            background: rgba(220, 38, 38, 0.1);
-        }
-        
-        /* Main content styles */
-        body {
-            background: #0f0f0f;
-            color: #e5e5e5;
-            line-height: 1.5;
-            padding: 20px;
-            font-size: 15px;
-        }
-        
-        .container {
+        /* Products Section */
+        .products {
+            padding: 60px 20px;
             max-width: 1400px;
             margin: 0 auto;
-            display: none; /* Hidden until age verification */
         }
         
-        /* Activity Panel */
-        .activity-panel {
-            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border: 1px solid #333;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        
-        .activity-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .activity-header h3 {
-            color: #fff;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .activity-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 20px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
+        .section-title {
             text-align: center;
-        }
-        
-        .stat-card:hover {
-            border-color: #444;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .stat-title {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .stat-value {
-            color: #10b981;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff0000;
             font-weight: 700;
-            margin-bottom: 8px;
+            position: relative;
         }
         
-        .stat-change {
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ff0000;
+            margin: 15px auto;
+            border-radius: 2px;
         }
         
-        .positive {
-            color: #10b981;
-        }
-        
-        .live-users {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            padding: 12px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-        
-        .recent-purchases {
-            margin-top: 20px;
-            max-height: 200px;
-            overflow-y: auto;
-            border: 1px solid #333;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        
-        .purchase-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            border-bottom: 1px solid #333;
-            transition: background 0.2s ease;
-        }
-        
-        .purchase-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .purchase-item:last-child {
-            border-bottom: none;
-        }
-        
-        .purchase-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .purchase-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        
-        .user-name {
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .product-name {
-            color: #aaa;
-            font-size: 0.8rem;
-        }
-        
-        .purchase-time {
-            color: #666;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .purchase-amount {
-            color: #10b981;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        
-        .refresh-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.2s ease;
-        }
-        
-        .refresh-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .header h1 {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 10px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .header p {
-            font-size: 1rem;
-            color: #aaa;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .age-badge {
-            display: inline-block;
-            background: #dc2626;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-        
-        .products-grid {
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
         }
         
         .product-card {
-            background: #1a1a1a;
-            border-radius: 12px;
+            background-color: #111111;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            transition: all 0.3s;
             border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
         
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            border-color: #444;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
         }
         
-        /* NOVO: Estilos para o sistema de abas de mídia */
-        .media-container {
-            width: 100%;
-            height: 200px;
+        .product-media {
+            height: 220px;
             position: relative;
-            border-bottom: 1px solid #333;
-            background: #0f0f0f;
             overflow: hidden;
-        }
-        
-        .media-tabs {
-            display: flex;
-            background: #1a1a1a;
-            border-bottom: 1px solid #333;
-        }
-        
-        .media-tab {
-            flex: 1;
-            padding: 10px;
-            background: transparent;
-            border: none;
-            color: #aaa;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        
-        .media-tab:hover {
-            background: #222;
-            color: #fff;
-        }
-        
-        .media-tab.active {
-            background: #2563eb;
-            color: white;
-        }
-        
-        .media-tab.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .media-tab.disabled:hover {
-            background: transparent;
-            color: #aaa;
-        }
-        
-        .media-tab:first-child {
-            border-right: 1px solid #333;
-        }
-        
-        .media-content {
-            height: calc(100% - 41px); /* Altura total menos altura das tabs */
-            position: relative;
-        }
-        
-        .media-panel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
-        
-        .media-panel.active {
-            opacity: 1;
-            visibility: visible;
         }
         
         .product-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.5s;
         }
         
-        .video-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .product-card:hover .product-image {
+            transform: scale(1.05);
         }
         
-        .preview-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #000;
-        }
-        
-        .video-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #666;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .video-placeholder i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #2563eb;
-        }
-        
-        .no-video {
-            color: #666;
+        .view-count {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0,0,0,0.7);
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.8rem;
+            font-weight: 500;
         }
         
-        .media-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .trending-badge {
-            position: absolute;
-            top: 50px; /* Ajustado para não cobrir as tabs */
-            left: 10px;
-            background: rgba(220, 38, 38, 0.9);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            z-index: 10;
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: 50px; /* Ajustado para não cobrir as tabs */
-            right: 10px;
-            background: rgba(16, 185, 129, 0.9);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            z-index: 10;
-        }
-        
-        .adult-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #dc2626;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid #dc2626;
-            z-index: 10;
-        }
-        
-        .product-content {
+        .product-info {
             padding: 20px;
         }
         
-        .product-title {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 12px;
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #ff0000;
             font-weight: 600;
-            line-height: 1.3;
         }
         
-        .product-description {
-            color: #aaa;
+        .product-info p {
+            margin-bottom: 15px;
+            color: #cccccc;
             font-size: 0.95rem;
-            margin-bottom: 20px;
             line-height: 1.5;
-            min-height: 80px;
         }
         
-        .description-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
-        
-        .description-item i {
-            color: #10b981;
-        }
-        
-        .product-price {
-            font-size: 1.6rem;
-            color: #10b981;
+        .price {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 20px 0;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        .timer {
+            background-color: #1a0000;
+            color: #ff0000;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        /* Floating Button */
+        .btn-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
+            background-color: #ff0000;
+            color: #ffffff;
+            transition: all 0.3s;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .product-price::before {
-            content: '$';
-            font-size: 1.2rem;
-            color: #10b981;
+        .btn-floating:hover {
+            transform: scale(1.1);
+            box-shadow: 0 7px 25px rgba(255, 0, 0, 0.8);
         }
         
-        .buy-btn {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            border: none;
+        /* Online Counter */
+        .online-count {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #1a0000;
+            color: #ff0000;
             padding: 12px 20px;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            z-index: 100;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.5);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .online-count i {
+            margin-right: 8px;
+        }
+        
+        /* Stripe Button Enhanced */
+        .stripe-button-enhanced {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-width: 250px;
+            border: 2px solid #fff;
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .buy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+        .stripe-button-enhanced:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.5);
+            background: linear-gradient(135deg, #cc0000, #ff0000);
         }
         
-        .buy-btn:active {
-            transform: translateY(0);
+        .stripe-button-enhanced i {
+            margin-right: 12px;
+            font-size: 1.4em;
         }
         
-        .purchase-count {
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .payment-section {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 30px;
-            border: 1px solid #333;
-        }
-        
-        .payment-section h3 {
-            color: #fff;
-            margin-bottom: 12px;
+        .stripe-button-enhanced .price-tag {
+            background: #fff;
+            color: #ff0000;
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 1.1rem;
             font-weight: 600;
+            margin-left: 10px;
+            border: 1px solid #ff0000;
         }
         
-        .payment-section p {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-        
-        .telegram-section {
-            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 24px;
-            text-align: center;
-        }
-        
-        .telegram-section a {
-            color: #0088cc;
-            font-weight: 600;
-            text-decoration: none;
-            background: rgba(0, 136, 204, 0.1);
-            padding: 10px 20px;
-            border-radius: 8px;
+        .btn-telegram {
+            background-color: #ff0000;
+            margin-top: 20px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(0, 136, 204, 0.3);
+            justify-content: center;
+            padding: 15px 30px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .telegram-section a:hover {
-            background: rgba(0, 136, 204, 0.2);
-            transform: translateY(-2px);
+        .btn-telegram i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            background-color: #111111;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+            color: #999;
         }
         
         .disclaimer {
-            text-align: center;
-            color: #666;
             font-size: 0.8rem;
-            margin-top: 30px;
-            padding: 15px;
-            border-top: 1px solid #333;
+            color: #666;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .age-warning {
-            color: #dc2626;
-            font-weight: 600;
-            margin: 10px 0;
+        /* Safari-specific fixes */
+        @media not all and (min-resolution:.001dpcm) { 
+            @supports (-webkit-appearance:none) {
+                .btn, .stripe-button-enhanced, .btn-telegram {
+                    -webkit-appearance: none;
+                    border-radius: 30px;
+                }
+            }
         }
         
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .banner h1 {
+                font-size: 2.5rem;
             }
             
-            body {
-                padding: 12px;
-            }
-            
-            .header h1 {
-                font-size: 1.6rem;
-            }
-            
-            .product-title {
+            .banner p {
                 font-size: 1.1rem;
             }
             
-            .product-description {
-                font-size: 0.9rem;
-            }
-            
-            .media-container {
-                height: 180px;
-            }
-            
-            .activity-stats {
+            .product-grid {
                 grid-template-columns: 1fr;
             }
             
-            .verification-box {
-                padding: 30px 20px;
+            .btn-floating {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
             }
             
-            .age-buttons {
-                flex-direction: column;
+            .online-count {
+                bottom: 20px;
+                left: 20px;
+                font-size: 0.8rem;
             }
             
-            .stat-card {
-                padding: 15px;
+            .stripe-button-enhanced {
+                min-width: 200px;
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Age Verification Overlay -->
-    <div class="age-verification" id="ageVerification">
-        <div class="verification-box">
-            <h2><i class="fas fa-exclamation-triangle"></i> AGE VERIFICATION REQUIRED</h2>
-            <p>This website contains adult content intended for individuals 18 years of age or older.</p>
-            <p>By entering this site, you confirm that:</p>
-            <p>• You are at least 18 years old<br>
-               • You are not offended by adult content<br>
-               • You are accessing this site legally in your jurisdiction</p>
-            
-            <div class="age-warning">
-                <i class="fas fa-ban"></i> Under 18? Please leave immediately.
-            </div>
-            
-            <div class="age-buttons">
-                <button class="age-btn age-confirm" id="confirmAge">
-                    <i class="fas fa-check"></i> I AM 18 OR OLDER
-                </button>
-                <button class="age-btn age-deny" id="denyAge">
-                    <i class="fas fa-times"></i> I AM UNDER 18
-                </button>
-            </div>
-            
-            <div class="warning-note">
-                <i class="fas fa-shield-alt"></i> All transactions are secure and private. Your privacy is protected.
-            </div>
-        </div>
-    </div>
+    <!-- Header -->
+    <header>
+        <div class="logo">DEKU HOT CLUB</div>
+    </header>
     
-    <!-- Main Content (Hidden until age verification) -->
-    <div class="container" id="mainContent">
-        <!-- Activity Panel -->
-        <div class="activity-panel">
-            <div class="activity-header">
-                <h3>
-                    <i class="fas fa-chart-line"></i>
-                    Live Store Activity
-                </h3>
-                <button class="refresh-btn" id="refreshActivity">
-                    <i class="fas fa-sync-alt"></i>
-                    Refresh
-                </button>
-            </div>
-            
-            <div class="activity-stats">
-                <div class="stat-card">
-                    <div class="stat-title">
-                        <i class="fas fa-users"></i>
-                        Online Now
-                    </div>
-                    <div class="stat-value" id="onlineCount">152</div>
-                    <div class="stat-change positive">
-                        <i class="fas fa-arrow-up"></i>
-                        <span id="onlineChange">+12</span> in last 5 min
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-title">
-                        <i class="fas fa-shopping-cart"></i>
-                        Today's Purchases
-                    </div>
-                    <div class="stat-value" id="todayPurchases">47</div>
-                    <div class="stat-change positive">
-                        <i class="fas fa-arrow-up"></i>
-                        <span id="purchaseChange">+8</span> in last hour
-                    </div>
-                </div>
-            </div>
-            
-            <div class="live-users">
-                <div class="live-dot"></div>
-                <span id="liveStatus">Live: 12 people viewing products right now</span>
-            </div>
-            
-            <div class="recent-purchases" id="recentPurchases">
-                <!-- Recent purchases will be loaded here -->
-            </div>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#vip">VIP</a>
+        <a href="https://t.me/teen_sellwr" target="_blank" id="supportLink">Support</a>
+    </nav>
+    
+    <!-- Main Banner -->
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h1>EXCLUSIVE ADULT CONTENT</h1>
+            <p>Discover unique and personalized experiences made just for you</p>
+            <a href="#products" class="btn">VIEW PRODUCTS</a>
         </div>
-        
-        <!-- Header -->
-        <div class="header">
-            <h1>Premium rare contents <span class="age-badge">18+</span></h1>
-            <p>Adult content - Verified access only • Secure purchases • Instant delivery</p>
-        </div>
-        
-        <!-- Products Grid -->
-        <div class="products-grid" id="productsContainer">
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">OUR PRODUCTS</h2>
+        <div class="product-grid" id="productsContainer">
             <!-- Products will be loaded here -->
         </div>
-        
-        <!-- Payment Section -->
-        <div class="payment-section">
-            <h3><i class="fas fa-lock"></i> Secure & Private Payment</h3>
-            <p>• All payments processed through secure PayPal</p>
-            <p>• Your privacy is protected - no data sharing</p>
-            <p>• Discreet billing on your statement</p>
-            <p>• Instant delivery after payment</p>
-        </div>
-        
-        <!-- Telegram Section -->
-        <div class="telegram-section">
-            <p><i class="fab fa-telegram"></i> Contact for support and delivery:</p>
-            <a href="https://t.me/ellyseller" target="_blank">
-                <i class="fab fa-telegram"></i> @ellyseller
-            </a>
-            <p style="margin-top: 12px; font-size: 0.9rem; color: #888;">
-                After purchase, message me on Telegram for delivery
-            </p>
-        </div>
-        
-        <div class="disclaimer">
-            <p><i class="fas fa-info-circle"></i> You must be 18+ to access this content. All sales are final. By purchasing, you confirm you are of legal age in your jurisdiction.</p>
-        </div>
+    </section>
+
+    <!-- Floating Buy Now Button -->
+    <a href="#products" class="btn btn-floating" id="floatingBuyBtn">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+    
+    <!-- Online Users Counter -->
+    <div class="online-count" id="onlineCount">
+        <i class="fas fa-users"></i> <span id="onlineUsers">0</span> people online
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 DEKU HOT CLUB. All rights reserved.</p>
+        <p>For adults only. All models are 18+ years old.</p>
+        <p class="disclaimer">This content is protected by copyright laws. Unauthorized distribution is prohibited.</p>
+    </footer>
+
     <script>
-        // CONFIGURATION
-        const CONFIG = {
-            paypalEmail: "abrahamsamw@gmail.com",
-            currency: "USD",
-            telegram: "@ellyseller",
-            
-            // Activity simulation
-            activity: {
-                onlineUsers: {
-                    min: 120,
-                    max: 200,
-                    changeMin: -8,
-                    changeMax: 12
-                },
-                purchases: {
-                    dailyMin: 30,
-                    dailyMax: 80,
-                    hourlyChange: 2
-                }
+        // Product Data - ALL 23 ORIGINAL PRODUCTS WITH VIDEO PREVIEWS
+        let products = [
+            {
+                id: 1,
+                name: "MOM AND SON",
+                description: "MOM AND SON CP - Exclusive content collection with high quality videos and images",
+                price: 35.00,
+                image: "https://i.postimg.cc/d10qQdn1/20250515-150409.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
             },
-            
-            // Products - COM SISTEMA DE VÍDEO CORRIGIDO
-            products: [
-                {
-                    id: 1,
-                    name: "MOM AND SON😋💜",
-                    price: 29.99,
-                    image: "https://imagizer.imageshack.com/img923/9634/E2fwLX.jpg",
-                    // CORRIGIDO: Link direto para vídeo MP4
-                    video: "https://www.dropbox.com/scl/fi/vtmildipo9sf0w0aj33ag/725298129165025274.mp4?dl=0",
-                    description: [
-                        "✅ REAL GIRLS",
-                        "✅ YOUNG BOY", 
-                        "✅ MOM AND SON",
-                        "✅ 228 FILES",
-                        "✅ 12.45 GB",
-                        "Instant access after purchase."
-                    ],
-                    trending: true,
-                    purchaseCount: 42
-                },
-                {
-                    id: 2,
-                    name: "LIZZY AND BRO🔥",
-                    price: 34.99,
-                    image: "https://imagizer.imageshack.com/img924/7232/QMnkEi.jpg",
-                    // CORRIGIDO: Link correto do Archive.org
-                    video: "https://archive.org/download/725298129165025274_202512/725298129165025274.mp4",
-                    description: [
-                        "✅ BLACKMAIL VIDEOS",
-                        "✅ TRAINING VIDEOS",
-                        "✅ INCEST",
-                        "Special collection with exclusive content."
-                    ],
-                    popular: true,
-                    purchaseCount: 28
-                },
-                {
-                    id: 3,
-                    name: "ALL CP COLLETION",
-                    price: 49.99,
-                    image: "https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ CP 2GB",
-                        "✅ CP 4GB",
-                        "✅ Premium content",
-                        "✅ CP VIP 8GB",
-                        "VIP access to premium adult content."
-                    ],
-                    purchaseCount: 56
-                },
-                {
-                    id: 4,
-                    name: "ALL TEENS COLLETION😈",
-                    price: 59.99,
-                    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ OVER 700 VIDEOS",
-                        "✅ MORE THAN 200 BLACKMAIL VIDEOS",
-                        "✅ INCEST",
-                        "✅ ALL TEENS",
-                        "Bundle of exclusive adult content."
-                    ],
-                    trending: true,
-                    purchaseCount: 73
-                },
-                {
-                    id: 5,
-                    name: "SNAPGOD FULL EDITION",
-                    price: 34.99,
-                    image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ BLACKMAIL VIDEOS",
-                        "✅ INCEST TEENS",
-                        "✅ 40GB",
-                        "✅ TRAINING AND SEXY",
-                        "Private collection with unique content."
-                    ],
-                    purchaseCount: 19
-                },
-                {
-                    id: 6,
-                    name: "OMEGLE FULL💜",
-                    price: 29.99,
-                    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ 140GB+",
-                        "✅ FULL CONTENT",
-                        "✅ RARE NEW COLLETION",
-                        "✅ OMEGLE VIDEOS UPDATE",
-                        "Deluxe package with extended content."
-                    ],
-                    purchaseCount: 31
-                },
-                {
-                    id: 7,
-                    name: "AYUMI TEEN😋",
-                    price: 29.99,
-                    image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ Premium folder",
-                        "✅ REAL TEEN",
-                        "✅ 10GB",
-                        "Premium access to exclusive adult content library."
-                    ],
-                    purchaseCount: 24
-                },
-                {
-                    id: 8,
-                    name: "ALL VIP 9 PYT CHANNELS‼️",
-                    price: 55,
-                    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ HIGH SCHOOL",
-                        "✅ LATINAS",
-                        "✅ 13-17y",
-                        "✅ LIGHTSKIN and more...",
-                        "Special edition bundle with limited content."
-                    ],
-                    popular: true,
-                    purchaseCount: 88
-                },
-                {
-                    id: 9,
-                    name: "IZZY AND DOG🔥‼️",
-                    price: 25,
-                    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ BLACKMAIL",
-                        "✅ REAL GIRL",
-                        "✅ SOLO STUFF",
-                        "✅ Full access",
-                        "Ultimate adult content collection."
-                    ],
-                    purchaseCount: 36
-                },
-                {
-                    id: 10,
-                    name: "DARKZEID🔞",
-                    price: 25,
-                    image: "https://imagizer.imageshack.com/img922/5219/KjDUKb",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ ALL BM VIDEOS",
-                        "✅ ALL CAMERAS UPLOADS",
-                        "✅ 20GB",
-                        "✅ FULL NUDE CONTENT",
-                        "VIP access to exclusive adult content."
-                    ],
-                    purchaseCount: 17
-                },
-                // NOVOS PRODUTOS ADICIONADOS
-                {
-                    id: 11,
-                    name: "EXCLUSIVE PREMIUM PACK🔥",
-                    price: 74.99,
-                    image: "https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ 500+ VIDEOS",
-                        "✅ ALL CATEGORIES",
-                        "✅ 4K QUALITY",
-                        "✅ LIFETIME ACCESS",
-                        "Complete premium collection with everything included."
-                    ],
-                    trending: true,
-                    popular: true,
-                    purchaseCount: 45
-                },
-                {
-                    id: 12,
-                    name: "PRIVATE FAMILY ARCHIVE🔞",
-                    price: 89.99,
-                    image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ REAL FAMILY VIDEOS",
-                        "✅ PRIVATE MOMENTS",
-                        "✅ 300GB CONTENT",
-                        "✅ EXCLUSIVE ACCESS",
-                        "Rare family collection never seen before."
-                    ],
-                    purchaseCount: 32
-                },
-                {
-                    id: 13,
-                    name: "TEEN BLACKMAIL EXTREME💀",
-                    price: 65.50,
-                    image: "https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ 150+ BLACKMAIL VIDS",
-                        "✅ REAL TEEN GIRLS",
-                        "✅ PRIVATE CHATS",
-                        "✅ 50GB SPECIAL",
-                        "Extreme blackmail collection with exclusive content."
-                    ],
-                    trending: true,
-                    purchaseCount: 67
-                },
-                {
-                    id: 14,
-                    name: "ASIAN PREMIUM COLLECTION🌸",
-                    price: 55.99,
-                    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ ASIAN MODELS",
-                        "✅ 200+ VIDEOS",
-                        "✅ HD QUALITY",
-                        "✅ 40GB TOTAL",
-                        "Exclusive Asian content collection."
-                    ],
-                    popular: true,
-                    purchaseCount: 53
-                },
-                {
-                    id: 15,
-                    name: "VIP ALL ACCESS PASS🎭",
-                    price: 199.99,
-                    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                    video: "", // Adicione a URL do vídeo aqui
-                    description: [
-                        "✅ ALL COLLECTIONS",
-                        "✅ FUTURE UPDATES",
-                        "✅ PRIORITY SUPPORT",
-                        "✅ 1TB+ CONTENT",
-                        "Ultimate VIP access to everything including future updates."
-                    ],
-                    purchaseCount: 21
-                }
-            ],
-            
-            // Recent purchases simulation data
-            recentBuyers: [
-                { name: "Alex Johnson", product: "MOM AND SON😋💜", amount: 29.99, time: "2 min ago" },
-                { name: "Maria Garcia", product: "ALL CP COLLETION", amount: 49.99, time: "5 min ago" },
-                { name: "David Smith", product: "OMEGLE FULL💜", amount: 29.99, time: "8 min ago" },
-                { name: "Sarah Wilson", product: "ALL TEENS COLLETION😈", amount: 59.99, time: "12 min ago" },
-                { name: "James Brown", product: "SNAPGOD FULL EDITION", amount: 34.99, time: "15 min ago" },
-                { name: "Emma Davis", product: "ALL VIP 9 PYT CHANNELS‼️", amount: 64.99, time: "18 min ago" },
-                { name: "Michael Taylor", product: "LIZZY AND BRO🔥", amount: 34.99, time: "22 min ago" },
-                { name: "Lisa Martinez", product: "IZZY AND DOG🔥‼️", amount: 24.99, time: "25 min ago" }
-            ]
-        };
-
-        // Age Verification System
-        const ageVerification = document.getElementById('ageVerification');
-        const mainContent = document.getElementById('mainContent');
-        const confirmBtn = document.getElementById('confirmAge');
-        const denyBtn = document.getElementById('denyAge');
-
-        // Check if age is already verified
-        function checkAgeVerification() {
-            const ageVerified = localStorage.getItem('ageVerified18plus');
-            const verificationTime = localStorage.getItem('verificationTime');
-            const now = Date.now();
-            
-            // If verified within last 24 hours, show content
-            if (ageVerified === 'true' && verificationTime && (now - parseInt(verificationTime)) < 24 * 60 * 60 * 1000) {
-                showContent();
-                return true;
+            {
+                id: 2,
+                name: "BRAZZERS",
+                description: "30 media files + themed HD videos - Premium quality content",
+                price: 30.00,
+                image: "https://i.postimg.cc/qqh4yTPH/20250515-150356.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 3,
+                name: "IZZY FOLDER",
+                description: "+ 20 FOLDER INCEST 110 VIDEOS AND DOG - Extensive collection",
+                price: 25.00,
+                image: "https://i.postimg.cc/J0fmQF8D/20250531-220548.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 4,
+                name: "VIP Annual Membership",
+                description: "20+ new packs every week, exclusive content, priority access",
+                price: 250.00,
+                image: "https://i.postimg.cc/Fzdr0bPf/IMG-20250518-152754-287.jpg",
+                stripeLink: "https://buy.stripe.com/test_00g3fR7nO3pC9Uw5kk",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 5,
+                name: "OMEGLE",
+                description: "NEW FOLDER DONT WAST THIS package - Fresh content",
+                price: 45.00,
+                image: "https://i.postimg.cc/Y9ytv9yx/20250515-150359.jpg",
+                stripeLink: "https://buy.stripe.com/dRm5kF65a6ibd8B21U93y05",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 6,
+                name: "BLACKMAIL",
+                description: "full media folder and 550GB videos HD - Massive collection",
+                price: 50.00,
+                image: "https://i.postimg.cc/QxKdWQDK/20250521-195713.jpg",
+                stripeLink: "https://buy.stripe.com/00w3cx2SY7mf4C57me93y0b",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 7,
+                name: "LIZZY AND HER BROTHER",
+                description: "LIZZY AND HER BROTHER INCEST FOLDER - Exclusive content",
+                price: 25.00,
+                image: "https://i.postimg.cc/PqTXc0w1/20250515-150418.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {    
+                id: 8,
+                name: "TRINITY B",
+                description: "CONTENT OF TEENS - Curated collection",
+                price: 25.00,
+                image: "https://i.postimg.cc/5N77gJT5/20250608-152631.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 9,
+                name: "BELLE DELPHINE",
+                description: "THE MOST POPULAR FOLDER ON TIK TOK - Viral content",
+                price: 25.00,
+                image: "https://i.postimg.cc/g24Z8c7d/20250608-154549.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 10,
+                name: "BILLIE EILISH",
+                description: "Exclusive content collection - Premium material",
+                price: 25.00,
+                image: "https://i.postimg.cc/xdt3f3Qv/20250608-154517.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 11,
+                name: "DARKZEID",
+                description: "Premium content package - Exclusive material",
+                price: 35.00,
+                image: "https://i.postimg.cc/br9V50y0/IMG-20250901-221625-560.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 12,
+                name: "INVAKA",
+                description: "Special collection - Unique content",
+                price: 40.00,
+                image: "https://i.postimg.cc/3RGS5qZs/IMG-20250902-170043-151.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 13,
+                name: "Desire Garcia",
+                description: "Exclusive content - Premium quality",
+                price: 25.00,
+                image: "https://i.postimg.cc/t4TvrVLP/IMG-20250902, 170339-400.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 14,
+                name: "FATHER AND DAUGHTER",
+                description: "Special collection - Exclusive scenarios",
+                price: 35.00,
+                image: "https://i.postimg.cc/TwrtyjD8/IMG-20250827-094703-624.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 15,
+                name: "REAL INCEST",
+                description: "Rare content not available elsewhere - Exclusive",
+                price: 40.00,
+                image: "https://i.postimg.cc/XJM271Xc/IMG-20250828-170701-014.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 16,
+                name: "ALL CP",
+                description: "Ultimate premium content package - Complete collection",
+                price: 75.00,
+                image: "https://i.postimg.cc/Gp4NpsKr/IMG-20250901-221410-024.jpg",
+                stripeLink: "https://buy.stripe.com/00w3cx2SY7mf4C57me93y0b",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 17,
+                name: "CP 1",
+                description: "Limited time exclusive content - Special offer",
+                price: 25.00,
+                image: "https://i.postimg.cc/pT86fb36/IMG-20250901-221410-576.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 18,
+                name: "CP 2",
+                description: "Over 100 premium media files - Extensive package",
+                price: 35.00,
+                image: "https://i.postimg.cc/CxLXW2fR/IMG-20250901-221410-569.jpg",
+                stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 19,
+                name: "ALL CONTENT TEENS",
+                description: "High quality exclusive content - Teen collection",
+                price: 45.00,
+                image: "https://i.postimg.cc/VN0GwPsk/IMG-20250902-181310-488.jpg",
+                stripeLink: "https://buy.stripe.com/dRm5kF65a6ibd8B21U93y05",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 20,
+                name: "BABY ASHLEY",
+                description: "Premium content with bonus material - Exclusive",
+                price: 25.00,
+                image: "https://i.postimg.cc/m2T5Hnjm/IMG-20250901-221625-947.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 21,
+                name: "GAYS YOUNG VIP CP",
+                description: "All-access pass to exclusive content - VIP package",
+                price: 45.00,
+                image: "https://i.postimg.cc/2jsNp6XX/Screenshot-2025-09-28-20-16-48-480-app-nicegram.jpg",
+                stripeLink: "https://buy.stripe.com/dRm5kF65a6ibd8B21U93y05",
+                views: Math.floor(Math.random() * 50) + 10,
+            },
+            {
+                id: 22,
+                name: "Monkey APP",
+                description: "The most exclusive content available - Premium",
+                price: 20.00,
+                image: "https://i.postimg.cc/L5jfYRBG/IMG_20251119_105200_086.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
+            },
+            {
+                id: 23,
+                name: "OMEGLE",
+                description: "Everything we have to offer - Complete package",
+                price: 20.00,
+                image: "https://i.postimg.cc/RFw3d8q6/IMG-20250921-130645-597.jpg",
+                stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
+                views: Math.floor(Math.random() * 50) + 10
             }
-            return false;
+        ];
+
+        // Sistema de Usuários Online
+        let onlineUsers = Math.floor(Math.random() * 50) + 20;
+        
+        function updateOnlineUsers() {
+            // Simulate user count changes
+            const change = Math.floor(Math.random() * 5) - 2;
+            onlineUsers = Math.max(10, onlineUsers + change);
+            document.getElementById('onlineUsers').textContent = onlineUsers;
+            
+            setTimeout(updateOnlineUsers, 30000);
         }
 
-        // Show main content
-        function showContent() {
-            ageVerification.style.display = 'none';
-            mainContent.style.display = 'block';
-            renderProducts();
-            checkURLParameters();
-            initializeActivitySimulation();
-        }
-
-        // Handle age confirmation
-        confirmBtn.addEventListener('click', function() {
-            localStorage.setItem('ageVerified18plus', 'true');
-            localStorage.setItem('verificationTime', Date.now().toString());
-            showContent();
-        });
-
-        // Handle age denial
-        denyBtn.addEventListener('click', function() {
-            alert('You must be 18 or older to access this content. Redirecting...');
-            setTimeout(() => {
-                window.location.href = 'https://www.google.com';
-            }, 2000);
-        });
-
-        // Activity Simulation System
-        class ActivitySimulator {
-            constructor() {
-                this.onlineCount = this.randomInt(150, 180);
-                this.todayPurchases = this.randomInt(40, 60);
-                this.lastUpdate = new Date();
-                this.purchaseInterval = null;
-                this.onlineInterval = null;
-            }
-            
-            randomInt(min, max) {
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
-            
-            initialize() {
-                this.updateDisplay();
-                this.renderRecentPurchases();
-                this.startSimulation();
-                
-                // Add refresh button event
-                document.getElementById('refreshActivity').addEventListener('click', () => {
-                    this.refreshActivity();
-                });
-            }
-            
-            updateDisplay() {
-                document.getElementById('onlineCount').textContent = this.onlineCount;
-                document.getElementById('todayPurchases').textContent = this.todayPurchases;
-                
-                // Update changes
-                const onlineChange = this.randomInt(5, 15);
-                document.getElementById('onlineChange').textContent = `+${onlineChange}`;
-                
-                const purchaseChange = this.randomInt(3, 10);
-                document.getElementById('purchaseChange').textContent = `+${purchaseChange}`;
-                
-                // Update live status
-                const viewingProducts = this.randomInt(8, 20);
-                document.getElementById('liveStatus').textContent = 
-                    `Live: ${viewingProducts} people viewing products right now`;
-            }
-            
-            startSimulation() {
-                // Update online users every 15-30 seconds
-                this.onlineInterval = setInterval(() => {
-                    const change = this.randomInt(-5, 10);
-                    this.onlineCount = Math.max(120, this.onlineCount + change);
-                    this.updateDisplay();
-                }, this.randomInt(15000, 30000));
-                
-                // Update purchases every 45-90 seconds
-                this.purchaseInterval = setInterval(() => {
-                    const newPurchases = this.randomInt(1, 3);
-                    this.todayPurchases += newPurchases;
-                    this.addNewPurchase();
-                    this.updateDisplay();
-                }, this.randomInt(45000, 90000));
-            }
-            
-            addNewPurchase() {
-                const buyers = CONFIG.recentBuyers;
-                const products = CONFIG.products;
-                
-                const randomBuyer = buyers[this.randomInt(0, buyers.length - 1)];
-                const randomProduct = products[this.randomInt(0, products.length - 1)];
-                
-                const newPurchase = {
-                    name: randomBuyer.name,
-                    product: randomProduct.name,
-                    amount: randomProduct.price,
-                    time: "just now"
-                };
-                
-                // Add to recent purchases list at the top
-                const container = document.getElementById('recentPurchases');
-                const purchaseItem = document.createElement('div');
-                purchaseItem.className = 'purchase-item';
-                purchaseItem.innerHTML = `
-                    <div class="purchase-user">
-                        <div class="user-avatar">${newPurchase.name.charAt(0)}</div>
-                        <div class="purchase-info">
-                            <div class="user-name">${newPurchase.name}</div>
-                            <div class="product-name">${newPurchase.product}</div>
-                            <div class="purchase-time">
-                                <i class="far fa-clock"></i> ${newPurchase.time}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="purchase-amount">$${newPurchase.amount.toFixed(2)}</div>
-                `;
-                
-                // Insert at the top
-                if (container.firstChild) {
-                    container.insertBefore(purchaseItem, container.firstChild);
-                } else {
-                    container.appendChild(purchaseItem);
-                }
-                
-                // Limit to 8 items
-                if (container.children.length > 8) {
-                    container.removeChild(container.lastChild);
-                }
-            }
-            
-            renderRecentPurchases() {
-                const container = document.getElementById('recentPurchases');
-                container.innerHTML = '';
-                
-                CONFIG.recentBuyers.forEach(purchase => {
-                    const purchaseItem = document.createElement('div');
-                    purchaseItem.className = 'purchase-item';
-                    purchaseItem.innerHTML = `
-                        <div class="purchase-user">
-                            <div class="user-avatar">${purchase.name.charAt(0)}</div>
-                            <div class="purchase-info">
-                                <div class="user-name">${purchase.name}</div>
-                                <div class="product-name">${purchase.product}</div>
-                                <div class="purchase-time">
-                                    <i class="far fa-clock"></i> ${purchase.time}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="purchase-amount">$${purchase.amount.toFixed(2)}</div>
-                    `;
-                    container.appendChild(purchaseItem);
-                });
-            }
-            
-            refreshActivity() {
-                // Reset with new random values
-                this.onlineCount = this.randomInt(140, 190);
-                this.todayPurchases = this.randomInt(35, 70);
-                this.updateDisplay();
-                this.renderRecentPurchases();
-                
-                // Show refresh feedback
-                const btn = document.getElementById('refreshActivity');
-                const originalHTML = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check"></i> Updated';
-                btn.style.background = '#10b981';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.style.background = '#2563eb';
-                }, 2000);
-            }
-        }
-
-        // Initialize activity simulation
-        let activitySimulator;
-        function initializeActivitySimulation() {
-            activitySimulator = new ActivitySimulator();
-            activitySimulator.initialize();
-        }
-
-        // Function to generate PayPal link
-        function generatePayPalLink(product) {
-            const baseURL = "https://www.paypal.com/cgi-bin/webscr";
-            const params = new URLSearchParams({
-                'cmd': '_xclick',
-                'business': CONFIG.paypalEmail,
-                'item_name': product.name,
-                'amount': product.price.toFixed(2),
-                'currency_code': CONFIG.currency,
-                'no_note': '1',
-                'no_shipping': '1',
-                'lc': 'en_US',
-                'bn': 'PP-BuyNowBF',
-                'custom': `product_id=${product.id}`,
-                'return': window.location.href + '?success=true',
-                'cancel_return': window.location.href + '?cancelled=true'
-            });
-            
-            return `${baseURL}?${params.toString()}`;
-        }
-
-        // Function to handle tab switching
-        function switchMediaTab(button, productId) {
-            // If button is disabled, don't do anything
-            if (button.classList.contains('disabled')) return;
-            
-            const mediaContainer = button.closest('.media-container');
-            const tabs = mediaContainer.querySelectorAll('.media-tab');
-            const panels = mediaContainer.querySelectorAll('.media-panel');
-            
-            // Remove active class from all tabs and panels
-            tabs.forEach(tab => tab.classList.remove('active'));
-            panels.forEach(panel => panel.classList.remove('active'));
-            
-            // Add active class to clicked tab and corresponding panel
-            button.classList.add('active');
-            const tabIndex = Array.from(tabs).indexOf(button);
-            panels[tabIndex].classList.add('active');
-        }
-
-        // Function to check if a URL is a valid video
-        function isValidVideoUrl(url) {
-            if (!url || url.trim() === '') return false;
-            
-            // Check for common video file extensions
-            const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv', '.flv'];
-            const urlLower = url.toLowerCase();
-            
-            // Check if URL ends with a video extension
-            for (const ext of videoExtensions) {
-                if (urlLower.includes(ext) || urlLower.endsWith(ext)) {
-                    return true;
-                }
-            }
-            
-            // Check for common video hosting domains
-            const videoDomains = [
-                'youtube.com', 'youtu.be',
-                'vimeo.com',
-                'dailymotion.com',
-                'streamable.com',
-                'archive.org',
-                'drive.google.com',
-                'dropbox.com',
-                'dl.dropboxusercontent.com'
-            ];
-            
-            for (const domain of videoDomains) {
-                if (urlLower.includes(domain)) {
-                    return true;
-                }
-            }
-            
-            return false;
-        }
-
-        // Function to convert video URLs to direct links
-        function getDirectVideoUrl(url) {
-            if (!url) return '';
-            
-            const urlLower = url.toLowerCase();
-            
-            // Google Drive conversion
-            if (urlLower.includes('drive.google.com')) {
-                // Convert view link to preview/direct link
-                if (urlLower.includes('/file/d/')) {
-                    const match = url.match(/\/file\/d\/([^\/]+)/);
-                    if (match) {
-                        const fileId = match[1];
-                        return `https://drive.google.com/uc?export=download&id=${fileId}`;
-                    }
-                }
-            }
-            
-            // Dropbox conversion
-            if (urlLower.includes('dropbox.com')) {
-                // Convert share link to direct download link
-                return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
-                         .replace('?dl=0', '')
-                         .replace('?dl=1', '') + '?raw=1';
-            }
-            
-            // Archive.org conversion
-            if (urlLower.includes('archive.org')) {
-                // If it's a details page, try to get the direct MP4 link
-                if (urlLower.includes('/details/')) {
-                    const identifier = url.split('/details/')[1];
-                    return `https://archive.org/download/${identifier}/${identifier}.mp4`;
-                }
-            }
-            
-            return url;
-        }
-
-        // Function to render products with formatted descriptions and video tabs
-        function renderProducts() {
+        function loadProducts() {
             const container = document.getElementById('productsContainer');
+            if (!container) {
+                console.error('Products container not found!');
+                return;
+            }
+            
             container.innerHTML = '';
             
-            CONFIG.products.forEach(product => {
+            products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
+                productCard.dataset.id = product.id;
                 
-                // Get direct video URL
-                const directVideoUrl = getDirectVideoUrl(product.video);
-                const hasValidVideo = isValidVideoUrl(product.video);
+                const timerDisplay = document.createElement('div');
+                timerDisplay.className = 'timer';
+                timerDisplay.textContent = "20:00";
                 
-                // Create tabs and media content
-                let mediaHTML = '';
-                
-                if (product.image) {
-                    mediaHTML = `
-                        <div class="media-container">
-                            <div class="media-tabs">
-                                <button class="media-tab active" onclick="switchMediaTab(this, ${product.id})">
-                                    <i class="fas fa-image"></i> Image
-                                </button>
-                                <button class="media-tab ${!hasValidVideo ? 'disabled' : ''}" onclick="switchMediaTab(this, ${product.id})" ${!hasValidVideo ? 'disabled' : ''}>
-                                    <i class="fas fa-video"></i> Video Preview
-                                </button>
-                            </div>
-                            <div class="media-content">
-                                <div class="media-panel image-panel active">
-                                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"250\" viewBox=\"0 0 400 250\"><rect width=\"400\" height=\"250\" fill=\"%231a1a1a\"/><text x=\"200\" y=\"125\" font-family=\"Arial\" font-size=\"14\" fill=\"%23666\" text-anchor=\"middle\">Image Loading...</text></svg>'">
-                                </div>
-                                <div class="media-panel video-panel">
-                                    ${hasValidVideo ? `
-                                        <div class="video-container">
-                                            <video class="preview-video" controls preload="metadata" playsinline onerror="handleVideoError(this, ${product.id})">
-                                                <source src="${directVideoUrl}" type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </div>
-                                    ` : `
-                                        <div class="video-placeholder">
-                                            <i class="fas fa-video-slash"></i>
-                                            <p>No video preview available</p>
-                                            <small class="no-video">${product.video ? 'Invalid video URL' : 'Add video URL in product configuration'}</small>
-                                        </div>
-                                    `}
-                                </div>
-                            </div>
-                            <div class="adult-badge">
-                                <i class="fas fa-exclamation-triangle"></i> 18+
-                            </div>
-                            ${product.trending ? '<div class="trending-badge"><i class="fas fa-fire"></i> TRENDING</div>' : ''}
-                            ${product.popular ? '<div class="popular-badge"><i class="fas fa-star"></i> POPULAR</div>' : ''}
-                        </div>
-                    `;
-                } else {
-                    mediaHTML = `
-                        <div class="media-container">
-                            <div class="media-placeholder">
-                                <i class="fas fa-image"></i> Product Preview
-                            </div>
-                            <div class="adult-badge">
-                                <i class="fas fa-exclamation-triangle"></i> 18+
-                            </div>
-                        </div>
-                    `;
-                }
-                
-                // Create formatted description with checkmarks
-                let descriptionHTML = '';
-                if (Array.isArray(product.description)) {
-                    product.description.forEach(line => {
-                        if (line.startsWith('✅')) {
-                            descriptionHTML += `
-                                <div class="description-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${line.substring(2)}</span>
-                                </div>
-                            `;
-                        } else {
-                            descriptionHTML += `<p style="margin-top: 10px;">${line}</p>`;
-                        }
-                    });
-                } else {
-                    descriptionHTML = `<p>${product.description}</p>`;
-                }
+                const viewCount = document.createElement('div');
+                viewCount.className = 'view-count';
+                viewCount.innerHTML = `<i class="fas fa-eye"></i> ${product.views}`;
                 
                 productCard.innerHTML = `
-                    ${mediaHTML}
-                    <div class="product-content">
-                        <h3 class="product-title">${product.name}</h3>
-                        <div class="product-description">
-                            ${descriptionHTML}
-                        </div>
-                        <div class="product-price">${product.price.toFixed(2)}</div>
-                        <button class="buy-btn" onclick="buyProduct(${product.id})">
-                            <i class="fab fa-paypal"></i> Buy Now - $${product.price.toFixed(2)}
-                        </button>
-                        <div class="purchase-count">
-                            <i class="fas fa-shopping-cart"></i> ${product.purchaseCount} recent purchases
-                        </div>
+                    <div class="product-media">
+                        <div class="product-image" style="background-image: url('${product.image}')"></div>
+                        ${viewCount.outerHTML}
+                    </div>
+                    <div class="product-info">
+                        ${timerDisplay.outerHTML}
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="price">$${product.price.toFixed(2)}</div>
+                        <a href="${product.stripeLink}" target="_blank" class="stripe-button-enhanced">
+                            <i class="fas fa-lock"></i> BUY NOW
+                            <span class="price-tag">$${product.price.toFixed(2)}</span>
+                        </a>
                     </div>
                 `;
                 
                 container.appendChild(productCard);
+                
+                // Start timer for this product
+                const display = productCard.querySelector('.timer');
+                startTimer(1200, display);
             });
         }
 
-        // Handle video loading errors
-        function handleVideoError(videoElement, productId) {
-            console.error(`Video failed to load for product ${productId}:`, videoElement.src);
-            
-            const container = videoElement.closest('.video-container');
-            if (container) {
-                container.innerHTML = `
-                    <div class="video-placeholder">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p>Failed to load video preview</p>
-                        <small class="no-video">The video may be private or the link is invalid</small>
-                    </div>
-                `;
-            }
-            
-            // Disable the video tab
-            const mediaContainer = videoElement.closest('.media-container');
-            const videoTab = mediaContainer.querySelector('.media-tab:last-child');
-            if (videoTab) {
-                videoTab.classList.add('disabled');
-                videoTab.disabled = true;
-            }
-        }
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
 
-        // Function to handle purchase
-        function buyProduct(productId) {
-            // Double-check age verification
-            const ageVerified = localStorage.getItem('ageVerified18plus');
-            if (ageVerified !== 'true') {
-                alert('Please verify your age before making a purchase.');
-                ageVerification.style.display = 'flex';
-                mainContent.style.display = 'none';
-                return;
-            }
-            
-            const product = CONFIG.products.find(p => p.id === productId);
-            if (!product) return;
-            
-            // Show loading state
-            const button = event.target;
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            button.disabled = true;
-            
-            // Simulate purchase in activity panel
-            if (activitySimulator) {
-                setTimeout(() => {
-                    activitySimulator.addNewPurchase();
-                }, 500);
-            }
-            
-            // Redirect to PayPal
-            setTimeout(() => {
-                window.location.href = generatePayPalLink(product);
-            }, 300);
-        }
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        // Function to check URL parameters
-        function checkURLParameters() {
-            const urlParams = new URLSearchParams(window.location.search);
-            
-            if (urlParams.has('success')) {
-                window.history.replaceState({}, document.title, window.location.pathname);
-                showNotification(
-                    "Purchase Successful!",
-                    `✅ Thank you for your purchase! You will receive your content via secure delivery. Contact @ellyseller on Telegram for support.`,
-                    "success"
-                );
-                
-                // Update activity stats
-                if (activitySimulator) {
-                    activitySimulator.todayPurchases += 1;
-                    activitySimulator.updateDisplay();
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.textContent = "OFFER EXPIRED";
+                    display.style.color = "#ff4444";
                 }
-            }
-            
-            if (urlParams.has('cancelled')) {
-                window.history.replaceState({}, document.title, window.location.pathname);
-                showNotification(
-                    "Purchase Cancelled",
-                    "⚠️ Your purchase was cancelled. No charges were made.",
-                    "warning"
-                );
-            }
-        }
-
-        // Show notification
-        function showNotification(title, message, type) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: ${type === 'success' ? '#1a1a1a' : '#1a1a1a'};
-                border-left: 4px solid ${type === 'success' ? '#10b981' : '#dc2626'};
-                padding: 16px;
-                border-radius: 8px;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-                z-index: 1000;
-                max-width: 400px;
-                animation: slideIn 0.3s ease;
-                color: #fff;
-                border: 1px solid #333;
-            `;
-            
-            notification.innerHTML = `
-                <div style="font-weight: 600; margin-bottom: 6px; color: #fff;">${title}</div>
-                <div style="color: #aaa; font-size: 0.9rem; margin-bottom: 12px;">${message}</div>
-                <button onclick="this.parentElement.remove()" style="background: #444; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; cursor: pointer;">
-                    Close
-                </button>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Auto remove after 10 seconds
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.remove();
-                }
-            }, 10000);
+            }, 1000);
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Add CSS animation
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-            `;
-            document.head.appendChild(style);
+            loadProducts();
+            updateOnlineUsers();
             
-            // Check age verification on load
-            checkAgeVerification();
+            // Fix for Safari support link
+            document.getElementById('supportLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.open('https://t.me/teen_sellwr', '_blank');
+            });
             
-            // Log configuration (for debugging)
-            console.log('Adult Content Store Configuration:');
-            console.log('- PayPal Email:', CONFIG.paypalEmail);
-            console.log('- Currency:', CONFIG.currency);
-            console.log('- Telegram:', 'https://t.me/ellyseller');
-            console.log('- Age Restriction:', '18+ Required');
-            console.log('- Total Products:', CONFIG.products.length);
-            
-            // Log video instructions
-            console.log('\n=== COMO ADICIONAR VÍDEOS ===');
-            console.log('1. Hospede seus vídeos em um serviço gratuito');
-            console.log('2. Copie a URL do vídeo');
-            console.log('3. Adicione a URL no campo "video" de cada produto na configuração');
-            console.log('4. Recarregue a página para ver as alterações');
-            console.log('\n=== LINKS DE EXEMPLO VÁLIDOS ===');
-            console.log('• Google Drive: https://drive.google.com/file/d/ID_DO_ARQUIVO/view');
-            console.log('• Dropbox: https://www.dropbox.com/s/ID_DO_ARQUIVO/nome.mp4?dl=0');
-            console.log('• Archive.org: https://archive.org/download/IDENTIFICADOR/nome.mp4');
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
-
-        // Expose functions to global scope for button onclick
-        window.buyProduct = buyProduct;
-        window.switchMediaTab = switchMediaTab;
-        window.handleVideoError = handleVideoError;
-    </script>
-
-    <!-- INSTRUÇÕES DETALHADAS -->
-    <div style="display:none; position:fixed; top:20px; left:20px; background:#1a1a1a; color:#fff; padding:20px; border-radius:8px; border:1px solid #333; max-width:500px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,0.5);" id="videoInstructions">
-        <h3 style="color:#2563eb; margin-bottom:15px;"><i class="fas fa-info-circle"></i> COMO HOSPEDAR VÍDEOS CORRETAMENTE</h3>
-        
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">✅ FORMATOS DE URL VÁLIDOS:</h4>
-        <ul style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li><strong>Google Drive:</strong> <code>https://drive.google.com/file/d/ID_DO_ARQUIVO/view</code></li>
-            <li><strong>Dropbox:</strong> <code>https://www.dropbox.com/s/ID_DO_ARQUIVO/nome.mp4?dl=0</code></li>
-            <li><strong>Archive.org:</strong> <code>https://archive.org/download/IDENTIFICADOR/nome.mp4</code></li>
-            <li><strong>Links diretos:</strong> <code>https://exemplo.com/video.mp4</code></li>
-        </ul>
-        
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">🔧 COMO ADICIONAR AO SEU SITE:</h4>
-        <ol style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li>Vá na configuração dos produtos (linhas 370-544)</li>
-            <li>Encontre o campo <code>video: "",</code> de cada produto</li>
-            <li>Cole a URL do vídeo entre as aspas</li>
-            <li>Exemplo: <code>video: "https://drive.google.com/file/d/SEU_ID/view",</code></li>
-            <li>Recarregue a página (F5)</li>
-        </ol>
-        
-        <h4 style="color:#dc2626; margin-top:15px; margin-bottom:10px;">❌ URLs QUE NÃO FUNCIONAM:</h4>
-        <ul style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li>Páginas da web (HTML)</li>
-            <li>Links que exigem login</li>
-            <li>Vídeos privados sem compartilhamento público</li>
-            <li>Links que não terminam com .mp4, .webm, etc.</li>
-        </ul>
-        
-        <div style="background:#10b98120; border:1px solid #10b98140; padding:10px; border-radius:6px; margin-top:15px;">
-            <p style="color:#aaa; font-size:0.9rem;"><i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Teste o link em uma nova aba do navegador primeiro. Se o vídeo não carregar lá, também não carregará no site.</p>
-        </div>
-        
-        <button onclick="document.getElementById('videoInstructions').style.display='none'" style="background:#2563eb; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; margin-top:15px; width:100%;">
-            <i class="fas fa-times"></i> Fechar Instruções
-        </button>
-    </div>
-
-    <script>
-        // Botão para mostrar instruções (apenas para desenvolvedor)
-        console.log('%c=== INSTRUÇÕES DE VÍDEO ===', 'color: #2563eb; font-size: 16px; font-weight: bold;');
-        console.log('%cDigite "showInstructions()" no console para ver as instruções', 'color: #10b981; font-size: 14px;');
-        
-        window.showInstructions = function() {
-            document.getElementById('videoInstructions').style.display = 'block';
-        };
-        
-        // Mostrar instruções automaticamente se houver problemas com vídeos
-        setTimeout(() => {
-            const hasVideos = CONFIG.products.some(p => p.video && p.video.trim() !== '');
-            if (hasVideos) {
-                console.log('%cVerificando vídeos...', 'color: #f59e0b; font-size: 14px;');
-                console.log('%cSe os vídeos não aparecerem, use: showInstructions()', 'color: #dc2626; font-size: 14px;');
-            }
-        }, 3000);
     </script>
 </body>
 </html>
-
