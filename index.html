@@ -339,12 +339,41 @@
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .modal-video-container iframe {
             width: 100%;
             height: 100%;
             border: none;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #1a0000, #330000);
+            color: #ff6666;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .video-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #ff0000;
+        }
+        
+        .video-placeholder p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #cccccc;
         }
         
         .modal-product-info {
@@ -551,10 +580,10 @@
                 <h3 id="modalProductName"></h3>
                 <div class="price" id="modalProductPrice"></div>
             </div>
-            <div class="modal-video-container">
-                <iframe id="modalVideo" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="modal-video-container" id="modalVideoContainer">
+                <!-- Video will be loaded here -->
             </div>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-top: 20px;">
                 <a href="#" id="modalBuyLink" class="btn-buy" target="_blank" style="display: inline-block; padding: 15px 40px; font-size: 1.2rem;">
                     <i class="fas fa-shopping-cart"></i> BUY NOW
                 </a>
@@ -593,7 +622,7 @@
                 description: "MOM AND SON CP - Exclusive content collection with high quality videos and images",
                 price: 35.00,
                 image: "https://i.postimg.cc/d10qQdn1/20250515-150409.jpg",
-                video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
+                video: "https://drive.google.com/uc?export=download&id=1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -603,7 +632,7 @@
                 description: "30 media files + themed HD videos - Premium quality content",
                 price: 30.00,
                 image: "https://i.postimg.cc/qqh4yTPH/20250515-150356.jpg",
-                video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
+                video: "https://drive.google.com/uc?export=download&id=1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -613,7 +642,7 @@
                 description: "+ 20 FOLDER INCEST 110 VIDEOS AND DOG - Extensive collection",
                 price: 25.00,
                 image: "https://i.postimg.cc/J0fmQF8D/20250531-220548.jpg",
-                video: "https://drive.google.com/file/d/1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ/preview",
+                video: "https://drive.google.com/uc?export=download&id=1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -623,7 +652,7 @@
                 description: "20+ new packs every week, exclusive content, priority access",
                 price: 250.00,
                 image: "https://i.postimg.cc/Fzdr0bPf/IMG-20250518-152754-287.jpg",
-                video: "https://drive.google.com/file/d/1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D/preview",
+                video: "https://drive.google.com/uc?export=download&id=1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D",
                 stripeLink: "https://buy.stripe.com/test_00g3fR7nO3pC9Uw5kk",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -633,7 +662,7 @@
                 description: "NEW FOLDER DONT WAST THIS package - Fresh content",
                 price: 45.00,
                 image: "https://i.postimg.cc/Y9ytv9yx/20250515-150359.jpg",
-                video: "https://drive.google.com/file/d/1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ/preview",
+                video: "https://drive.google.com/uc?export=download&id=1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ",
                 stripeLink: "https://buy.stripe.com/dRm5kF65a6ibd8B21U93y05",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -643,7 +672,7 @@
                 description: "full media folder and 550GB videos HD - Massive collection",
                 price: 50.00,
                 image: "https://i.postimg.cc/QxKdWQDK/20250521-195713.jpg",
-                video: "https://drive.google.com/file/d/19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF/preview",
+                video: "https://drive.google.com/uc?export=download&id=19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF",
                 stripeLink: "https://buy.stripe.com/00w3cx2SY7mf4C57me93y0b",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -653,7 +682,7 @@
                 description: "LIZZY AND HER BROTHER INCEST FOLDER - Exclusive content",
                 price: 25.00,
                 image: "https://i.postimg.cc/PqTXc0w1/20250515-150418.jpg",
-                video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
+                video: "https://drive.google.com/uc?export=download&id=1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -663,7 +692,7 @@
                 description: "CONTENT OF TEENS - Curated collection",
                 price: 25.00,
                 image: "https://i.postimg.cc/5N77gJT5/20250608-152631.jpg",
-                video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
+                video: "https://drive.google.com/uc?export=download&id=1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -673,7 +702,7 @@
                 description: "THE MOST POPULAR FOLDER ON TIK TOK - Viral content",
                 price: 25.00,
                 image: "https://i.postimg.cc/g24Z8c7d/20250608-154549.jpg",
-                video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
+                video: "https://drive.google.com/uc?export=download&id=1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -683,7 +712,7 @@
                 description: "Exclusive content collection - Premium material",
                 price: 25.00,
                 image: "https://i.postimg.cc/xdt3f3Qv/20250608-154517.jpg",
-                video: "https://drive.google.com/file/d/1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ/preview",
+                video: "https://drive.google.com/uc?export=download&id=1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -693,7 +722,7 @@
                 description: "Premium content package - Exclusive material",
                 price: 35.00,
                 image: "https://i.postimg.cc/br9V50y0/IMG-20250901-221625-560.jpg",
-                video: "https://drive.google.com/file/d/1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D/preview",
+                video: "https://drive.google.com/uc?export=download&id=1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -703,7 +732,7 @@
                 description: "Special collection - Unique content",
                 price: 40.00,
                 image: "https://i.postimg.cc/3RGS5qZs/IMG-20250902-170043-151.jpg",
-                video: "https://drive.google.com/file/d/1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ/preview",
+                video: "https://drive.google.com/uc?export=download&id=1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -713,7 +742,7 @@
                 description: "Exclusive content - Premium quality",
                 price: 25.00,
                 image: "https://i.postimg.cc/t4TvrVLP/IMG-20250902-170339-400.jpg",
-                video: "https://drive.google.com/file/d/19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF/preview",
+                video: "https://drive.google.com/uc?export=download&id=19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -723,7 +752,7 @@
                 description: "Special collection - Exclusive scenarios",
                 price: 35.00,
                 image: "https://i.postimg.cc/TwrtyjD8/IMG-20250827-094703-624.jpg",
-                video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
+                video: "https://drive.google.com/uc?export=download&id=1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -733,7 +762,7 @@
                 description: "Rare content not available elsewhere - Exclusive",
                 price: 40.00,
                 image: "https://i.postimg.cc/XJM271Xc/IMG-20250828-170701-014.jpg",
-                video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
+                video: "https://drive.google.com/uc?export=download&id=1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -743,7 +772,7 @@
                 description: "Ultimate premium content package - Complete collection",
                 price: 75.00,
                 image: "https://i.postimg.cc/Gp4NpsKr/IMG-20250901-221410-024.jpg",
-                video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
+                video: "https://drive.google.com/uc?export=download&id=1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3",
                 stripeLink: "https://buy.stripe.com/00w3cx2SY7mf4C57me93y0b",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -753,7 +782,7 @@
                 description: "Limited time exclusive content - Special offer",
                 price: 25.00,
                 image: "https://i.postimg.cc/pT86fb36/IMG-20250901-221410-576.jpg",
-                video: "https://drive.google.com/file/d/1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ/preview",
+                video: "https://drive.google.com/uc?export=download&id=1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -763,7 +792,7 @@
                 description: "Over 100 premium media files - Extensive package",
                 price: 35.00,
                 image: "https://i.postimg.cc/CxLXW2fR/IMG-20250901-221410-569.jpg",
-                video: "https://drive.google.com/file/d/1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D/preview",
+                video: "https://drive.google.com/uc?export=download&id=1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -773,7 +802,7 @@
                 description: "High quality exclusive content - Teen collection",
                 price: 45.00,
                 image: "https://i.postimg.cc/VN0GwPsk/IMG-20250902-181310-488.jpg",
-                video: "https://drive.google.com/file/d/1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ/preview",
+                video: "https://drive.google.com/uc?export=download&id=1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ",
                 stripeLink: "https://buy.stripe.com/dRm5kF65a6ibd8B21U93y05",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -783,7 +812,7 @@
                 description: "Premium content with bonus material - Exclusive",
                 price: 25.00,
                 image: "https://i.postimg.cc/m2T5Hnjm/IMG-20250901-221625-947.jpg",
-                video: "https://drive.google.com/file/d/19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF/preview",
+                video: "https://drive.google.com/uc?export=download&id=19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -793,7 +822,7 @@
                 description: "All-access pass to exclusive content - VIP package",
                 price: 45.00,
                 image: "https://i.postimg.cc/2jsNp6XX/Screenshot-2025-09-28-20-16-48-480-app-nicegram.jpg",
-                video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
+                video: "https://drive.google.com/uc?export=download&id=1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe",
                 stripeLink: "https://buy.stripe.com/dRm5kF65a6ibd8B21U93y05",
                 views: Math.floor(Math.random() * 50) + 10,
             },
@@ -803,7 +832,7 @@
                 description: "The most exclusive content available - Premium",
                 price: 20.00,
                 image: "https://i.postimg.cc/L5jfYRBG/IMG_20251119_105200_086.jpg",
-                video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
+                video: "https://drive.google.com/uc?export=download&id=1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -813,7 +842,7 @@
                 description: "Everything we have to offer - Complete package",
                 price: 20.00,
                 image: "https://i.postimg.cc/RFw3d8q6/IMG-20250921-130645-597.jpg",
-                video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
+                video: "https://drive.google.com/uc?export=download&id=1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3",
                 stripeLink: "https://buy.stripe.com/aFa8wR65a5e7c4x8qi93y03",
                 views: Math.floor(Math.random() * 50) + 10
             }
@@ -909,8 +938,28 @@
             // Set modal content
             document.getElementById('modalProductName').textContent = product.name;
             document.getElementById('modalProductPrice').textContent = `$${product.price.toFixed(2)}`;
-            document.getElementById('modalVideo').src = product.video;
             document.getElementById('modalBuyLink').href = product.stripeLink;
+            
+            const videoContainer = document.getElementById('modalVideoContainer');
+            
+            // Check if video exists
+            if (product.video) {
+                // Create video element that doesn't require authentication
+                videoContainer.innerHTML = `
+                    <video controls autoplay style="width: 100%; height: 100%;">
+                        <source src="${product.video}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            } else {
+                // Show placeholder if no video
+                videoContainer.innerHTML = `
+                    <div class="video-placeholder">
+                        <i class="fas fa-video-slash"></i>
+                        <p>Video preview not available</p>
+                    </div>
+                `;
+            }
             
             // Show modal
             document.getElementById('previewModal').style.display = 'block';
@@ -919,7 +968,8 @@
         // Close Modal
         function closeModal() {
             document.getElementById('previewModal').style.display = 'none';
-            document.getElementById('modalVideo').src = '';
+            const videoContainer = document.getElementById('modalVideoContainer');
+            videoContainer.innerHTML = '';
         }
 
         // Initialize
