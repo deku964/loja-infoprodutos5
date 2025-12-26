@@ -14,159 +14,258 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0a0a;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
             color: #ffffff;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, #1a0000, #000000);
-            padding: 20px 0;
+            background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #8B0000 100%);
+            padding: 25px 0;
             text-align: center;
-            border-bottom: 3px solid #ff0000;
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+            border-bottom: 4px solid #FF4500;
+            box-shadow: 0 6px 20px rgba(255, 69, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 69, 0, 0.3) 0%, transparent 70%);
+            pointer-events: none;
         }
         
         .logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #ff0000;
-            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-            letter-spacing: 2px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 40px rgba(255, 69, 0, 0.4);
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #FFD700, #FF8C00, #FF4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         /* Navigation */
         nav {
-            background-color: #111111;
-            padding: 15px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 18px 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid #FF4500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
         
         nav a {
-            color: #ffffff;
+            color: #FFFFFF;
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: 500;
+            margin: 0 25px;
+            font-weight: 600;
             transition: all 0.3s;
-            font-size: 1rem;
-            padding: 8px 15px;
-            border-radius: 5px;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
         }
         
         nav a:hover {
-            color: #ff0000;
-            background-color: rgba(255, 0, 0, 0.1);
+            color: #FFD700;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.2), rgba(255, 140, 0, 0.1));
+            transform: translateY(-2px);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FF4500);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
         }
         
         /* Banner Section */
         .banner {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(20, 20, 20, 0.9)), 
                         url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            background-attachment: fixed;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 69, 0, 0.1), rgba(255, 140, 0, 0.05));
+            pointer-events: none;
         }
         
         .banner-content {
-            max-width: 800px;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
         }
         
         .banner h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: #ff0000;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #FFD700, #FF8C00, #FF4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
+            letter-spacing: 2px;
         }
         
         .banner p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #f0f0f0;
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: #F0F0F0;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         
         .btn {
             display: inline-block;
-            background-color: #ff0000;
-            color: #ffffff;
-            padding: 15px 35px;
-            border-radius: 30px;
+            background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+            color: #FFFFFF;
+            padding: 18px 45px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-            -webkit-appearance: none;
-            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 6px 20px rgba(255, 69, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
-            background-color: #cc0000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.6);
+            background: linear-gradient(135deg, #FF8C00 0%, #FF4500 100%);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn:hover::after {
+            left: 100%;
         }
         
         /* Products Section */
         .products {
-            padding: 60px 20px;
+            padding: 80px 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #ff0000;
-            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            background: linear-gradient(90deg, #FFD700, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
             position: relative;
+            padding-bottom: 20px;
         }
         
-        .section-title:after {
+        .section-title::after {
             content: '';
             display: block;
-            width: 100px;
-            height: 4px;
-            background: #ff0000;
-            margin: 15px auto;
-            border-radius: 2px;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, #FF4500, #FF8C00);
+            margin: 20px auto;
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
         }
         
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 35px;
         }
         
         .product-card {
-            background-color: #111111;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid #333;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            position: relative;
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
-            border-color: #ff0000;
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 69, 0, 0.4);
+            border-color: #FF4500;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FF8C00, #FF4500);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .product-card:hover::before {
+            opacity: 1;
         }
         
         .product-media {
-            height: 220px;
+            height: 240px;
             position: relative;
             overflow: hidden;
         }
@@ -177,74 +276,94 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            transition: transform 0.5s;
+            transition: transform 0.6s;
         }
         
         .product-card:hover .product-image {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .view-count {
             position: absolute;
             top: 15px;
             right: 15px;
-            background-color: rgba(0,0,0,0.7);
-            color: #ffffff;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.9), rgba(255, 140, 0, 0.8));
+            color: #FFFFFF;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .product-info {
-            padding: 20px;
+            padding: 25px;
         }
         
         .product-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #ff0000;
-            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #FFD700, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
         
         .product-info p {
             margin-bottom: 15px;
-            color: #cccccc;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            color: #CCCCCC;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .product-info p span {
+            color: #FFD700;
+            font-weight: 600;
+            margin-right: 5px;
         }
         
         .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+        
+        .price::before {
+            content: '🔥 ';
+            color: #FF4500;
         }
         
         .timer {
-            background-color: #1a0000;
-            color: #ff0000;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.2), rgba(255, 140, 0, 0.15));
+            color: #FFD700;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 20px;
             display: inline-block;
-            font-weight: 600;
+            font-weight: 700;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         /* Button Container */
         .button-container {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 15px;
         }
         
         .btn-preview {
             display: inline-block;
-            background-color: #333333;
-            color: #ffffff;
-            padding: 12px 25px;
-            border-radius: 30px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+            color: #FFFFFF;
+            padding: 14px 25px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
@@ -253,38 +372,42 @@
             cursor: pointer;
             flex: 1;
             text-align: center;
-            -webkit-appearance: none;
-            -webkit-tap-highlight-color: transparent;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-preview:hover {
-            background-color: #444444;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            transform: translateY(-3px);
+            border-color: #FF8C00;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
         }
         
         .btn-buy {
             display: inline-block;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 14px 25px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             border: none;
             cursor: pointer;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 69, 0, 0.4);
             transition: all 0.3s ease;
             flex: 1;
-            -webkit-appearance: none;
-            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
         }
         
         .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
-            background: linear-gradient(135deg, #cc0000, #ff0000);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.6);
+            background: linear-gradient(135deg, #FF8C00 0%, #FF4500 100%);
         }
         
         /* Modal Styles */
@@ -296,53 +419,60 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             overflow: auto;
+            backdrop-filter: blur(10px);
         }
         
         .modal-content {
-            background-color: #111111;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             margin: 5% auto;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 900px;
+            max-width: 1000px;
             position: relative;
-            border: 2px solid #ff0000;
+            border: 2px solid #FF4500;
+            box-shadow: 0 20px 50px rgba(255, 69, 0, 0.3);
         }
         
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            color: #ffffff;
-            font-size: 28px;
+            top: 20px;
+            right: 25px;
+            color: #FFFFFF;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-            background: rgba(0, 0, 0, 0.7);
-            width: 40px;
-            height: 40px;
+            background: linear-gradient(135deg, #FF4500, #FF8C00);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
         }
         
         .close-modal:hover {
-            color: #ff0000;
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
         }
         
         .modal-video-container {
             width: 100%;
-            height: 500px;
-            margin: 20px 0;
-            border-radius: 8px;
+            height: 550px;
+            margin: 25px 0;
+            border-radius: 12px;
             overflow: hidden;
-            background-color: #000;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 2px solid rgba(255, 69, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
         .modal-video-container iframe {
@@ -358,123 +488,157 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(45deg, #1a0000, #330000);
-            color: #ff6666;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #FF6666;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
         }
         
         .video-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: #ff0000;
+            font-size: 5rem;
+            margin-bottom: 25px;
+            color: #FF4500;
+            text-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
         }
         
         .video-placeholder p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #cccccc;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            color: #CCCCCC;
         }
         
         .modal-product-info {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .modal-product-info h3 {
-            font-size: 1.8rem;
-            color: #ff0000;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #FFD700, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 800;
         }
         
         .modal-product-info .price {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
         }
         
         /* Floating Button */
         .btn-floating {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 40px;
+            right: 40px;
             z-index: 100;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
-            background-color: #ff0000;
-            color: #ffffff;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.6);
+            background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+            color: #FFFFFF;
             transition: all 0.3s;
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 69, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
         }
         
         .btn-floating:hover {
-            transform: scale(1.1);
-            box-shadow: 0 7px 25px rgba(255, 0, 0, 0.8);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.8);
+            animation: none;
         }
         
         /* Online Counter */
         .online-count {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: #1a0000;
-            color: #ff0000;
-            padding: 12px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
+            bottom: 40px;
+            left: 40px;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.9), rgba(255, 140, 0, 0.8));
+            color: #FFFFFF;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
             z-index: 100;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.5);
-            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
             display: flex;
             align-items: center;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
         
         .online-count i {
-            margin-right: 8px;
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: #FFD700;
         }
         
         .btn-telegram {
-            background-color: #ff0000;
-            margin-top: 20px;
+            background: linear-gradient(135deg, #0088cc 0%, #00aced 100%);
+            color: white;
+            margin-top: 25px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 30px;
+            padding: 18px 35px;
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-telegram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.6);
+            background: linear-gradient(135deg, #00aced 0%, #0088cc 100%);
         }
         
         .btn-telegram i {
-            margin-right: 10px;
+            margin-right: 12px;
+            font-size: 1.3rem;
         }
         
         footer {
-            background-color: #111111;
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 50px 20px;
             text-align: center;
-            border-top: 1px solid #333;
-            margin-top: 60px;
+            border-top: 2px solid #FF4500;
+            margin-top: 80px;
         }
         
         footer p {
-            margin: 10px 0;
-            color: #999;
+            margin: 15px 0;
+            color: #AAAAAA;
+            font-size: 1rem;
         }
         
         .disclaimer {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 25px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border-left: 4px solid #FF4500;
         }
         
         /* Safari-specific fixes */
@@ -482,7 +646,7 @@
             @supports (-webkit-appearance:none) {
                 .btn, .btn-buy, .btn-preview, .btn-telegram {
                     -webkit-appearance: none;
-                    border-radius: 30px;
+                    border-radius: 50px;
                 }
             }
         }
@@ -490,11 +654,11 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .banner h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .banner p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             
             .product-grid {
@@ -504,7 +668,7 @@
             .modal-content {
                 width: 95%;
                 margin: 10% auto;
-                padding: 20px;
+                padding: 25px;
             }
             
             .modal-video-container {
@@ -516,17 +680,32 @@
             }
             
             .btn-floating {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
+                width: 65px;
+                height: 65px;
+                font-size: 1.7rem;
+                bottom: 25px;
+                right: 25px;
             }
             
             .online-count {
-                bottom: 20px;
-                left: 20px;
-                font-size: 0.8rem;
+                bottom: 25px;
+                left: 25px;
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                padding: 8px 15px;
+                font-size: 1rem;
             }
         }
         
@@ -536,7 +715,7 @@
             }
             
             .modal-video-container {
-                height: 400px;
+                height: 450px;
             }
         }
     </style>
@@ -549,24 +728,24 @@
     
     <!-- Navigation -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#vip">VIP</a>
-        <a href="https://t.me/teen_sellwr" target="_blank" id="supportLink">Support</a>
+        <a href="#home">🏠 Home</a>
+        <a href="#products">🛒 Products</a>
+        <a href="#vip">⭐ VIP</a>
+        <a href="https://t.me/teen_sellwr" target="_blank" id="supportLink">💬 Support</a>
     </nav>
     
     <!-- Main Banner -->
     <section class="banner" id="home">
         <div class="banner-content">
-            <h1>EXCLUSIVE ADULT CONTENT</h1>
-            <p>Discover unique and personalized experiences made just for you</p>
-            <a href="#products" class="btn">VIEW PRODUCTS</a>
+            <h1>EXCLUSIVE PREMIUM CONTENT</h1>
+            <p>Discover the most exclusive and curated adult experiences</p>
+            <a href="#products" class="btn">🔥 EXPLORE PRODUCTS 🔥</a>
         </div>
     </section>
     
     <!-- Products Section -->
     <section class="products" id="products">
-        <h2 class="section-title">OUR PRODUCTS</h2>
+        <h2 class="section-title">PREMIUM COLLECTIONS</h2>
         <div class="product-grid" id="productsContainer">
             <!-- Products will be loaded here -->
         </div>
@@ -583,14 +762,14 @@
             <div class="modal-video-container" id="modalVideoContainer">
                 <!-- Video will be loaded here -->
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="#" id="modalBuyLink" class="btn-buy" target="_blank" style="display: inline-block; padding: 15px 40px; font-size: 1.2rem;">
-                    <i class="fas fa-shopping-cart"></i> BUY NOW
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="#" id="modalBuyLink" class="btn-buy" target="_blank" style="display: inline-block; padding: 18px 45px; font-size: 1.3rem;">
+                    <i class="fas fa-bolt"></i> INSTANT ACCESS
                 </a>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
+            <div style="text-align: center; margin-top: 25px;">
                 <a href="https://t.me/leaks_center77" class="btn-telegram" target="_blank" style="display: inline-block;">
-                    <i class="fab fa-telegram"></i> Contact on Telegram for Support
+                    <i class="fab fa-telegram"></i> 24/7 Telegram Support
                 </a>
             </div>
         </div>
@@ -598,28 +777,28 @@
 
     <!-- Floating Buy Now Button -->
     <a href="#products" class="btn btn-floating" id="floatingBuyBtn">
-        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-fire"></i>
     </a>
     
     <!-- Online Users Counter -->
     <div class="online-count" id="onlineCount">
-        <i class="fas fa-users"></i> <span id="onlineUsers">0</span> people online
+        <i class="fas fa-users"></i> <span id="onlineUsers">0</span> users online
     </div>
 
     <!-- Footer -->
     <footer>
         <p>© 2023 DEKU HOT CLUB. All rights reserved.</p>
-        <p>For adults only. All models are 18+ years old.</p>
-        <p class="disclaimer">This content is protected by copyright laws. Unauthorized distribution is prohibited.</p>
+        <p>⚠️ For adults only. All models are 18+ years old.</p>
+        <p class="disclaimer">This website contains age-restricted content. By accessing this site, you confirm that you are at least 18 years old. All content is protected by copyright laws and unauthorized distribution is strictly prohibited.</p>
     </footer>
 
     <script>
-        // Product Data - ALL 23 ORIGINAL PRODUCTS WITH VIDEO PREVIEWS
+        // Product Data with new descriptions
         let products = [
             {
                 id: 1,
                 name: "MOM AND SON",
-                description: "MOM AND SON CP - Exclusive content collection with high quality videos and images",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 35.00,
                 image: "https://i.postimg.cc/d10qQdn1/20250515-150409.jpg",
                 video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
@@ -629,7 +808,7 @@
             {
                 id: 2,
                 name: "BRAZZERS",
-                description: "30 media files + themed HD videos - Premium quality content",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 30.00,
                 image: "https://i.postimg.cc/qqh4yTPH/20250515-150356.jpg",
                 video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
@@ -639,7 +818,7 @@
             {
                 id: 3,
                 name: "IZZY FOLDER",
-                description: "+ 20 FOLDER INCEST 110 VIDEOS AND DOG - Extensive collection",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/J0fmQF8D/20250531-220548.jpg",
                 video: "https://drive.google.com/file/d/1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ/preview",
@@ -649,7 +828,7 @@
             {
                 id: 4,
                 name: "VIP Annual Membership",
-                description: "20+ new packs every week, exclusive content, priority access",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 250.00,
                 image: "https://i.postimg.cc/Fzdr0bPf/IMG-20250518-152754-287.jpg",
                 video: "https://drive.google.com/file/d/1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D/preview",
@@ -659,7 +838,7 @@
             {
                 id: 5,
                 name: "OMEGLE",
-                description: "NEW FOLDER DONT WAST THIS package - Fresh content",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 45.00,
                 image: "https://i.postimg.cc/Y9ytv9yx/20250515-150359.jpg",
                 video: "https://drive.google.com/file/d/1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ/preview",
@@ -669,7 +848,7 @@
             {
                 id: 6,
                 name: "BLACKMAIL",
-                description: "full media folder and 550GB videos HD - Massive collection",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 50.00,
                 image: "https://i.postimg.cc/QxKdWQDK/20250521-195713.jpg",
                 video: "https://drive.google.com/file/d/19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF/preview",
@@ -679,7 +858,7 @@
             {
                 id: 7,
                 name: "LIZZY AND HER BROTHER",
-                description: "LIZZY AND HER BROTHER INCEST FOLDER - Exclusive content",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://imagizer.imageshack.com/img924/7232/QMnkEi.jpg",
                 video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
@@ -689,7 +868,7 @@
             {    
                 id: 8,
                 name: "TRINITY B",
-                description: "CONTENT OF TEENS - Curated collection",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/5N77gJT5/20250608-152631.jpg",
                 video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
@@ -699,7 +878,7 @@
             {
                 id: 9,
                 name: "BELLE DELPHINE",
-                description: "THE MOST POPULAR FOLDER ON TIK TOK - Viral content",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/g24Z8c7d/20250608-154549.jpg",
                 video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
@@ -709,7 +888,7 @@
             {
                 id: 10,
                 name: "BILLIE EILISH",
-                description: "Exclusive content collection - Premium material",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/xdt3f3Qv/20250608-154517.jpg",
                 video: "https://drive.google.com/file/d/1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ/preview",
@@ -719,7 +898,7 @@
             {
                 id: 11,
                 name: "DARKZEID",
-                description: "Premium content package - Exclusive material",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 35.00,
                 image: "https://i.postimg.cc/br9V50y0/IMG-20250901-221625-560.jpg",
                 video: "https://drive.google.com/file/d/1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D/preview",
@@ -729,7 +908,7 @@
             {
                 id: 12,
                 name: "INVAKA",
-                description: "Special collection - Unique content",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 40.00,
                 image: "https://i.postimg.cc/3RGS5qZs/IMG-20250902-170043-151.jpg",
                 video: "https://drive.google.com/file/d/1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ/preview",
@@ -739,7 +918,7 @@
             {
                 id: 13,
                 name: "Desire Garcia",
-                description: "Exclusive content - Premium quality",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/t4TvrVLP/IMG-20250902-170339-400.jpg",
                 video: "https://drive.google.com/file/d/19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF/preview",
@@ -749,7 +928,7 @@
             {
                 id: 14,
                 name: "FATHER AND DAUGHTER",
-                description: "Special collection - Exclusive scenarios",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 35.00,
                 image: "https://i.postimg.cc/TwrtyjD8/IMG-20250827-094703-624.jpg",
                 video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
@@ -759,7 +938,7 @@
             {
                 id: 15,
                 name: "REAL INCEST",
-                description: "Rare content not available elsewhere - Exclusive",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 40.00,
                 image: "https://i.postimg.cc/XJM271Xc/IMG-20250828-170701-014.jpg",
                 video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
@@ -769,7 +948,7 @@
             {
                 id: 16,
                 name: "ALL CP",
-                description: "Ultimate premium content package - Complete collection",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 75.00,
                 image: "https://i.postimg.cc/Gp4NpsKr/IMG-20250901-221410-024.jpg",
                 video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
@@ -779,7 +958,7 @@
             {
                 id: 17,
                 name: "CP 1",
-                description: "Limited time exclusive content - Special offer",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/pT86fb36/IMG-20250901-221410-576.jpg",
                 video: "https://drive.google.com/file/d/1gv1Js2MpOBPeYanLioCY8B8VR5BFT7EQ/preview",
@@ -789,7 +968,7 @@
             {
                 id: 18,
                 name: "CP 2",
-                description: "Over 100 premium media files - Extensive package",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 35.00,
                 image: "https://i.postimg.cc/CxLXW2fR/IMG-20250901-221410-569.jpg",
                 video: "https://drive.google.com/file/d/1fnGOaxDGUifbpPZE0Z90W9iU03GV-06D/preview",
@@ -799,7 +978,7 @@
             {
                 id: 19,
                 name: "ALL CONTENT TEENS",
-                description: "High quality exclusive content - Teen collection",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 45.00,
                 image: "https://i.postimg.cc/VN0GwPsk/IMG-20250902-181310-488.jpg",
                 video: "https://drive.google.com/file/d/1cwLcUpS4p0OBjn0yF1wA2ha414O58rOQ/preview",
@@ -809,7 +988,7 @@
             {
                 id: 20,
                 name: "BABY ASHLEY",
-                description: "Premium content with bonus material - Exclusive",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 25.00,
                 image: "https://i.postimg.cc/m2T5Hnjm/IMG-20250901-221625-947.jpg",
                 video: "https://drive.google.com/file/d/19O5JVw2w-ic039kYr8IRO4IfzN1zJCqF/preview",
@@ -819,7 +998,7 @@
             {
                 id: 21,
                 name: "GAYS YOUNG VIP CP",
-                description: "All-access pass to exclusive content - VIP package",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 45.00,
                 image: "https://i.postimg.cc/2jsNp6XX/Screenshot-2025-09-28-20-16-48-480-app-nicegram.jpg",
                 video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
@@ -829,7 +1008,7 @@
             {
                 id: 22,
                 name: "Monkey APP",
-                description: "The most exclusive content available - Premium",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 20.00,
                 image: "https://i.postimg.cc/L5jfYRBG/IMG_20251119_105200_086.jpg",
                 video: "https://drive.google.com/file/d/1_r0zro_xWF4GI0CcLZJXQg9uwvd5SUZY/preview",
@@ -839,7 +1018,7 @@
             {
                 id: 23,
                 name: "OMEGLE",
-                description: "Everything we have to offer - Complete package",
+                description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 20.00,
                 image: "https://i.postimg.cc/RFw3d8q6/IMG-20250921-130645-597.jpg",
                 video: "https://drive.google.com/file/d/1iPrSXojZWfZ7O5jd2Z0qB1GfB5DVadU3/preview",
@@ -852,7 +1031,6 @@
         let onlineUsers = Math.floor(Math.random() * 50) + 20;
         
         function updateOnlineUsers() {
-            // Simulate user count changes
             const change = Math.floor(Math.random() * 5) - 2;
             onlineUsers = Math.max(10, onlineUsers + change);
             document.getElementById('onlineUsers').textContent = onlineUsers;
@@ -897,7 +1075,7 @@
                                 <i class="fas fa-play-circle"></i> PREVIEW
                             </button>
                             <a href="${product.stripeLink}" target="_blank" class="btn-buy">
-                                <i class="fas fa-shopping-cart"></i> BUY NOW
+                                <i class="fas fa-bolt"></i> BUY NOW
                             </a>
                         </div>
                     </div>
@@ -935,16 +1113,13 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            // Set modal content
             document.getElementById('modalProductName').textContent = product.name;
             document.getElementById('modalProductPrice').textContent = `$${product.price.toFixed(2)}`;
             document.getElementById('modalBuyLink').href = product.stripeLink;
             
             const videoContainer = document.getElementById('modalVideoContainer');
             
-            // Check if video exists
             if (product.video) {
-                // Create iframe for Google Drive preview
                 videoContainer.innerHTML = `
                     <iframe 
                         src="${product.video}" 
@@ -954,7 +1129,6 @@
                     </iframe>
                 `;
             } else {
-                // Show placeholder if no video
                 videoContainer.innerHTML = `
                     <div class="video-placeholder">
                         <i class="fas fa-video-slash"></i>
@@ -963,7 +1137,6 @@
                 `;
             }
             
-            // Show modal
             document.getElementById('previewModal').style.display = 'block';
         }
 
@@ -979,13 +1152,11 @@
             loadProducts();
             updateOnlineUsers();
             
-            // Fix for Safari support link
             document.getElementById('supportLink').addEventListener('click', function(e) {
                 e.preventDefault();
                 window.open('https://t.me/teen_sellwr', '_blank');
             });
             
-            // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -999,17 +1170,14 @@
                 });
             });
             
-            // Modal close button
             document.querySelector('.close-modal').addEventListener('click', closeModal);
             
-            // Close modal when clicking outside
             document.getElementById('previewModal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeModal();
                 }
             });
             
-            // Close modal with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     closeModal();
@@ -1019,4 +1187,3 @@
     </script>
 </body>
 </html>
-
