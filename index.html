@@ -176,9 +176,7 @@
         .product-image {
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            object-fit: cover;
             transition: transform 0.5s;
         }
         
@@ -800,7 +798,7 @@
                 description: "✅ MOTHER AND SON<br>✅ T33NS<br>✅ BROTHER WITH SISTER<br>✅ CP<br>✅ LEAKED VIDEOS",
                 price: 40.00,
                 image: "https://i.postimg.cc/XJM271Xc/IMG-20250828-170701-014.jpg",
-                video: "",
+                video: "https://drive.google.com/file/d/1K8tv5vpQRR7tF0QqLY5OpFvNJeGWMTKe/preview",
                 stripeLink: "https://buy.stripe.com/28E28tcty9un0lPayq93y0c",
                 views: Math.floor(Math.random() * 50) + 10
             },
@@ -921,7 +919,7 @@
                 
                 productCard.innerHTML = `
                     <div class="product-media">
-                        <div class="product-image" style="background-image: url('${product.image}')"></div>
+                        <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/280x180/1a0a2a/c77dff?text=Image+Loading'">
                         ${viewCount.outerHTML}
                     </div>
                     <div class="product-info">
@@ -978,15 +976,30 @@
             
             const videoContainer = document.getElementById('modalVideoContainer');
             
-            if (product.video) {
-                videoContainer.innerHTML = `
-                    <iframe 
-                        src="${product.video}" 
-                        style="width:100%; height:100%; border:none;"
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen>
-                    </iframe>
-                `;
+            // Clear previous content
+            videoContainer.innerHTML = '';
+            
+            if (product.video && product.video.trim() !== '') {
+                const iframe = document.createElement('iframe');
+                iframe.src = product.video;
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+                iframe.allow = 'autoplay; encrypted-media';
+                iframe.allowFullscreen = true;
+                
+                // Add error handling
+                iframe.onerror = function() {
+                    videoContainer.innerHTML = `
+                        <div class="video-placeholder">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Video preview could not be loaded</p>
+                            <p style="font-size: 0.8rem; margin-top: 10px;">Please try again or contact support</p>
+                        </div>
+                    `;
+                };
+                
+                videoContainer.appendChild(iframe);
             } else {
                 videoContainer.innerHTML = `
                     <div class="video-placeholder">
@@ -1006,16 +1019,34 @@
             videoContainer.innerHTML = '';
         }
 
+        // Preload images for better performance
+        function preloadImages() {
+            products.forEach(product => {
+                if (product.image) {
+                    const img = new Image();
+                    img.src = product.image;
+                }
+            });
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Preload images first
+            preloadImages();
+            
+            // Load products
             loadProducts();
+            
+            // Start online users counter
             updateOnlineUsers();
             
+            // Support link handler
             document.getElementById('supportLink').addEventListener('click', function(e) {
                 e.preventDefault();
                 window.open('https://t.me/teen_sellwr', '_blank');
             });
             
+            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1029,6 +1060,7 @@
                 });
             });
             
+            // Modal close handlers
             document.querySelector('.close-modal').addEventListener('click', closeModal);
             
             document.getElementById('previewModal').addEventListener('click', function(e) {
@@ -1046,6 +1078,3 @@
     </script>
 </body>
 </html>
-
-
-
