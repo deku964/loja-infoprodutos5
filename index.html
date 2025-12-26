@@ -407,6 +407,16 @@
             color: white;
         }
         
+        .media-tab.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .media-tab.disabled:hover {
+            background: transparent;
+            color: #aaa;
+        }
+        
         .media-tab:first-child {
             border-right: 1px solid #333;
         }
@@ -860,15 +870,15 @@
                 }
             },
             
-            // Products - COM SISTEMA DE VÍDEO ADICIONADO
+            // Products - COM SISTEMA DE VÍDEO CORRIGIDO
             products: [
                 {
                     id: 1,
                     name: "MOM AND SON😋💜",
                     price: 29.99,
                     image: "https://imagizer.imageshack.com/img923/9634/E2fwLX.jpg",
-                    // NOVO: Campo para vídeo (URL)
-                    video: "https://www.dropbox.com/scl/fi/vtmildipo9sf0w0aj33ag/725298129165025274.mp4", // Adicione a URL do vídeo aqui
+                    // CORRIGIDO: Link direto para vídeo MP4
+                    video: "https://dl.dropboxusercontent.com/s/vtmildipo9sf0w0aj33ag/725298129165025274.mp4?raw=1",
                     description: [
                         "✅ REAL GIRLS",
                         "✅ YOUNG BOY", 
@@ -885,7 +895,8 @@
                     name: "LIZZY AND BRO🔥",
                     price: 34.99,
                     image: "https://imagizer.imageshack.com/img924/7232/QMnkEi.jpg",
-                    video: "https://archive.org/details/725298129165025274_202512", // Adicione a URL do vídeo aqui
+                    // CORRIGIDO: Link correto do Archive.org
+                    video: "https://archive.org/download/725298129165025274_202512/725298129165025274.mp4",
                     description: [
                         "✅ BLACKMAIL VIDEOS",
                         "✅ TRAINING VIDEOS",
@@ -1333,6 +1344,9 @@
 
         // Function to handle tab switching
         function switchMediaTab(button, productId) {
+            // If button is disabled, don't do anything
+            if (button.classList.contains('disabled')) return;
+            
             const mediaContainer = button.closest('.media-container');
             const tabs = mediaContainer.querySelectorAll('.media-tab');
             const panels = mediaContainer.querySelectorAll('.media-panel');
@@ -1347,6 +1361,80 @@
             panels[tabIndex].classList.add('active');
         }
 
+        // Function to check if a URL is a valid video
+        function isValidVideoUrl(url) {
+            if (!url || url.trim() === '') return false;
+            
+            // Check for common video file extensions
+            const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv', '.flv'];
+            const urlLower = url.toLowerCase();
+            
+            // Check if URL ends with a video extension
+            for (const ext of videoExtensions) {
+                if (urlLower.includes(ext) || urlLower.endsWith(ext)) {
+                    return true;
+                }
+            }
+            
+            // Check for common video hosting domains
+            const videoDomains = [
+                'youtube.com', 'youtu.be',
+                'vimeo.com',
+                'dailymotion.com',
+                'streamable.com',
+                'archive.org',
+                'drive.google.com',
+                'dropbox.com',
+                'dl.dropboxusercontent.com'
+            ];
+            
+            for (const domain of videoDomains) {
+                if (urlLower.includes(domain)) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        // Function to convert video URLs to direct links
+        function getDirectVideoUrl(url) {
+            if (!url) return '';
+            
+            const urlLower = url.toLowerCase();
+            
+            // Google Drive conversion
+            if (urlLower.includes('drive.google.com')) {
+                // Convert view link to preview/direct link
+                if (urlLower.includes('/file/d/')) {
+                    const match = url.match(/\/file\/d\/([^\/]+)/);
+                    if (match) {
+                        const fileId = match[1];
+                        return `https://drive.google.com/uc?export=download&id=${fileId}`;
+                    }
+                }
+            }
+            
+            // Dropbox conversion
+            if (urlLower.includes('dropbox.com')) {
+                // Convert share link to direct download link
+                return url.replace('www.dropbox.com', 'dl.dropboxusercontent.com')
+                         .replace('?dl=0', '')
+                         .replace('?dl=1', '') + '?raw=1';
+            }
+            
+            // Archive.org conversion
+            if (urlLower.includes('archive.org')) {
+                // If it's a details page, try to get the direct MP4 link
+                if (urlLower.includes('/details/')) {
+                    const identifier = url.split('/details/')[1];
+                    return `https://archive.org/download/${identifier}/${identifier}.mp4`;
+                }
+            }
+            
+            return url;
+        }
+
         // Function to render products with formatted descriptions and video tabs
         function renderProducts() {
             const container = document.getElementById('productsContainer');
@@ -1355,6 +1443,10 @@
             CONFIG.products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
+                
+                // Get direct video URL
+                const directVideoUrl = getDirectVideoUrl(product.video);
+                const hasValidVideo = isValidVideoUrl(product.video);
                 
                 // Create tabs and media content
                 let mediaHTML = '';
@@ -1366,19 +1458,19 @@
                                 <button class="media-tab active" onclick="switchMediaTab(this, ${product.id})">
                                     <i class="fas fa-image"></i> Image
                                 </button>
-                                <button class="media-tab" onclick="switchMediaTab(this, ${product.id})">
+                                <button class="media-tab ${!hasValidVideo ? 'disabled' : ''}" onclick="switchMediaTab(this, ${product.id})" ${!hasValidVideo ? 'disabled' : ''}>
                                     <i class="fas fa-video"></i> Video Preview
                                 </button>
                             </div>
                             <div class="media-content">
                                 <div class="media-panel image-panel active">
-                                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"250\" viewBox=\"0 0 400 250\"><rect width=\"400\" height=\"250\" fill=\"%231a1a1a\"/><text x=\"200\" y=\"125\" font-family=\"Arial\" font-size=\"14\" fill=\"%23666\" text-anchor=\"middle\">Image Loading...</text></svg>';">
+                                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"250\" viewBox=\"0 0 400 250\"><rect width=\"400\" height=\"250\" fill=\"%231a1a1a\"/><text x=\"200\" y=\"125\" font-family=\"Arial\" font-size=\"14\" fill=\"%23666\" text-anchor=\"middle\">Image Loading...</text></svg>'">
                                 </div>
                                 <div class="media-panel video-panel">
-                                    ${product.video ? `
+                                    ${hasValidVideo ? `
                                         <div class="video-container">
-                                            <video class="preview-video" controls preload="metadata" playsinline>
-                                                <source src="${product.video}" type="video/mp4">
+                                            <video class="preview-video" controls preload="metadata" playsinline onerror="handleVideoError(this, ${product.id})">
+                                                <source src="${directVideoUrl}" type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
@@ -1386,7 +1478,7 @@
                                         <div class="video-placeholder">
                                             <i class="fas fa-video-slash"></i>
                                             <p>No video preview available</p>
-                                            <small class="no-video">Add video URL in product configuration</small>
+                                            <small class="no-video">${product.video ? 'Invalid video URL' : 'Add video URL in product configuration'}</small>
                                         </div>
                                     `}
                                 </div>
@@ -1449,6 +1541,30 @@
                 
                 container.appendChild(productCard);
             });
+        }
+
+        // Handle video loading errors
+        function handleVideoError(videoElement, productId) {
+            console.error(`Video failed to load for product ${productId}:`, videoElement.src);
+            
+            const container = videoElement.closest('.video-container');
+            if (container) {
+                container.innerHTML = `
+                    <div class="video-placeholder">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Failed to load video preview</p>
+                        <small class="no-video">The video may be private or the link is invalid</small>
+                    </div>
+                `;
+            }
+            
+            // Disable the video tab
+            const mediaContainer = videoElement.closest('.media-container');
+            const videoTab = mediaContainer.querySelector('.media-tab:last-child');
+            if (videoTab) {
+                videoTab.classList.add('disabled');
+                videoTab.disabled = true;
+            }
         }
 
         // Function to handle purchase
@@ -1575,67 +1691,56 @@
             
             // Log video instructions
             console.log('\n=== COMO ADICIONAR VÍDEOS ===');
-            console.log('1. Hospede seus vídeos em um serviço gratuito (veja instruções abaixo)');
-            console.log('2. Copie a URL do vídeo (deve terminar com .mp4)');
+            console.log('1. Hospede seus vídeos em um serviço gratuito');
+            console.log('2. Copie a URL do vídeo');
             console.log('3. Adicione a URL no campo "video" de cada produto na configuração');
             console.log('4. Recarregue a página para ver as alterações');
+            console.log('\n=== LINKS DE EXEMPLO VÁLIDOS ===');
+            console.log('• Google Drive: https://drive.google.com/file/d/ID_DO_ARQUIVO/view');
+            console.log('• Dropbox: https://www.dropbox.com/s/ID_DO_ARQUIVO/nome.mp4?dl=0');
+            console.log('• Archive.org: https://archive.org/download/IDENTIFICADOR/nome.mp4');
         });
 
         // Expose functions to global scope for button onclick
         window.buyProduct = buyProduct;
         window.switchMediaTab = switchMediaTab;
+        window.handleVideoError = handleVideoError;
     </script>
 
     <!-- INSTRUÇÕES DETALHADAS -->
     <div style="display:none; position:fixed; top:20px; left:20px; background:#1a1a1a; color:#fff; padding:20px; border-radius:8px; border:1px solid #333; max-width:500px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,0.5);" id="videoInstructions">
-        <h3 style="color:#2563eb; margin-bottom:15px;"><i class="fas fa-info-circle"></i> Como Hospedar Vídeos Gratuitamente</h3>
+        <h3 style="color:#2563eb; margin-bottom:15px;"><i class="fas fa-info-circle"></i> COMO HOSPEDAR VÍDEOS CORRETAMENTE</h3>
         
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">Opção 1: Google Drive</h4>
-        <ol style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li>Faça upload do vídeo no Google Drive</li>
-            <li>Compartilhe o arquivo como "Público"</li>
-            <li>Copie o link de compartilhamento</li>
-            <li>Converta o link: substitua "view?usp=sharing" por "preview"</li>
-            <li>Exemplo: <code style="background:#333; padding:2px 6px; border-radius:3px;">https://drive.google.com/file/d/ID_DO_VIDEO/view</code> → <code style="background:#333; padding:2px 6px; border-radius:3px;">https://drive.google.com/file/d/ID_DO_VIDEO/preview</code></li>
-        </ol>
-        
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">Opção 2: Dropbox</h4>
-        <ol style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li>Faça upload no Dropbox</li>
-            <li>Compartilhe o link</li>
-            <li>Altere "www.dropbox.com" para "dl.dropboxusercontent.com"</li>
-            <li>Remova "?dl=0" do final</li>
-            <li>Exemplo: <code style="background:#333; padding:2px 6px; border-radius:3px;">https://www.dropbox.com/s/ID/arquivo.mp4?dl=0</code> → <code style="background:#333; padding:2px 6px; border-radius:3px;">https://dl.dropboxusercontent.com/s/ID/arquivo.mp4</code></li>
-        </ol>
-        
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">Opção 3: OneDrive</h4>
-        <ol style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li>Faça upload no OneDrive</li>
-            <li>Compartilhe como "Qualquer pessoa com o link"</li>
-            <li>Copie o link</li>
-            <li>Substitua "embed" por "download" se quiser link direto</li>
-        </ol>
-        
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">Opção 4: Serviços Especializados (Gratuitos)</h4>
+        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">✅ FORMATOS DE URL VÁLIDOS:</h4>
         <ul style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li><a href="https://streamable.com" style="color:#2563eb;" target="_blank">Streamable.com</a> - Até 500MB/vídeo</li>
-            <li><a href="https://vimeo.com" style="color:#2563eb;" target="_blank">Vimeo.com</a> - 500MB/semana no plano free</li>
-            <li><a href="https://archive.org" style="color:#2563eb;" target="_blank">Archive.org</a> - Ilimitado e anônimo</li>
+            <li><strong>Google Drive:</strong> <code>https://drive.google.com/file/d/ID_DO_ARQUIVO/view</code></li>
+            <li><strong>Dropbox:</strong> <code>https://www.dropbox.com/s/ID_DO_ARQUIVO/nome.mp4?dl=0</code></li>
+            <li><strong>Archive.org:</strong> <code>https://archive.org/download/IDENTIFICADOR/nome.mp4</code></li>
+            <li><strong>Links diretos:</strong> <code>https://exemplo.com/video.mp4</code></li>
         </ul>
         
-        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">Como Adicionar ao Seu Site:</h4>
+        <h4 style="color:#fff; margin-top:15px; margin-bottom:10px;">🔧 COMO ADICIONAR AO SEU SITE:</h4>
         <ol style="margin-left:20px; margin-bottom:15px; color:#aaa;">
-            <li>Vá na configuração dos produtos (linhas 363-537)</li>
-            <li>Encontre o campo "video: ''," de cada produto</li>
+            <li>Vá na configuração dos produtos (linhas 370-544)</li>
+            <li>Encontre o campo <code>video: "",</code> de cada produto</li>
             <li>Cole a URL do vídeo entre as aspas</li>
-            <li>Exemplo: <code style="background:#333; padding:2px 6px; border-radius:3px;">video: "https://drive.google.com/file/d/SEU_ID/preview",</code></li>
+            <li>Exemplo: <code>video: "https://drive.google.com/file/d/SEU_ID/view",</code></li>
+            <li>Recarregue a página (F5)</li>
         </ol>
         
-        <div style="background:#2563eb20; border:1px solid #2563eb40; padding:10px; border-radius:6px; margin-top:15px;">
-            <p style="color:#aaa; font-size:0.9rem;"><i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Use vídeos curtos (10-30 segundos) como preview. Para conteúdo completo, envie via Telegram após compra.</p>
+        <h4 style="color:#dc2626; margin-top:15px; margin-bottom:10px;">❌ URLs QUE NÃO FUNCIONAM:</h4>
+        <ul style="margin-left:20px; margin-bottom:15px; color:#aaa;">
+            <li>Páginas da web (HTML)</li>
+            <li>Links que exigem login</li>
+            <li>Vídeos privados sem compartilhamento público</li>
+            <li>Links que não terminam com .mp4, .webm, etc.</li>
+        </ul>
+        
+        <div style="background:#10b98120; border:1px solid #10b98140; padding:10px; border-radius:6px; margin-top:15px;">
+            <p style="color:#aaa; font-size:0.9rem;"><i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Teste o link em uma nova aba do navegador primeiro. Se o vídeo não carregar lá, também não carregará no site.</p>
         </div>
         
-        <button onclick="document.getElementById('videoInstructions').style.display='none'" style="background:#dc2626; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; margin-top:15px; width:100%;">
+        <button onclick="document.getElementById('videoInstructions').style.display='none'" style="background:#2563eb; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; margin-top:15px; width:100%;">
             <i class="fas fa-times"></i> Fechar Instruções
         </button>
     </div>
@@ -1648,11 +1753,15 @@
         window.showInstructions = function() {
             document.getElementById('videoInstructions').style.display = 'block';
         };
+        
+        // Mostrar instruções automaticamente se houver problemas com vídeos
+        setTimeout(() => {
+            const hasVideos = CONFIG.products.some(p => p.video && p.video.trim() !== '');
+            if (hasVideos) {
+                console.log('%cVerificando vídeos...', 'color: #f59e0b; font-size: 14px;');
+                console.log('%cSe os vídeos não aparecerem, use: showInstructions()', 'color: #dc2626; font-size: 14px;');
+            }
+        }, 3000);
     </script>
 </body>
 </html>
-
-
-
-
-
