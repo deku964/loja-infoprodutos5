@@ -819,13 +819,13 @@
         // =============================================
         
         // 1. ONLINE NOW: Número de usuários ativos no site
-        const ONLINE_AGORA = 153; // Mude este número
+        const ONLINE_AGORA = 2; // Mude este número
         
         // 2. LEADS: Número de vendas realizadas hoje
-        const VENDAS_HOJE = 42; // Mude este número
+        const VENDAS_HOJE = 0; // Mude este número
         
         // 3. VIEWS: Número total de visualizações
-        const TOTAL_VISUALIZACOES = 124826; // Mude este número
+        const TOTAL_VISUALIZACOES = 8; // Mude este número
         
         // =============================================
         // SISTEMA AUTOMÁTICO DE USUÁRIOS ONLINE
@@ -839,31 +839,27 @@
             baseOnline: ONLINE_AGORA // Mantém o valor base para incrementos
         };
 
-        // Incrementar usuários online automaticamente
+        // Incrementar usuários online automaticamente a cada 5 minutos
         function startAutoIncrement() {
-            // Incrementa a cada 5 minutos (300000 ms)
+            // Incrementa a cada 5 minutos (300000 ms) - AUMENTA 3 PESSOAS
             setInterval(() => {
-                // Incrementa de 1 a 3 usuários aleatoriamente
-                const increment = Math.floor(Math.random() * 3) + 1;
-                stats.onlineNow += increment;
+                stats.onlineNow += 3; // Aumenta exatamente 3 pessoas a cada 5 minutos
                 
                 // Atualiza os contadores
                 updateCounters();
                 
                 // Log para debug
-                console.log(`[${new Date().toLocaleTimeString()}] +${increment} usuários online. Total: ${stats.onlineNow}`);
+                console.log(`[${new Date().toLocaleTimeString()}] +3 usuários online. Total: ${stats.onlineNow}`);
                 
             }, 300000); // 5 minutos = 300000 milissegundos
             
-            // Também incrementa a cada 30 segundos para teste (opcional)
-            // Comente esta linha se não quiser ver mudanças tão rápidas
+            // Pequeno incremento aleatório para simular atividade natural
             setInterval(() => {
-                // Pequeno incremento aleatório para simular atividade
-                if (Math.random() > 0.7) { // 30% de chance
+                if (Math.random() > 0.8) { // 20% de chance
                     stats.onlineNow += 1;
                     updateCounters();
                 }
-            }, 30000); // 30 segundos
+            }, 60000); // 1 minuto
         }
 
         // Inicializar estatísticas
