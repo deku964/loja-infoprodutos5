@@ -21,68 +21,98 @@
             font-size: 14px;
         }
         
-        /* Nova Barra de Estatísticas */
+        /* BARRA DE ESTATÍSTICAS - ESTILO PROFISSIONAL */
         .stats-bar {
-            background: linear-gradient(90deg, #1a0a2a 0%, #2d0a4d 50%, #1a0a2a 100%);
+            background: linear-gradient(90deg, rgba(15, 15, 25, 0.95) 0%, rgba(25, 20, 40, 0.95) 50%, rgba(15, 15, 25, 0.95) 100%);
             color: white;
-            padding: 10px 15px;
-            font-size: 0.85rem;
+            padding: 10px 20px;
+            font-size: 0.8rem;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
             position: sticky;
             top: 0;
             z-index: 1001;
-            box-shadow: 0 3px 15px rgba(138, 43, 226, 0.4);
-            border-bottom: 2px solid #8a2be2;
-            flex-wrap: wrap;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .stats-left, .stats-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .stats-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(123, 44, 191, 0.2);
-            padding: 5px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            padding: 5px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .stats-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(138, 43, 226, 0.3);
         }
 
         .stats-item i {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #c77dff;
         }
 
         .stats-number {
-            font-weight: 700;
+            font-weight: 600;
             color: #ffffff;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 3px 10px;
-            border-radius: 15px;
-            min-width: 100px;
-            text-align: center;
+            font-size: 0.85rem;
+            min-width: 60px;
+            text-align: right;
             display: inline-block;
-            text-shadow: 0 0 5px rgba(138, 43, 226, 0.7);
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-            font-size: 1rem;
         }
 
         .stats-label {
-            font-weight: 600;
-            color: #d8c4ff;
+            font-weight: 500;
+            color: #b0a8d0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .live-pulse {
-            animation: pulse 2s infinite;
-            display: inline-block;
-            margin-right: 5px;
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 5px #00ff00;
         }
 
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 1; }
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            background: rgba(0, 200, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 200, 0, 0.3);
+            font-size: 0.7rem;
+            color: #90ee90;
         }
         
         /* Header Styles */
@@ -109,7 +139,7 @@
             padding: 12px 0;
             text-align: center;
             position: sticky;
-            top: 55px; /* Ajustado para a barra de stats */
+            top: 40px; /* Ajustado para a nova barra de stats */
             z-index: 1000;
             border-bottom: 2px solid #8a2be2;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
@@ -495,7 +525,7 @@
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(135deg, rgba(123, 44, 191, 0.9), rgba(157, 78, 221, 0.8));
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(42, 42, 62, 0.9));
             color: #ffffff;
             padding: 10px 18px;
             border-radius: 25px;
@@ -505,12 +535,14 @@
             font-weight: 600;
             display: flex;
             align-items: center;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(5px);
         }
         
         .online-count i {
             margin-right: 8px;
             font-size: 1rem;
-            color: #ffffff;
+            color: #c77dff;
         }
         
         .btn-telegram {
@@ -571,25 +603,33 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .stats-bar {
-                gap: 10px;
-                padding: 8px 10px;
+                padding: 8px 15px;
                 font-size: 0.75rem;
-                justify-content: space-around;
+                flex-direction: column;
+                gap: 5px;
+                align-items: stretch;
+            }
+            
+            .stats-left, .stats-right {
+                justify-content: space-between;
+                gap: 10px;
+                flex-wrap: wrap;
             }
             
             .stats-item {
                 padding: 4px 8px;
                 gap: 5px;
+                flex: 1;
+                min-width: 120px;
             }
             
             .stats-number {
-                min-width: 70px;
-                padding: 2px 6px;
+                min-width: 50px;
                 font-size: 0.8rem;
             }
             
             nav {
-                top: 45px; /* Ajustado para mobile */
+                top: 80px; /* Ajustado para mobile */
             }
             
             .banner h1 {
@@ -650,6 +690,10 @@
             .banner {
                 height: 50vh;
             }
+            
+            .server-status {
+                display: none;
+            }
         }
         
         @media (min-width: 769px) and (max-width: 1200px) {
@@ -664,22 +708,37 @@
     </style>
 </head>
 <body>
-    <!-- Nova Barra de Estatísticas -->
+    <!-- BARRA DE ESTATÍSTICAS PROFISSIONAL -->
     <div class="stats-bar" id="statsBar">
-        <div class="stats-item">
-            <i class="fas fa-users live-pulse"></i>
-            <span class="stats-label">Online now:</span>
-            <span class="stats-number" id="onlineNow">153</span>
+        <div class="stats-left">
+            <div class="stats-item">
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span class="stats-label">Live</span>
+                </div>
+                <span class="stats-number" id="onlineNow">153</span>
+            </div>
+            <div class="stats-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="stats-label">Sales Today:</span>
+                <span class="stats-number" id="salesToday">42</span>
+            </div>
+            <div class="stats-item">
+                <i class="fas fa-chart-line"></i>
+                <span class="stats-label">Total Views:</span>
+                <span class="stats-number" id="totalViews">124,826</span>
+            </div>
         </div>
-        <div class="stats-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="stats-label">People who paid:</span>
-            <span class="stats-number" id="salesToday">42</span>
-        </div>
-        <div class="stats-item">
-            <i class="fas fa-eye"></i>
-            <span class="stats-label">Views:</span>
-            <span class="stats-number" id="totalViews">124,826</span>
+        <div class="stats-right">
+            <div class="stats-item">
+                <i class="fas fa-clock"></i>
+                <span class="stats-label">Server Time:</span>
+                <span class="stats-number" id="serverTime">00:00</span>
+            </div>
+            <div class="server-status">
+                <i class="fas fa-server"></i>
+                <span>Server: Online</span>
+            </div>
         </div>
     </div>
     
@@ -760,24 +819,52 @@
         // =============================================
         
         // 1. ONLINE NOW: Número de usuários ativos no site
-        const ONLINE_AGORA = 2; // Mude este número
+        const ONLINE_AGORA = 153; // Mude este número
         
         // 2. LEADS: Número de vendas realizadas hoje
-        const VENDAS_HOJE = 0; // Mude este número
+        const VENDAS_HOJE = 42; // Mude este número
         
         // 3. VIEWS: Número total de visualizações
-        const TOTAL_VISUALIZACOES = 8; // Mude este número
+        const TOTAL_VISUALIZACOES = 124826; // Mude este número
         
         // =============================================
-        // NÃO EDITAR ABAIXO DESTA LINHA
+        // SISTEMA AUTOMÁTICO DE USUÁRIOS ONLINE
         // =============================================
-
+        
         // Sistema de Estatísticas
         let stats = {
             onlineNow: ONLINE_AGORA,
             salesToday: VENDAS_HOJE,
-            totalViews: TOTAL_VISUALIZACOES
+            totalViews: TOTAL_VISUALIZACOES,
+            baseOnline: ONLINE_AGORA // Mantém o valor base para incrementos
         };
+
+        // Incrementar usuários online automaticamente
+        function startAutoIncrement() {
+            // Incrementa a cada 5 minutos (300000 ms)
+            setInterval(() => {
+                // Incrementa de 1 a 3 usuários aleatoriamente
+                const increment = Math.floor(Math.random() * 3) + 1;
+                stats.onlineNow += increment;
+                
+                // Atualiza os contadores
+                updateCounters();
+                
+                // Log para debug
+                console.log(`[${new Date().toLocaleTimeString()}] +${increment} usuários online. Total: ${stats.onlineNow}`);
+                
+            }, 300000); // 5 minutos = 300000 milissegundos
+            
+            // Também incrementa a cada 30 segundos para teste (opcional)
+            // Comente esta linha se não quiser ver mudanças tão rápidas
+            setInterval(() => {
+                // Pequeno incremento aleatório para simular atividade
+                if (Math.random() > 0.7) { // 30% de chance
+                    stats.onlineNow += 1;
+                    updateCounters();
+                }
+            }, 30000); // 30 segundos
+        }
 
         // Inicializar estatísticas
         function initStats() {
@@ -788,6 +875,42 @@
             
             // Atualizar também o contador flutuante
             document.getElementById('onlineUsers').textContent = stats.onlineNow.toLocaleString();
+            
+            // Iniciar o relógio do servidor
+            updateServerTime();
+            setInterval(updateServerTime, 1000);
+            
+            // Iniciar incremento automático
+            startAutoIncrement();
+        }
+
+        // Atualizar todos os contadores
+        function updateCounters() {
+            document.getElementById('onlineNow').textContent = stats.onlineNow.toLocaleString();
+            document.getElementById('onlineUsers').textContent = stats.onlineNow.toLocaleString();
+        }
+
+        // Atualizar hora do servidor
+        function updateServerTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('serverTime').textContent = `${hours}:${minutes}`;
+        }
+
+        // Função para atualizar estatísticas quando há interação
+        function updateStatsOnInteraction() {
+            // Incrementa views em cada visita
+            stats.totalViews += 1;
+            
+            // Chance de incrementar vendas
+            if (Math.random() > 0.95) { // 5% de chance
+                stats.salesToday += 1;
+            }
+            
+            // Atualiza visualmente
+            document.getElementById('totalViews').textContent = stats.totalViews.toLocaleString();
+            document.getElementById('salesToday').textContent = stats.salesToday.toLocaleString();
         }
 
         // Product Data with new descriptions
@@ -1024,13 +1147,6 @@
             }
         ];
 
-        // Função para atualizar contadores quando há interação
-        function updateCounters() {
-            // Esta função pode ser usada se você quiser que os números aumentem
-            // automaticamente quando os usuários interagem com o site
-            // Removi a atualização automática para que você controle manualmente
-        }
-
         // Load products function
         function loadProducts() {
             const container = document.getElementById('productsContainer');
@@ -1106,6 +1222,9 @@
         function showPreview(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
+            
+            // Incrementar estatísticas quando alguém vê o preview
+            updateStatsOnInteraction();
             
             document.getElementById('modalProductName').textContent = product.name;
             document.getElementById('modalProductPrice').textContent = `$${product.price.toFixed(2)}`;
@@ -1211,13 +1330,10 @@
                     closeModal();
                 }
             });
+            
+            // Incrementar views quando a página é carregada
+            updateStatsOnInteraction();
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
